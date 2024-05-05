@@ -1,6 +1,6 @@
 # Kafshe Namayesh
 
-Welcome to the repository for Kafshe Namayesh, an online shoe store crafted with Django. This project aims to provide a seamless and intuitive shopping experience for all kinds of footwear enthusiasts. Whether you're searching for the latest sneakers or classic formal shoes, Kafshe Namayesh is your go-to online destination.
+Welcome to the repository for Kafshe Namayesh, an online shoe shop crafted with Django. This project aims to provide a seamless and intuitive shopping experience for all kinds of footwear enthusiasts. Whether you're searching for the latest sneakers or classic formal shoes, Kafshe Namayesh is your go-to online destination.
 
 ## Features
 
