@@ -18,9 +18,6 @@ try:
 except ImportError:
     elasticsearch_registry = type('DocumentRegistry', (), {'get_documents': lambda *args: []})()
 
-from polymorphic.managers import PolymorphicManager
-from polymorphic.models import PolymorphicModel
-
 from shop import deferred
 from shop.conf import app_settings
 from shop.exceptions import ProductNotAvailable
@@ -145,7 +142,7 @@ class ReserveProductMixin(BaseReserveProductMixin, AvailableProductMixin):
     """
 
 
-class BaseProductManager(PolymorphicManager):
+class BaseProductManager:
     """
     A base ModelManager for all non-object manipulation needs, mostly statistics and querying.
     """
@@ -167,27 +164,7 @@ class BaseProductManager(PolymorphicManager):
         return queryset
 
 
-class PolymorphicProductMetaclass(deferred.PolymorphicForeignKeyBuilder):
-
-    @classmethod
-    def perform_meta_model_check(cls, Model):
-        """
-        Perform some safety checks on the ProductModel being created.
-        """
-        if not isinstance(Model.objects, BaseProductManager):
-            msg = "Class `{}.objects` must provide ModelManager inheriting from BaseProductManager"
-            raise NotImplementedError(msg.format(Model.__name__))
-
-        if not isinstance(getattr(Model, 'lookup_fields', None), (list, tuple)):
-            msg = "Class `{}` must provide a tuple of `lookup_fields` so that we can easily lookup for Products"
-            raise NotImplementedError(msg.format(Model.__name__))
-
-        if not callable(getattr(Model, 'get_price', None)):
-            msg = "Class `{}` must provide a method implementing `get_price(request)`"
-            raise NotImplementedError(msg.format(cls.__name__))
-
-
-class BaseProduct(PolymorphicModel, metaclass=PolymorphicProductMetaclass):
+class BaseProduct:
     """
     An abstract basic product model for the shop. It is intended to be overridden by one or
     more polymorphic models, adding all the fields and relations, required to describe this

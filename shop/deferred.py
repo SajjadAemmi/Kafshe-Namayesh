@@ -4,7 +4,6 @@ from django.core.exceptions import ImproperlyConfigured
 from django.db.models.base import ModelBase
 from django.db import models
 from django.utils.functional import LazyObject, empty
-from polymorphic.models import PolymorphicModelBase
 
 from shop.conf import app_settings
 
@@ -14,7 +13,7 @@ class DeferredRelatedField:
         try:
             self.abstract_model = to._meta.object_name
         except AttributeError:
-            assert isinstance(to, str), "%s(%r) is invalid. First parameter must be either a model or a model name" % (self.__class__.__name__, to)
+            # assert isinstance(to, str), "%s(%r) is invalid. First parameter must be either a model or a model name" % (self.__class__.__name__, to)
             self.abstract_model = to
         self.options = dict(**kwargs)
 
@@ -84,7 +83,7 @@ class ForeignKeyBuilder(ModelBase):
             app_label = app_settings.APP_LABEL
 
         attrs.setdefault('Meta', Meta)
-        attrs.setdefault('__module__', getattr(bases[-1], '__module__'))
+        # attrs.setdefault('__module__', getattr(bases[-1], '__module__'))
         if not hasattr(attrs['Meta'], 'app_label') and not getattr(attrs['Meta'], 'abstract', False):
             attrs['Meta'].app_label = Meta.app_label
 
@@ -204,12 +203,6 @@ class ForeignKeyBuilder(ModelBase):
             msg = "Deferred foreign key '{0}.{1}' has not been mapped"
             pm = cls._pending_mappings
             raise ImproperlyConfigured(msg.format(pm[0][0].__name__, pm[0][1]))
-
-
-class PolymorphicForeignKeyBuilder(ForeignKeyBuilder, PolymorphicModelBase):
-    """
-    Base class for PolymorphicProductMetaclass
-    """
 
 
 class MaterializedModel(LazyObject):
