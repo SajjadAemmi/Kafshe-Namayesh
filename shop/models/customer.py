@@ -207,9 +207,6 @@ class BaseCustomer(models.Model, metaclass=deferred.ForeignKeyBuilder):
 
     objects = CustomerManager()
 
-    class Meta:
-        abstract = True
-
     def __str__(self):
         return self.get_username()
 

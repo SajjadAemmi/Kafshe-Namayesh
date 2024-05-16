@@ -13,12 +13,9 @@ from rest_framework.permissions import AllowAny
 from rest_framework.renderers import JSONRenderer, BrowsableAPIRenderer
 from rest_framework.response import Response
 from rest_framework.settings import api_settings
-from rest_auth.views import LoginView as OriginalLoginView, PasswordChangeView as OriginalPasswordChangeView
 
 from shop.models.cart import CartModel
 from shop.models.customer import CustomerModel
-from shop.rest.renderers import CMSPageRenderer
-from shop.serializers.auth import PasswordResetRequestSerializer, PasswordResetConfirmSerializer
 from shop.signals import email_queued
 
 
@@ -48,7 +45,7 @@ class AuthFormsView(GenericAPIView):
         return Response({form.form_name: errors}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
 
-class LoginView(OriginalLoginView):
+class LoginView:
     form_name = 'login_form'
 
     def login(self):
@@ -111,7 +108,7 @@ class LogoutView(APIView):
         return Response(response_data)
 
 
-class PasswordChangeView(OriginalPasswordChangeView):
+class PasswordChangeView:
     form_name = 'password_change_form'
 
     def post(self, request, *args, **kwargs):
@@ -133,7 +130,6 @@ class PasswordResetRequestView(GenericAPIView):
     Accepts the following POST parameters: email
     Returns the success/fail message.
     """
-    serializer_class = PasswordResetRequestSerializer
     permission_classes = (AllowAny,)
     form_name = 'password_reset_request_form'
 
@@ -163,8 +159,7 @@ class PasswordResetConfirmView(GenericAPIView):
     This page then shall render the CMS plugin as provided by the **ShopAuthenticationPlugin** using
     the form "Confirm Password Reset".
     """
-    renderer_classes = (CMSPageRenderer, JSONRenderer, BrowsableAPIRenderer)
-    serializer_class = PasswordResetConfirmSerializer
+    renderer_classes = (JSONRenderer, BrowsableAPIRenderer)
     permission_classes = (AllowAny,)
     token_generator = default_token_generator
     form_name = 'password_reset_confirm_form'

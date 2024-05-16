@@ -17,8 +17,6 @@ from rest_framework.renderers import BrowsableAPIRenderer
 from rest_framework.response import Response
 from rest_framework.utils.urls import replace_query_param
 
-from cms.views import details
-
 from shop.conf import app_settings
 from shop.models.product import ProductModel
 from shop.rest.filters import CMSPagesFilterBackend
@@ -279,8 +277,8 @@ class ProductRetrieveView(generics.RetrieveAPIView):
         try:
             return super().dispatch(request, *args, **kwargs)
         except Http404:
-            if request.current_page.node.is_root():
-                return details(request, kwargs.get('slug'))
+            # if request.current_page.node.is_root():
+            #     return details(request, kwargs.get('slug'))
             raise
         except:
             raise

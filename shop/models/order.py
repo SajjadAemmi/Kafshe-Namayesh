@@ -10,15 +10,20 @@ from django.urls import NoReverseMatch, reverse
 from django.utils.functional import cached_property
 from django.utils.translation import gettext_lazy as _, pgettext_lazy, get_language_from_request
 
-from django_fsm import FSMField, transition
+from django.db import models
+from django.utils.translation import gettext_lazy as _
+
 from ipware.ip import get_client_ip
-from cms.models import Page
 from shop.conf import app_settings
 from shop.models.cart import CartItemModel
 from shop.models.fields import JSONField
 from shop.money.fields import MoneyField, MoneyMaker
 from shop import deferred
 from shop.models.product import BaseProduct
+
+
+class State(models.TextChoices):
+    NEW = 'NEW', _('New')
 
 
 class OrderQuerySet(models.QuerySet):
@@ -160,10 +165,11 @@ class BaseOrder(models.Model, metaclass=WorkflowMixinMetaclass):
         related_name='orders',
     )
 
-    status = FSMField(
-        default='new',
-        protected=True,
+    status = models.CharField(
         verbose_name=_("Status"),
+        max_length=50,
+        default=State.NEW,
+        choices=State.choices
     )
 
     currency = models.CharField(
@@ -202,9 +208,6 @@ class BaseOrder(models.Model, metaclass=WorkflowMixinMetaclass):
     )
 
     objects = OrderManager()
-
-    class Meta:
-        abstract = True
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -276,7 +279,6 @@ class BaseOrder(models.Model, metaclass=WorkflowMixinMetaclass):
         return urljoin(OrderModel.objects.get_summary_url(), self.get_number())
 
     @transaction.atomic
-    @transition(field=status, source='new', target='created')
     def populate_from_cart(self, cart, request):
         """
         Populate the order object with the fields from the given cart.
@@ -359,7 +361,6 @@ class BaseOrder(models.Model, metaclass=WorkflowMixinMetaclass):
     def is_fully_paid(self):
         return self.amount_paid >= self.total
 
-    @transition(field='status', source='*', target='payment_confirmed', conditions=[is_fully_paid])
     def acknowledge_payment(self, by=None):
         """
         Change status to ``payment_confirmed``. This status code is known globally and can be used

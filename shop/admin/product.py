@@ -11,8 +11,6 @@ except ImportError:
 
 from adminsortable2.admin import SortableInlineAdminMixin
 
-from cms.models import Page
-
 from shop.models.related import ProductPageModel, ProductImageModel
 
 
