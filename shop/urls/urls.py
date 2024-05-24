@@ -3,7 +3,7 @@ from shop.views import client
 
 
 urlpatterns = [
-    path('', client.main, name='main'),
+    path('', client.index, name='index'),
     path('members/', client.members, name='members'),
     path('members/details/<int:id>', client.details, name='details'),
     path('a/', client.b, name='c'),
