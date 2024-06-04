@@ -52,8 +52,10 @@ def details(request, id):
 
 
 def index(request):
-    template = loader.get_template('index.html')
-    return HttpResponse(template.render())
+    images = [1, 2, 3, 4]
+    return render(request, 'index.html', {
+        "images": images
+    })
 
 
 def testing(request):
