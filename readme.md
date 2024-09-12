@@ -44,7 +44,7 @@ pip install -r requirements.txt
 ```
 3. Navigate to the project directory and run the following commands to set up the database and run the server:
 ```bash
-cd path_to_kafshe_namayesh
+cd kafshe-namayesh
 python manage.py migrate  # Sets up the database tables
 python manage.py runserver  # Starts the Django development server
 ```
