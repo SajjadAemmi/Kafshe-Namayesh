@@ -7,3 +7,4 @@ django-ipware
 django-viewflow
 django-cms
 jsonfield
+python-dotenv

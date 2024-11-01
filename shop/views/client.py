@@ -2,12 +2,12 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 from django.middleware import csrf
-# from .models import Member
 from django.views.decorators.csrf import csrf_protect
+from shop.models import shoe
 
 
 def members(request):
-    mymembers = Member.objects.all().values()
+    mymembers = models.Member.objects.all().values()
     template = loader.get_template('all_members.html')
     context = {
         'mymembers': mymembers,
@@ -31,10 +31,10 @@ def b2(request):
         lastname = request.POST.get('lastname')
         phone = request.POST.get('phone')
         joined_date = request.POST.get('joined_date')
-        new_member = Member(firstname=firstname, lastname=lastname, phone=phone, joined_date=joined_date)
+        new_member = models.Member(firstname=firstname, lastname=lastname, phone=phone, joined_date=joined_date)
         new_member.save()
         
-        mymembers = Member.objects.all().values()
+        mymembers = models.Member.objects.all().values()
         template = loader.get_template('all_members.html')
         context = {
             'mymembers': mymembers,
@@ -43,7 +43,7 @@ def b2(request):
 
 
 def details(request, id):
-    mymember = Member.objects.get(id=id)
+    mymember = shoe.Shoe.objects.get(id=id)
     template = loader.get_template('details.html')
     context = {
         'mymember': mymember,
@@ -59,7 +59,7 @@ def index(request):
 
 
 def testing(request):
-    mydata = Member.objects.filter(firstname='Emil').values() | Member.objects.filter(firstname='Tobias').values()
+    mydata = models.Member.objects.filter(firstname='Emil').values() | models.Member.objects.filter(firstname='Tobias').values()
     template = loader.get_template('template.html')
     context = {
         'mymembers': mydata,
