@@ -21,3 +21,10 @@ class Shoe(models.Model):
 
     def __str__(self):
         return self.name
+
+class ShoeImage(models.Model):
+    shoe = models.ForeignKey(Shoe, related_name='images', on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='shoe_images/')  # Adjust the path as needed
+
+    def __str__(self):
+        return f"Image for {self.shoe.name}"

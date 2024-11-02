@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.template import loader
 from django.views.decorators.csrf import csrf_protect
@@ -6,18 +6,18 @@ from shop.models import Shoe, Member
 
 
 def index(request):
-    images = [1, 2, 3, 4]
+    shoes = Shoe.objects.prefetch_related('images').all()
     return render(request, 'index.html', {
-        "images": images
+        "shoes": shoes
     })
 
 
 # Create your views here.
 def details(request, id):
-    mymember = Shoe.objects.get(id=id)
+    shoe = get_object_or_404(Shoe.objects.prefetch_related('images'), id=id)
     template = loader.get_template('details.html')
     context = {
-        'mymember': mymember,
+        'shoe': shoe,
     }
     return HttpResponse(template.render(context, request))
 

@@ -1,16 +1,287 @@
 {% extends "master.html" %}
 
 {% block title %}
-  Details about {{ mymember.firstname }} {{ mymember.lastname }}
+    Details about {{ shoe.name }}
 {% endblock %}
 
 
 {% block content %}
-  <h1>{{ mymember.firstname }} {{ mymember.lastname }}</h1>
-  
-  <p>Phone {{ mymember.phone }}</p>
-  <p>Member since: {{ mymember.joined_date }}</p>
-  
-  <p>Back to <a href="/members">Members</a></p>
-  
+
+    <!-- Page content -->
+    <main class="content-wrapper">
+        <div class="container">
+
+            <!-- Breadcrumb -->
+            <nav class="position-relative pt-3 mt-3 mt-md-4 mb-4" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="home-furniture.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="shop-catalog-furniture.html">Shop</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Product page</li>
+                </ol>
+            </nav>
+
+
+            <!-- Product gallery and details -->
+            <section class="row pb-4 pb-md-5 mb-2 mb-md-0 mb-xl-3">
+
+                <!-- Gallery -->
+                <div class="col-md-7 col-xl-8 pb-4 pb-md-0 mb-2 mb-sm-3 mb-md-0">
+                    <div class="row row-cols-2 g-3 g-sm-4 g-md-3 g-lg-4">
+                        <div class="col-12">
+                            <div class="collapse d-md-block" id="morePictures">
+                                <div class="row row-cols-2 g-3 g-sm-4 g-md-3 g-lg-4 pb-3 pb-sm-4 pb-md-0">
+                                    {% for image in shoe.images.all %}
+                                        <div class="col">
+                                            <a class="hover-effect-scale hover-effect-opacity position-relative d-flex rounded-4 overflow-hidden"
+                                               href="{{ image.image.url }}" data-glightbox=""
+                                               data-gallery="product-gallery">
+                                                <span class="hover-effect-target position-absolute top-0 start-0 w-100 h-100 bg-black bg-opacity-25 opacity-0 z-1"></span>
+                                                <i class="ci-zoom-in hover-effect-target fs-3 text-white position-absolute top-50 start-50 translate-middle opacity-0 z-2"></i>
+                                                <div class="ratio ratio-1x1 hover-effect-target">
+                                                    <img src="{{ image.image.url }}" alt="Image of {{ shoe.name }}">
+                                                </div>
+                                            </a>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-lg btn-outline-secondary w-100 collapsed d-md-none"
+                                    data-bs-toggle="collapse" data-bs-target="#morePictures"
+                                    data-label-collapsed="Show more pictures" data-label-expanded="Show less pictures"
+                                    aria-expanded="false" aria-controls="morePictures"
+                                    aria-label="Show / hide pictures">
+                                <i class="collapse-toggle-icon ci-chevron-down fs-lg ms-2 me-n2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Product details and options -->
+                <div class="col-md-5 col-xl-4">
+                    <div class="d-none d-md-block" style="margin-top: -90px"></div>
+                    <div class="sticky-md-top ps-md-2 ps-xl-4">
+                        <div class="d-none d-md-block" style="padding-top: 90px"></div>
+                        <div class="fs-xs text-body-secondary mb-3">V00273124</div>
+                        <h1 class="fs-xl fw-medium">{{ shoe.name }}</h1>
+                        <div class="h4 fw-bold mb-4">
+                            {{ shoe.price }}
+                            <del class="fs-sm fw-normal text-body-tertiary">$416.00</del>
+                        </div>
+
+                        <!-- Color options -->
+
+                        <!-- Material select -->
+
+
+                        <!-- افزودن به سبد خرید + Wishlist buttons -->
+                        <div class="d-flex gap-3 pb-4 mb-2 mb-lg-3">
+                            <button type="button" class="btn btn-lg btn-dark w-100 rounded-pill">افزودن به سبد خرید
+                            </button>
+                            <button type="button" class="btn btn-icon btn-lg btn-secondary rounded-circle animate-pulse"
+                                    aria-label="Add to Wishlist">
+                                <i class="ci-heart fs-lg animate-target"></i>
+                            </button>
+                        </div>
+
+                        <!-- Shipping info -->
+                        <div class="mb-4">
+                            <h6 class="d-flex align-items-center fs-sm mb-2">
+                                <i class="ci-delivery fs-lg me-2"></i>
+                                Free shipping
+                            </h6>
+                            <div class="fs-sm">
+                                <span class="me-1">Get it between May 24 - May 27 to</span>
+                                <div class="dropdown d-inline-block">
+                                    <a class="dropdown-toggle animate-underline fs-sm fw-semibold text-body-emphasis text-decoration-none"
+                                       href="#!" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="animate-target">Preston - 06365</span>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-end text-body p-3">
+                                        Blackpool Road, 15<br>06365, Preston, UK
+                                        <div class="h6 fs-sm pt-1 mb-0">Susan Gardner</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact -->
+                        <div class="d-flex align-items-center justify-content-between bg-body-tertiary rounded p-3">
+                            <div class="me-3">
+                                <h6 class="fs-sm mb-1">Have a question?</h6>
+                                <p class="fs-sm mb-0">Contact us if you have questions</p>
+                            </div>
+                            <a class="btn btn-sm btn-outline-dark rounded-pill" href="contact-v2.html">Contact us</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- Sticky product preview + افزودن به سبد خرید CTA -->
+            <section class="sticky-product-banner sticky-top" data-sticky-element="">
+                <div class="sticky-product-banner-inner pt-5">
+                    <div class="navbar flex-nowrap align-items-center bg-body pt-4 pb-2">
+                        <div class="d-flex align-items-center min-w-0 ms-lg-2 me-3">
+                            <div class="ratio ratio-1x1 flex-shrink-0" style="width: 50px">
+                                <img src="assets/img/shop/furniture/product/thumb.png" alt="Image">
+                            </div>
+                            <h4 class="h6 fw-medium d-none d-lg-block ps-3 mb-0">
+                                {{ shoe.name }}
+                            </h4>
+                            <div class="w-100 min-w-0 d-lg-none ps-2">
+                                <h4 class="fs-sm fw-medium text-truncate mb-1">{{ shoe.name }}</h4>
+                                <div class="h6 mb-0">$357.00
+                                    <del class="fs-xs fw-normal text-body-tertiary">$416.00</del>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="h4 d-none d-lg-block mb-0 ms-auto me-4">$357.00
+                            <del class="fs-sm fw-normal text-body-tertiary">$416.00</del>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button type="button" class="btn btn-icon btn-secondary rounded-circle animate-pulse"
+                                    aria-label="Add to Wishlist">
+                                <i class="ci-heart fs-base animate-target"></i>
+                            </button>
+                            <button type="button"
+                                    class="btn btn-dark rounded-pill ms-auto d-none d-md-inline-flex px-4">افزودن به سبد
+                                خرید
+                            </button>
+                            <button type="button"
+                                    class="btn btn-icon btn-dark rounded-circle animate-slide-end ms-auto d-md-none"
+                                    aria-label="افزودن به سبد خرید">
+                                <i class="ci-shopping-cart fs-base animate-target"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- Product description -->
+            <section class="row pb-5 mb-2 mb-sm-3 mb-lg-4 mb-xl-5">
+                <div class="col-md-7 col-xl-8 mb-xxl-3">
+                    <p>
+                        {{ shoe.details }}
+                    </p>
+{#                    <ul class="list-unstyled pb-md-2 pb-lg-3">#}
+{#                        <li class="mt-1"><span class="h6 mb-0">Backrest height:</span> 46 cm</li>#}
+{#                        <li class="mt-1"><span class="h6 mb-0">Width:</span> 64 cm</li>#}
+{#                        <li class="mt-1"><span class="h6 mb-0">Depth:</span> 78 cm</li>#}
+{#                        <li class="mt-1"><span class="h6 mb-0">Height under furniture:</span> 22 cm</li>#}
+{#                        <li class="mt-1"><span class="h6 mb-0">Seat width:</span> 56 cm</li>#}
+{#                        <li class="mt-1"><span class="h6 mb-0">Armrest height:</span> 63 cm</li>#}
+{#                    </ul>#}
+
+                    <div class="accordion accordion-alt-icon" id="productAccordion">
+                        <div class="accordion-item">
+                            <h3 class="accordion-header" id="headingProductInfo">
+                                <button type="button" class="accordion-button animate-underline fs-xl collapsed"
+                                        data-bs-toggle="collapse" data-bs-target="#productInfo" aria-expanded="false"
+                                        aria-controls="productInfo">
+                                    <span class="animate-target me-2">Product info</span>
+                                </button>
+                            </h3>
+                            <div class="accordion-collapse collapse" id="productInfo"
+                                 aria-labelledby="headingProductInfo" data-bs-parent="#productAccordion">
+                                <div class="accordion-body fs-base">Introducing our Scandinavian-inspired chair,
+                                    meticulously designed to infuse your living space with a touch of retro elegance.
+                                    Crafted with the finest materials and attention to detail, this chair embodies the
+                                    timeless charm of Scandinavian design, making it a versatile addition to any home
+                                    decor. With its classic silhouette and understated sophistication, it seamlessly
+                                    integrates into various interior styles, bringing both style and functionality to
+                                    your room.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h3 class="accordion-header" id="headingProductFeatures">
+                                <button type="button" class="accordion-button animate-underline fs-xl collapsed"
+                                        data-bs-toggle="collapse" data-bs-target="#productFeatures"
+                                        aria-expanded="false" aria-controls="productFeatures">
+                                    <span class="animate-target me-2">Features</span>
+                                </button>
+                            </h3>
+                            <div class="accordion-collapse collapse" id="productFeatures"
+                                 aria-labelledby="headingProductFeatures" data-bs-parent="#productAccordion">
+                                <div class="accordion-body fs-base">
+                                    <ul class="m-0">
+                                        <li><span class="text-body-emphasis fw-semibold">Timeless design:</span>
+                                            Inspired by Scandinavian aesthetics, this chair boasts a sleek and
+                                            retro-inspired silhouette that adds a touch of elegance to any space.
+                                        </li>
+                                        <li><span class="text-body-emphasis fw-semibold">Durable construction:</span>
+                                            Crafted with high-quality materials, the chair is built to last, providing
+                                            sturdy and reliable seating for years to come.
+                                        </li>
+                                        <li><span class="text-body-emphasis fw-semibold">Versatile placement:</span>
+                                            Whether as a focal point in your living room, a cozy reading corner in your
+                                            study, or an inviting seat around the dining table, this chair effortlessly
+                                            adapts to different settings.
+                                        </li>
+                                        <li><span class="text-body-emphasis fw-semibold">Comfortable seating:</span> The
+                                            chair features a well-padded seat and backrest, ensuring optimal comfort for
+                                            extended periods of relaxation or conversation.
+                                        </li>
+                                        <li><span class="text-body-emphasis fw-semibold">Easy maintenance:</span>
+                                            Designed for convenience, the chair's upholstery is easy to clean, allowing
+                                            for hassle-free maintenance and care.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h3 class="accordion-header" id="headingProductWarranty">
+                                <button type="button" class="accordion-button animate-underline fs-xl collapsed"
+                                        data-bs-toggle="collapse" data-bs-target="#productWarranty"
+                                        aria-expanded="false" aria-controls="productWarranty">
+                                    <span class="animate-target me-2">Warranty information</span>
+                                </button>
+                            </h3>
+                            <div class="accordion-collapse collapse" id="productWarranty"
+                                 aria-labelledby="headingProductWarranty" data-bs-parent="#productAccordion">
+                                <div class="accordion-body fs-base">We stand behind the quality of our products. Our
+                                    chair comes with a 10-year warranty, guaranteeing against defects in materials and
+                                    workmanship under normal use. In the unlikely event that you encounter any issues
+                                    with your chair, contact our customer service team, and we will be happy to assist
+                                    you with a replacement or repair.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h3 class="accordion-header" id="headingProductDelivery">
+                                <button type="button" class="accordion-button animate-underline fs-xl collapsed"
+                                        data-bs-toggle="collapse" data-bs-target="#productDelivery"
+                                        aria-expanded="false" aria-controls="productDelivery">
+                                    <span class="animate-target me-2">Delivery and shipping</span>
+                                </button>
+                            </h3>
+                            <div class="accordion-collapse collapse" id="productDelivery"
+                                 aria-labelledby="headingProductDelivery" data-bs-parent="#productAccordion">
+                                <div class="accordion-body fs-base">We understand the importance of timely delivery and
+                                    strive to provide a seamless shipping experience for our customers. Upon placing
+                                    your order, our team will process it promptly, and you will receive a notification
+                                    once your chair is ready for shipment. We offer various shipping options to
+                                    accommodate your preferences, with estimated delivery times provided at checkout.
+                                    Rest assured, your chair will be carefully packaged to ensure it arrives safely at
+                                    your doorstep, ready to enhance your home with its timeless charm.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- Popular products carousel -->
+
+            <!-- Blog articles -->
+
+            <!-- Viewed products carousel -->
+
+        </div>
+    </main>
+
 {% endblock %}
