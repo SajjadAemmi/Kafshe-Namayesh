@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+	<meta charset="utf-8">
+
+	<!-- Viewport -->
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
+
+	<!-- SEO Meta Tags -->
+	<title>{% block title %}{% endblock %}</title>
+	<meta name="description" content="Cartzilla - Multipurpose Bootstrap E-Commerce HTML Template">
+	<meta name="keywords"
+		content="online shop, e-commerce, online store, market, multipurpose, product landing, cart, checkout, ui kit, light and dark mode, bootstrap, html5, css3, javascript, gallery, slider, mobile, pwa">
+	<meta name="author" content="Sajjad Aemmi">
+	<!-- Webmanifest + Favicon / App icons -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="manifest" href="{% static 'js/manifest.json' %}">
+	<link rel="icon" type="image/png" href="{% static 'app-icons/icon-32x32.png' %}" sizes="32x32">
+	<link rel="apple-touch-icon" href="{% static 'app-icons/icon-180x180.png' %}">
+
+	<!-- Theme switcher (color modes) -->
+	<script src="{% static 'js/theme-switcher.js' %}"></script>
+
+	<!-- Preloaded local web font (Inter) -->
+	<link rel="preload" href="{% static 'fonts/inter-variable-latin.woff2' %}" as="font" type="font/woff2" crossorigin="">
+
+	<!-- Font icons -->
+	<link rel="preload" href="{% static 'icons/cartzilla-icons.woff2' %}" as="font" type="font/woff2" crossorigin="">
+	<link rel="stylesheet" href="{% static 'icons/cartzilla-icons.min.css' %}">
+
+	<!-- Vendor styles -->
+	<link rel="stylesheet" href="{% static 'vendor/swiper/swiper-bundle.min.css' %}">
+	<link rel="stylesheet" href="{% static 'vendor/simplebar/simplebar.min.css' %}">
+	<link rel="stylesheet" href="{% static 'vendor/glightbox/glightbox.min.css' %}">
+
+	<!-- Bootstrap + Theme styles -->
+	<link rel="preload" href="{% static 'css/theme.min.css' %}" as="style">
+	<link rel="preload" href="{% static 'css/theme.rtl.min.css' %}" as="style">
+	<link rel="stylesheet" href="{% static 'css/theme.min.css' %}" id="theme-styles">
+
+	<!-- Customizer -->
+	<script src="{% static 'js/customizer.min.js' %}"></script>
+</head>
+
+<body>
+	{% include "customizer.html" %}
+	{% include "shopping_card.html" %}
+	{% include "topbar.html" %}
+	{% include "navbar.html" %}
+
+	{% block content %}
+	{% endblock %}
+
+	{% include "back_to_top_button.html" %}
+	{% include "footer.html" %}
+
+	<!-- Vendor scripts -->
+	<script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+	<script src="{% static 'vendor/simplebar/simplebar.min.js' %}"></script>
+	<script src="{% static 'vendor/glightbox/glightbox.min.js' %}"></script>
+
+	<!-- Bootstrap + Theme scripts -->
+	<script src="{% static 'js/theme.min.js' %}"></script>
+</body>
+
+</html>

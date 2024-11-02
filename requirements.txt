@@ -1,0 +1,10 @@
+django
+whitenoise
+psycopg2-binary
+djangorestframework
+django-polymorphic
+django-ipware
+django-viewflow
+django-cms
+jsonfield
+python-dotenv

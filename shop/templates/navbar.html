@@ -1,0 +1,317 @@
+{% load static %}
+
+<!-- Navigation bar (Page header) -->
+<header class="navbar-sticky sticky-top container z-fixed px-2" data-sticky-element="">
+	<div class="navbar navbar-expand-lg flex-nowrap bg-body rounded-pill shadow ps-0 mx-1">
+		<div class="position-absolute top-0 start-0 w-100 h-100 bg-dark rounded-pill z-0 d-none d-block-dark"></div>
+
+		<!-- Mobile offcanvas menu toggler (Hamburger) -->
+		<button type="button" class="navbar-toggler ms-3" data-bs-toggle="offcanvas" data-bs-target="#navbarNav"
+			aria-controls="navbarNav" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<!-- Navbar brand (Logo) -->
+		<a class="navbar-brand position-relative z-1 ms-4 ms-sm-5 ms-lg-4 me-2 me-sm-0 me-lg-3"
+			href="index.html">کفش نمایش</a>
+
+		<!-- Main navigation that turns into offcanvas on screens < 992px wide (lg breakpoint) -->
+		<nav class="offcanvas offcanvas-start" id="navbarNav" tabindex="-1" aria-labelledby="navbarNavLabel">
+			<div class="offcanvas-header py-3">
+				<h5 class="offcanvas-title" id="navbarNavLabel">Browse Cartzilla</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+			</div>
+			<div class="offcanvas-body pt-3 pb-4 py-lg-0 mx-lg-auto">
+				<ul class="navbar-nav position-relative">
+					<li class="nav-item dropdown me-lg-n1 me-xl-0">
+						<a class="nav-link fs-sm active" aria-current="page" href="#" role="button"
+							data-bs-toggle="dropdown" data-bs-trigger="hover" aria-expanded="false">خانه</a>
+					</li>
+					<li class="nav-item dropdown position-static me-lg-n1 me-xl-0">
+						<a class="nav-link dropdown-toggle fs-sm" href="#" role="button" data-bs-toggle="dropdown"
+							data-bs-trigger="hover" aria-expanded="false">Shop</a>
+						<div class="dropdown-menu p-4" style="--cz-dropdown-spacer: 1rem">
+							<div class="d-flex flex-column flex-lg-row gap-4">
+								<div style="min-width: 190px">
+									<div class="h6 mb-2">Electronics Store</div>
+									<ul class="nav flex-column gap-2 mt-0">
+										<li class="d-flex w-100 pt-1">
+											<a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
+												href="shop-categories-electronics.html">Categories Page</a>
+										</li>
+										<li class="d-flex w-100 pt-1">
+											<a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
+												href="shop-catalog-electronics.html">Catalog with Side Filters</a>
+										</li>
+										<li class="d-flex w-100 pt-1">
+											<a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
+												href="shop-product-general-electronics.html">Product General
+												Info</a>
+										</li>
+										<li class="d-flex w-100 pt-1">
+											<a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
+												href="shop-product-details-electronics.html">Product Details</a>
+										</li>
+										<li class="d-flex w-100 pt-1">
+											<a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
+												href="shop-product-reviews-electronics.html">Product Reviews</a>
+										</li>
+									</ul>
+									<div class="h6 pt-4 mb-2">Fashion Store</div>
+									<ul class="nav flex-column gap-2 mt-0">
+										<li class="d-flex w-100 pt-1">
+											<a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
+												href="shop-catalog-fashion.html">Catalog with Side Filters</a>
+										</li>
+										<li class="d-flex w-100 pt-1">
+											<a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
+												href="shop-product-fashion.html">Product Page</a>
+										</li>
+									</ul>
+									<div class="h6 pt-4 mb-2">Furniture Store</div>
+									<ul class="nav flex-column gap-2 mt-0">
+										<li class="d-flex w-100 pt-1">
+											<a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
+												href="shop-catalog-furniture.html">Catalog with Top Filters</a>
+										</li>
+										<li class="d-flex w-100 pt-1">
+											<a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
+												href="shop-product-furniture.html">Product Page</a>
+										</li>
+									</ul>
+								</div>
+								<div style="min-width: 190px">
+									<div class="h6 mb-2">Grocery Store</div>
+									<ul class="nav flex-column gap-2 mt-0">
+										<li class="d-flex w-100 pt-1">
+											<a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
+												href="shop-catalog-grocery.html">Catalog with Side Filters</a>
+										</li>
+										<li class="d-flex w-100 pt-1">
+											<a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
+												href="shop-product-grocery.html">Product Page</a>
+										</li>
+									</ul>
+									<div class="h6 pt-4 mb-2">Checkout v.1</div>
+									<ul class="nav flex-column gap-2 mt-0">
+										<li class="d-flex w-100 pt-1">
+											<a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
+												href="checkout-v1-cart.html">Shopping Cart</a>
+										</li>
+										<li class="d-flex w-100 pt-1">
+											<a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
+												href="checkout-v1-delivery-1.html">Delivery Info (Step 1)</a>
+										</li>
+										<li class="d-flex w-100 pt-1">
+											<a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
+												href="checkout-v1-delivery-2.html">Delivery Info (Step 2)</a>
+										</li>
+										<li class="d-flex w-100 pt-1">
+											<a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
+												href="checkout-v1-shipping.html">Shipping Address</a>
+										</li>
+										<li class="d-flex w-100 pt-1">
+											<a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
+												href="checkout-v1-payment.html">Payment</a>
+										</li>
+										<li class="d-flex w-100 pt-1">
+											<a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
+												href="checkout-v1-thankyou.html">Thank You Page</a>
+										</li>
+									</ul>
+								</div>
+								<div style="min-width: 190px">
+									<div class="h6 mb-2">Checkout v.2</div>
+									<ul class="nav flex-column gap-2 mt-0">
+										<li class="d-flex w-100 pt-1">
+											<a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
+												href="checkout-v2-cart.html">Shopping Cart</a>
+										</li>
+										<li class="d-flex w-100 pt-1">
+											<a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
+												href="checkout-v2-delivery.html">Delivery Info</a>
+										</li>
+										<li class="d-flex w-100 pt-1">
+											<a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
+												href="checkout-v2-pickup.html">Pickup from Store</a>
+										</li>
+										<li class="d-flex w-100 pt-1">
+											<a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
+												href="checkout-v2-thankyou.html">Thank You Page</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="nav-item dropdown me-lg-n1 me-xl-0">
+						<a class="nav-link dropdown-toggle fs-sm" href="#" role="button" data-bs-toggle="dropdown"
+							data-bs-trigger="hover" data-bs-auto-close="outside" aria-expanded="false">Account</a>
+						<ul class="dropdown-menu" style="--cz-dropdown-spacer: 1rem">
+							<li class="dropend">
+								<a class="dropdown-item dropdown-toggle" href="#!" role="button"
+									data-bs-toggle="dropdown" data-bs-trigger="hover" aria-expanded="false">Auth
+									Pages</a>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="account-signin.html">Sign In</a></li>
+									<li><a class="dropdown-item" href="account-signup.html">Sign Up</a></li>
+									<li><a class="dropdown-item" href="account-password-recovery.html">Password
+											Recovery</a></li>
+								</ul>
+							</li>
+							<li><a class="dropdown-item" href="account-orders.html">Orders History</a></li>
+							<li><a class="dropdown-item" href="account-wishlist.html">Wishlist</a></li>
+							<li><a class="dropdown-item" href="account-payment.html">Payment Methods</a></li>
+							<li><a class="dropdown-item" href="account-reviews.html">My Reviews</a></li>
+							<li><a class="dropdown-item" href="account-info.html">Personal Info</a></li>
+							<li><a class="dropdown-item" href="account-addresses.html">Addresses</a></li>
+							<li><a class="dropdown-item" href="account-notifications.html">Notifications</a></li>
+						</ul>
+					</li>
+					<li class="nav-item dropdown me-lg-n1 me-xl-0">
+						<a class="nav-link dropdown-toggle fs-sm" href="#" role="button" data-bs-toggle="dropdown"
+							data-bs-trigger="hover" data-bs-auto-close="outside" aria-expanded="false">Pages</a>
+						<ul class="dropdown-menu" style="--cz-dropdown-spacer: 1rem">
+							<li class="dropend">
+								<a class="dropdown-item dropdown-toggle" href="#!" role="button"
+									data-bs-toggle="dropdown" data-bs-trigger="hover" aria-expanded="false">About</a>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="about-v1.html">About v.1</a></li>
+									<li><a class="dropdown-item" href="about-v2.html">About v.2</a></li>
+								</ul>
+							</li>
+							<li class="dropend">
+								<a class="dropdown-item dropdown-toggle" href="#!" role="button"
+									data-bs-toggle="dropdown" data-bs-trigger="hover" aria-expanded="false">Blog</a>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="blog-grid-v1.html">Grid View v.1</a></li>
+									<li><a class="dropdown-item" href="blog-grid-v2.html">Grid View v.2</a></li>
+									<li><a class="dropdown-item" href="blog-list.html">List View</a></li>
+									<li><a class="dropdown-item" href="blog-single-v1.html">Single Post v.1</a></li>
+									<li><a class="dropdown-item" href="blog-single-v2.html">Single Post v.2</a></li>
+								</ul>
+							</li>
+							<li class="dropend">
+								<a class="dropdown-item dropdown-toggle" href="#!" role="button"
+									data-bs-toggle="dropdown" data-bs-trigger="hover" aria-expanded="false">Contact</a>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="contact-v1.html">Contact v.1</a></li>
+									<li><a class="dropdown-item" href="contact-v2.html">Contact v.2</a></li>
+									<li><a class="dropdown-item" href="contact-v3.html">Contact v.3</a></li>
+								</ul>
+							</li>
+							<li class="dropend">
+								<a class="dropdown-item dropdown-toggle" href="#!" role="button"
+									data-bs-toggle="dropdown" data-bs-trigger="hover" aria-expanded="false">Help
+									Center</a>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="help-topics-v1.html">Help Topics v.1</a></li>
+									<li><a class="dropdown-item" href="help-topics-v2.html">Help Topics v.2</a></li>
+									<li><a class="dropdown-item" href="help-single-article-v1.html">Help Single
+											Article v.1</a></li>
+									<li><a class="dropdown-item" href="help-single-article-v2.html">Help Single
+											Article v.2</a></li>
+								</ul>
+							</li>
+							<li class="dropend">
+								<a class="dropdown-item dropdown-toggle" href="#!" role="button"
+									data-bs-toggle="dropdown" data-bs-trigger="hover" aria-expanded="false">404
+									Error</a>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="404-electronics.html">404 Electronics</a>
+									</li>
+									<li><a class="dropdown-item" href="404-fashion.html">404 Fashion</a></li>
+									<li><a class="dropdown-item" href="404-furniture.html">404 Furniture</a></li>
+									<li><a class="dropdown-item" href="404-grocery.html">404 Grocery</a></li>
+								</ul>
+							</li>
+							<li><a class="dropdown-item" href="terms-and-conditions.html">Terms &amp; Conditions</a>
+							</li>
+						</ul>
+					</li>
+					<li class="nav-item me-lg-n2 me-xl-0">
+						<a class="nav-link fs-sm" href="docs/installation.html">Docs</a>
+					</li>
+					<li class="nav-item me-lg-n2 me-xl-0">
+						<a class="nav-link fs-sm" href="docs/typography.html">Components</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+		<!-- Button group -->
+		<div class="d-flex gap-sm-1 position-relative z-1">
+
+			<!-- Theme switcher (light/dark/auto) -->
+			<div class="dropdown">
+				<button type="button"
+					class="theme-switcher btn btn-icon btn-outline-secondary fs-lg border-0 rounded-circle animate-scale"
+					data-bs-toggle="dropdown" data-bs-display="dynamic" aria-expanded="false"
+					aria-label="Toggle theme (light)">
+					<span class="theme-icon-active d-flex animate-target">
+						<i class="ci-sun"></i>
+					</span>
+				</button>
+				<ul class="dropdown-menu start-50 translate-middle-x"
+					style="--cz-dropdown-min-width: 9rem; --cz-dropdown-spacer: 1rem">
+					<li>
+						<button type="button" class="dropdown-item active" data-bs-theme-value="light"
+							aria-pressed="true">
+							<span class="theme-icon d-flex fs-base me-2">
+								<i class="ci-sun"></i>
+							</span>
+							<span class="theme-label">Light</span>
+							<i class="item-active-indicator ci-check ms-auto"></i>
+						</button>
+					</li>
+					<li>
+						<button type="button" class="dropdown-item" data-bs-theme-value="dark" aria-pressed="false">
+							<span class="theme-icon d-flex fs-base me-2">
+								<i class="ci-moon"></i>
+							</span>
+							<span class="theme-label">Dark</span>
+							<i class="item-active-indicator ci-check ms-auto"></i>
+						</button>
+					</li>
+					<li>
+						<button type="button" class="dropdown-item" data-bs-theme-value="auto" aria-pressed="false">
+							<span class="theme-icon d-flex fs-base me-2">
+								<i class="ci-auto"></i>
+							</span>
+							<span class="theme-label">Auto</span>
+							<i class="item-active-indicator ci-check ms-auto"></i>
+						</button>
+					</li>
+				</ul>
+			</div>
+
+			<!-- Cart button -->
+			<button type="button"
+				class="btn btn-icon fs-lg btn-outline-secondary border-0 rounded-circle animate-scale me-2"
+				data-bs-toggle="offcanvas" data-bs-target="#shoppingCart" aria-controls="shoppingCart"
+				aria-label="Shopping cart">
+				<i class="ci-shopping-cart animate-target"></i>
+			</button>
+
+			<!-- Search -->
+			<div class="dropdown">
+				<button type="button" class="btn btn-icon fs-lg btn-secondary rounded-circle animate-scale"
+					data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-label="Toggle search bar">
+					<i class="ci-search animate-target"></i>
+				</button>
+				<div class="dropdown-menu dropdown-menu-end p-3"
+					style="--cz-dropdown-min-width: 20rem; --cz-dropdown-spacer: 1rem">
+					<form class="position-relative">
+						<input type="search" class="form-control rounded-pill" placeholder="Search..."
+							data-autofocus="dropdown">
+						<button type="submit"
+							class="btn btn-icon btn-sm fs-lg btn-secondary rounded-circle position-absolute top-0 end-0 mt-1 me-1"
+							aria-label="Search">
+							<i class="ci-arrow-right"></i>
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
