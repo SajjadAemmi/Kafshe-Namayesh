@@ -8,3 +8,4 @@ django-viewflow
 django-cms
 jsonfield
 python-dotenv
+pillow
