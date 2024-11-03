@@ -165,14 +165,14 @@
                     <p>
                         {{ shoe.details }}
                     </p>
-{#                    <ul class="list-unstyled pb-md-2 pb-lg-3">#}
-{#                        <li class="mt-1"><span class="h6 mb-0">Backrest height:</span> 46 cm</li>#}
-{#                        <li class="mt-1"><span class="h6 mb-0">Width:</span> 64 cm</li>#}
-{#                        <li class="mt-1"><span class="h6 mb-0">Depth:</span> 78 cm</li>#}
-{#                        <li class="mt-1"><span class="h6 mb-0">Height under furniture:</span> 22 cm</li>#}
-{#                        <li class="mt-1"><span class="h6 mb-0">Seat width:</span> 56 cm</li>#}
-{#                        <li class="mt-1"><span class="h6 mb-0">Armrest height:</span> 63 cm</li>#}
-{#                    </ul>#}
+                    {#                    <ul class="list-unstyled pb-md-2 pb-lg-3">#}
+                    {#                        <li class="mt-1"><span class="h6 mb-0">Backrest height:</span> 46 cm</li>#}
+                    {#                        <li class="mt-1"><span class="h6 mb-0">Width:</span> 64 cm</li>#}
+                    {#                        <li class="mt-1"><span class="h6 mb-0">Depth:</span> 78 cm</li>#}
+                    {#                        <li class="mt-1"><span class="h6 mb-0">Height under furniture:</span> 22 cm</li>#}
+                    {#                        <li class="mt-1"><span class="h6 mb-0">Seat width:</span> 56 cm</li>#}
+                    {#                        <li class="mt-1"><span class="h6 mb-0">Armrest height:</span> 63 cm</li>#}
+                    {#                    </ul>#}
 
                     <div class="accordion accordion-alt-icon" id="productAccordion">
                         <div class="accordion-item">
@@ -274,7 +274,14 @@
                 </div>
             </section>
 
-
+            {% for comment in shoe.comments.all %}
+                <div>
+                    <p><strong>{{ comment.user.username }}</strong> - {{ comment.created_at|date:"Y-m-d H:i" }}</p>
+                    <p>{{ comment.text }}</p>
+                </div>
+            {% empty %}
+                <p>No comments yet. Be the first to comment!</p>
+            {% endfor %}
             <!-- Popular products carousel -->
 
             <!-- Blog articles -->

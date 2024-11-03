@@ -5,6 +5,8 @@ from django.views.decorators.csrf import csrf_protect
 from shop.models import Shoe, Member
 
 
+# Create your views here.
+
 def index(request):
     shoes = Shoe.objects.prefetch_related('images').all()
     return render(request, 'index.html', {
@@ -12,10 +14,18 @@ def index(request):
     })
 
 
-# Create your views here.
-def details(request, id):
-    shoe = get_object_or_404(Shoe.objects.prefetch_related('images'), id=id)
-    template = loader.get_template('details.html')
+def products(request):
+    shoes = Shoe.objects.prefetch_related('images', 'comments').all()
+    template = loader.get_template('products.html')
+    context = {
+        'shoes': shoes,
+    }
+    return HttpResponse(template.render(context, request))
+
+
+def product(request, id):
+    shoe = get_object_or_404(Shoe.objects.prefetch_related('images', 'comments'), id=id)
+    template = loader.get_template('product.html')
     context = {
         'shoe': shoe,
     }
