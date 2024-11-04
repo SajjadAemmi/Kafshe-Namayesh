@@ -1,8 +1,11 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.template import loader
 from django.views.decorators.csrf import csrf_protect
-from shop.models import Shoe, Member
+from shop.models import Shoe, Member, Order
+from shop.cart import add_to_cart, remove_from_cart, get_cart_items, get_cart_total
+from shop.orders import create_order
 
 
 # Create your views here.
@@ -30,6 +33,37 @@ def product(request, id):
         'shoe': shoe,
     }
     return HttpResponse(template.render(context, request))
+
+
+def cart_add(request, shoe_id):
+    shoe = get_object_or_404(Shoe, id=shoe_id)
+    add_to_cart(request, shoe_id)
+    return redirect('cart_detail')
+
+
+def cart_remove(request, shoe_id):
+    remove_from_cart(request, shoe_id)
+    return redirect('cart_detail')
+
+
+def cart_detail(request):
+    cart_items = get_cart_items(request)
+    cart_total = get_cart_total(request)
+    return render(request, 'cart_detail.html', {'cart_items': cart_items, 'cart_total': cart_total})
+
+
+@login_required
+def order_create(request):
+    """Create a new order from the cart and clear the cart."""
+    order = create_order(request.user)
+    request.session['cart'] = {}  # Clear the cart session
+    return redirect('order_detail', order_id=order.id)
+
+
+@login_required
+def order_detail(request, order_id):
+    """Display the details of a specific order."""
+    order = Order.objects.get(id=order_id, user=request.user)
 
 
 def members(request):

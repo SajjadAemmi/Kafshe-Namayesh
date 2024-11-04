@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopping Cart</title>
+</head>
+<body>
+
+<h1>Your Cart</h1>
+
+{% if cart_items %}
+    <ul>
+        {% for item in cart_items %}
+            <li>
+                <strong>{{ item.shoe.name }}</strong><br>
+                Quantity: {{ item.quantity }}<br>
+                Price per item: {{ item.shoe.price }}<br>
+                Total: {{ item.total_price }}<br>
+                <a href="{% url 'cart_remove' item.shoe.id %}">Remove</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <p><strong>Total Cost: {{ cart_total }}</strong></p>
+    <a href="{% url 'shoe_list' %}">Continue Shopping</a>
+{% else %}
+    <p>Your cart is empty.</p>
+    <a href="{% url 'shoe_list' %}">Go to Shoes</a>
+{% endif %}
+
+</body>
+</html>

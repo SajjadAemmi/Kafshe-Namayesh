@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Detail</title>
+</head>
+<body>
+
+<h1>Order {{ order.id }}</h1>
+
+<p>User: {{ order.user.username }}</p>
+<p>Status: {{ order.status }}</p>
+<p>Created at: {{ order.created_at }}</p>
+
+<h2>Items:</h2>
+<ul>
+    {% for item in order.items.all %}
+        <li>
+            <strong>{{ item.shoe.name }}</strong><br>
+            Quantity: {{ item.quantity }}<br>
+            Price per item: {{ item.shoe.price }}<br>
+            Total: {{ item.get_total_price }}
+        </li>
+    {% endfor %}
+</ul>
+
+<p><strong>Total Order Price: {{ order.get_total_price }}</strong></p>
+
+<a href="{% url 'shoe_list' %}">Continue Shopping</a>
+
+</body>
+</html>

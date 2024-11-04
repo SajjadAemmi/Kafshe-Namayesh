@@ -76,7 +76,10 @@
 
                         <!-- افزودن به سبد خرید + Wishlist buttons -->
                         <div class="d-flex gap-3 pb-4 mb-2 mb-lg-3">
-                            <button type="button" class="btn btn-lg btn-dark w-100 rounded-pill">افزودن به سبد خرید
+                            <a href="{% url 'cart_add' shoe.id %}">Add to Cart</a>
+
+                            <button type="button" class="btn btn-lg btn-dark w-100 rounded-pill">
+                                افزودن به سبد خرید
                             </button>
                             <button type="button" class="btn btn-icon btn-lg btn-secondary rounded-circle animate-pulse"
                                     aria-label="Add to Wishlist">
