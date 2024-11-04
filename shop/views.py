@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.template import loader
 from django.views.decorators.csrf import csrf_protect
-from shop.models import Shoe, Member, Order
+from shop.models import Shoe, Member, Order, Cart, CartItem
 from shop.cart import add_to_cart, remove_from_cart, get_cart_items, get_cart_total
 from shop.orders import create_order
 
@@ -35,9 +35,19 @@ def product(request, id):
     return HttpResponse(template.render(context, request))
 
 
-def cart_add(request, shoe_id):
+def add_to_cart(request, shoe_id):
+    # Get the shoe object or return 404 if not found
     shoe = get_object_or_404(Shoe, id=shoe_id)
-    add_to_cart(request, shoe_id)
+
+    # Implement logic to add shoe to the user's cart
+    cart, created = Cart.objects.get_or_create(user=request.user)
+
+    # Create or update CartItem for the shoe
+    cart_item, item_created = CartItem.objects.get_or_create(cart=cart, shoe=shoe)
+    if not item_created:
+        cart_item.quantity += 1
+        cart_item.save()
+
     return redirect('cart_detail')
 
 
@@ -47,9 +57,13 @@ def cart_remove(request, shoe_id):
 
 
 def cart_detail(request):
-    cart_items = get_cart_items(request)
-    cart_total = get_cart_total(request)
-    return render(request, 'cart_detail.html', {'cart_items': cart_items, 'cart_total': cart_total})
+    cart_items = get_cart_items(request.user)
+    cart_total = get_cart_total(request.user)
+    return render(request, 'cart_detail.html',
+                  {
+                      'cart_items': cart_items,
+                      'cart_total': cart_total
+                  })
 
 
 @login_required
