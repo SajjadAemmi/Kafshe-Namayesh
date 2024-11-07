@@ -1,9 +1,9 @@
 {
-  "name": "Cartzilla",
-  "short_name": "Cartzilla",
-  "description": "Multipurpose E-Commerce Bootstrap Template",
-  "lang" : "en",
-  "dir": "ltr",
+  "name": "Namayesh",
+  "short_name": "Namayesh",
+  "description": "کفش نمایش عرضه کننده معتبرترین برندهای کفش (طبی، ایمنی، پرسنلی) در مشهد است. عقد قرارداد با اداره\u200Cها، هتل\u200Cها، مراکز درمانی و کارخانه\u200Cها",
+  "lang" : "fa",
+  "dir": "rtl",
   "start_url": "/index.html",
   "scope": "/",
   "icons": [

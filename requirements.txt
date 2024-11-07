@@ -7,3 +7,5 @@ django-ipware
 jsonfield
 python-dotenv
 pillow
+boto3
+django-storages
