@@ -1,5 +1,5 @@
 {% extends "master.html" %}
-
+{% load static %}
 {% block title %}
     Details about {{ shoe.name }}
 {% endblock %}
@@ -66,7 +66,10 @@
                         <h1 class="fs-xl fw-medium">{{ shoe.name }}</h1>
                         <div class="h4 fw-bold mb-4">
                             {{ shoe.price }}
-                            <del class="fs-sm fw-normal text-body-tertiary">$416.00</del>
+                            <img class="toman" src="{% static 'svg/toman.svg' %}"/>
+                            <del class="fs-sm fw-normal text-body-tertiary">
+                                416.00
+                            </del>
                         </div>
 
                         <!-- Color options -->
@@ -76,11 +79,13 @@
 
                         <!-- افزودن به سبد خرید + Wishlist buttons -->
                         <div class="d-flex gap-3 pb-4 mb-2 mb-lg-3">
-                            <a href="{% url 'add_to_cart' shoe.id %}">Add to Cart</a>
-
-                            <button type="button" class="btn btn-lg btn-dark w-100 rounded-pill">
+                            <a href="{% url 'add_to_cart' shoe.id %}" class="btn btn-lg btn-dark w-100 rounded-pill">
                                 افزودن به سبد خرید
-                            </button>
+                            </a>
+
+                            <!--button type="button" class="btn btn-lg btn-dark w-100 rounded-pill">
+                                افزودن به سبد خرید
+                            </button-->
                             <button type="button" class="btn btn-icon btn-lg btn-secondary rounded-circle animate-pulse"
                                     aria-label="Add to Wishlist">
                                 <i class="ci-heart fs-lg animate-target"></i>
