@@ -62,7 +62,9 @@
                     <div class="d-none d-md-block" style="margin-top: -90px"></div>
                     <div class="sticky-md-top ps-md-2 ps-xl-4">
                         <div class="d-none d-md-block" style="padding-top: 90px"></div>
-                        <div class="fs-xs text-body-secondary mb-3">V00273124</div>
+                        <div class="fs-xs text-body-secondary mb-3">
+                            <p>{{ shoe.get_type_display }}</p>
+                        </div>
                         <h1 class="fs-xl fw-medium">{{ shoe.name }}</h1>
                         <div class="h4 fw-bold mb-4">
                             {{ shoe.price }}
