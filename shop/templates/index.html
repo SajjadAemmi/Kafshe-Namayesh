@@ -11,370 +11,97 @@
     <!-- Page content -->
     <main class="content-wrapper">
 
-        {% include "slider.html" %}
+        {#        {% include "slider.html" %}#}
+        {% include "banner.html" %}
+        {% include "categories.html" %}
 
-        <!-- Categories -->
-        <section class="container py-5 my-2 my-sm-3 mb-md-2 mt-lg-4 my-xl-5">
-            <div class="overflow-x-auto pt-xxl-3" data-simplebar="" data-simplebar-auto-hide="false">
-                <div class="row flex-nowrap flex-md-wrap justify-content-md-center g-0 gap-4 gap-md-0">
 
-                    <!-- Category -->
-                    <div class="col col-md-4 col-lg-3 col-xl-2 mb-4">
-                        <div class="category-card w-100 text-center px-1 px-lg-2 px-xxl-3 mx-auto"
-                             style="min-width: 165px">
-                            <div class="category-card-body">
-                                <a class="d-block text-decoration-none" href="shop-catalog-furniture.html">
-                                    <div class="bg-body-tertiary rounded-pill mb-3 mx-auto" style="max-width: 164px">
-                                        <div class="ratio ratio-1x1">
-                                            <img src="{% static 'img/home/furniture/categories/01.png' %}"
-                                                 class="rounded-pill" alt="Image">
-                                        </div>
-                                    </div>
-                                    <h3 class="category-card-title h6 text-truncate">Bedroom</h3>
+        <!-- Featured products -->
+        <section class="container pt-5 pb-5 mt-2 mt-sm-3 mt-lg-4 mt-xl-5">
+            <h2 class="text-center pb-2 pb-sm-3">
+                محبوب‌ ترین کفش‌ها
+            </h2>
+
+            <!-- Products grid -->
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 gy-4 gy-md-5">
+
+                {% for shoe in shoes %}
+                    <!-- Item -->
+                    <div class="col mb-2 mb-sm-3 mb-md-0">
+                        <div class="animate-underline hover-effect-opacity">
+                            <div class="position-relative mb-3">
+                                <span class="badge text-bg-danger position-absolute top-0 start-0 z-2 mt-2 mt-sm-3 ms-2 ms-sm-3">Sale</span>
+                                <button type="button"
+                                        class="btn btn-icon btn-secondary animate-pulse fs-base bg-transparent border-0 position-absolute top-0 end-0 z-2 mt-1 mt-sm-2 me-1 me-sm-2"
+                                        aria-label="Add to Wishlist">
+                                    <i class="ci-heart animate-target"></i>
+                                </button>
+                                {#                                <a class="d-flex bg-body-tertiary rounded p-3" href="shop-product-fashion.html">#}
+                                {#                                  <div class="ratio" style="--cz-aspect-ratio: calc(308 / 274 * 100%)">#}
+                                {#                                    <img src="assets/img/shop/fashion/01.png" alt="Image">#}
+                                {#                                  </div>#}
+                                {#                                </a>#}
+                                <a class="hover-effect-opacity ratio ratio-1x1 d-block rounded mb-3"
+                                   href="/products/{{ shoe.id }}">
+                                    {% if shoe.images.all|length >= 1 %}
+                                        <img src="{{ shoe.images.all.0.image.url }}" alt="Image of {{ shoe.name }}"
+                                             class="hover-effect-target opacity-100 rounded">
+                                    {% endif %}
+                                    {% if shoe.images.all|length >= 2 %}
+                                        <img src="{{ shoe.images.all.1.image.url }}" alt="Image of {{ shoe.name }}"
+                                             class="position-absolute top-0 start-0 hover-effect-target opacity-0 rounded">
+                                    {% endif %}
                                 </a>
-                                <ul class="category-card-list nav w-100 flex-column gap-1 pt-3">
-                                    <li class="w-100">
-                                        <a class="nav-link justify-content-center min-w-0 w-100 fw-normal hover-effect-underline p-0"
-                                           href="shop-catalog-furniture.html">
-                                            <span class="text-truncate">Beds and mattresses</span>
-                                        </a>
-                                    </li>
-                                    <li class="w-100">
-                                        <a class="nav-link justify-content-center min-w-0 w-100 fw-normal hover-effect-underline p-0"
-                                           href="shop-catalog-furniture.html">
-                                            <span class="text-truncate">Dressing tables</span>
-                                        </a>
-                                    </li>
-                                    <li class="w-100">
-                                        <a class="nav-link justify-content-center min-w-0 w-100 fw-normal hover-effect-underline p-0"
-                                           href="shop-catalog-furniture.html">
-                                            <span class="text-truncate">Pillowcases</span>
-                                        </a>
-                                    </li>
-                                </ul>
+                                {#                                <div class="hover-effect-target position-absolute start-0 bottom-0 w-100 z-2 opacity-0 pb-2 pb-sm-3 px-2 px-sm-3">#}
+                                {#                                    <div class="d-flex align-items-center justify-content-center gap-2 gap-xl-3 bg-body rounded-2 p-2">#}
+                                {#                                        <span class="fs-xs fw-medium text-secondary-emphasis py-1 px-sm-2">XS</span>#}
+                                {#                                        <span class="fs-xs fw-medium text-secondary-emphasis py-1 px-sm-2">S</span>#}
+                                {#                                        <span class="fs-xs fw-medium text-secondary-emphasis py-1 px-sm-2">M</span>#}
+                                {#                                        <span class="fs-xs fw-medium text-secondary-emphasis py-1 px-sm-2">L</span>#}
+                                {#                                        <div class="nav">#}
+                                {#                                            <a class="nav-link fs-xs text-body-tertiary py-1 px-2"#}
+                                {#                                               href="/products/{{ shoe.id }}">+3</a>#}
+                                {#                                        </div>#}
+                                {#                                    </div>#}
+                                {#                                </div>#}
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- Category -->
-                    <div class="col col-md-4 col-lg-3 col-xl-2 mb-4">
-                        <div class="category-card w-100 text-center px-1 px-lg-2 px-xxl-3 mx-auto"
-                             style="min-width: 165px">
-                            <div class="category-card-body">
-                                <a class="d-block text-decoration-none" href="shop-catalog-furniture.html">
-                                    <div class="bg-body-tertiary rounded-pill mb-3 mx-auto" style="max-width: 164px">
-                                        <div class="ratio ratio-1x1">
-                                            <img src="{% static 'img/home/furniture/categories/02.png' %}"
-                                                 class="rounded-pill" alt="Image">
-                                        </div>
-                                    </div>
-                                    <h3 class="category-card-title h6 text-truncate">Living room</h3>
+                            <div class="nav mb-2">
+                                <a class="nav-link animate-target min-w-0 text-dark-emphasis p-0"
+                                   href="/products/{{ shoe.id }}">
+                                  <span class="text-truncate">
+                                       {{ shoe.name }}
+                                  </span>
                                 </a>
-                                <ul class="category-card-list nav w-100 flex-column gap-1 pt-3">
-                                    <li class="w-100">
-                                        <a class="nav-link justify-content-center min-w-0 w-100 fw-normal hover-effect-underline p-0"
-                                           href="shop-catalog-furniture.html">
-                                            <span class="text-truncate">Bookcases and storage</span>
-                                        </a>
-                                    </li>
-                                    <li class="w-100">
-                                        <a class="nav-link justify-content-center min-w-0 w-100 fw-normal hover-effect-underline p-0"
-                                           href="shop-catalog-furniture.html">
-                                            <span class="text-truncate">Coffee tables</span>
-                                        </a>
-                                    </li>
-                                    <li class="w-100">
-                                        <a class="nav-link justify-content-center min-w-0 w-100 fw-normal hover-effect-underline p-0"
-                                           href="shop-catalog-furniture.html">
-                                            <span class="text-truncate">Cabinets</span>
-                                        </a>
-                                    </li>
-                                </ul>
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- Category -->
-                    <div class="col col-md-4 col-lg-3 col-xl-2 mb-4">
-                        <div class="category-card w-100 text-center px-1 px-lg-2 px-xxl-3 mx-auto"
-                             style="min-width: 165px">
-                            <div class="category-card-body">
-                                <a class="d-block text-decoration-none" href="shop-catalog-furniture.html">
-                                    <div class="bg-body-tertiary rounded-pill mb-3 mx-auto" style="max-width: 164px">
-                                        <div class="ratio ratio-1x1">
-                                            <img src="{% static 'img/home/furniture/categories/03.png' %}"
-                                                 class="rounded-pill" alt="Image">
-                                        </div>
-                                    </div>
-                                    <h3 class="category-card-title h6 text-truncate">Bathroom</h3>
-                                </a>
-                                <ul class="category-card-list nav w-100 flex-column gap-1 pt-3">
-                                    <li class="w-100">
-                                        <a class="nav-link justify-content-center min-w-0 w-100 fw-normal hover-effect-underline p-0"
-                                           href="shop-catalog-furniture.html">
-                                            <span class="text-truncate">Mirrors</span>
-                                        </a>
-                                    </li>
-                                    <li class="w-100">
-                                        <a class="nav-link justify-content-center min-w-0 w-100 fw-normal hover-effect-underline p-0"
-                                           href="shop-catalog-furniture.html">
-                                            <span class="text-truncate">Bathroom rugs</span>
-                                        </a>
-                                    </li>
-                                    <li class="w-100">
-                                        <a class="nav-link justify-content-center min-w-0 w-100 fw-normal hover-effect-underline p-0"
-                                           href="shop-catalog-furniture.html">
-                                            <span class="text-truncate">Bathrobes and slippers</span>
-                                        </a>
-                                    </li>
-                                </ul>
+                            <div class="h6 mb-2">
+                                {{ shoe.price }}
+                                تومان
+                                <del class="fs-sm fw-normal text-body-tertiary">
+                                    {{ shoe.price }}
+                                    تومان
+                                </del>
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- Category -->
-                    <div class="col col-md-4 col-lg-3 col-xl-2 mb-4">
-                        <div class="category-card w-100 text-center px-1 px-lg-2 px-xxl-3 mx-auto"
-                             style="min-width: 165px">
-                            <div class="category-card-body">
-                                <a class="d-block text-decoration-none" href="shop-catalog-furniture.html">
-                                    <div class="bg-body-tertiary rounded-pill mb-3 mx-auto" style="max-width: 164px">
-                                        <div class="ratio ratio-1x1">
-                                            <img src="{% static 'img/home/furniture/categories/04.png' %}"
-                                                 class="rounded-pill" alt="Image">
-                                        </div>
-                                    </div>
-                                    <h3 class="category-card-title h6 text-truncate">Decoration</h3>
-                                </a>
-                                <ul class="category-card-list nav w-100 flex-column gap-1 pt-3">
-                                    <li class="w-100">
-                                        <a class="nav-link justify-content-center min-w-0 w-100 fw-normal hover-effect-underline p-0"
-                                           href="shop-catalog-furniture.html">
-                                            <span class="text-truncate">Flowerpots</span>
-                                        </a>
-                                    </li>
-                                    <li class="w-100">
-                                        <a class="nav-link justify-content-center min-w-0 w-100 fw-normal hover-effect-underline p-0"
-                                           href="shop-catalog-furniture.html">
-                                            <span class="text-truncate">Glassware</span>
-                                        </a>
-                                    </li>
-                                    <li class="w-100">
-                                        <a class="nav-link justify-content-center min-w-0 w-100 fw-normal hover-effect-underline p-0"
-                                           href="shop-catalog-furniture.html">
-                                            <span class="text-truncate">Home fragrance</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Category -->
-                    <div class="col col-md-4 col-lg-3 col-xl-2 mb-4">
-                        <div class="category-card w-100 text-center px-1 px-lg-2 px-xxl-3 mx-auto"
-                             style="min-width: 165px">
-                            <div class="category-card-body">
-                                <a class="d-block text-decoration-none" href="shop-catalog-furniture.html">
-                                    <div class="bg-body-tertiary rounded-pill mb-3 mx-auto" style="max-width: 164px">
-                                        <div class="ratio ratio-1x1">
-                                            <img src="{% static 'img/home/furniture/categories/05.png' %}"
-                                                 class="rounded-pill" alt="Image">
-                                        </div>
-                                    </div>
-                                    <h3 class="category-card-title h6 text-truncate">Office</h3>
-                                </a>
-                                <ul class="category-card-list nav w-100 flex-column gap-1 pt-3">
-                                    <li class="w-100">
-                                        <a class="nav-link justify-content-center min-w-0 w-100 fw-normal hover-effect-underline p-0"
-                                           href="shop-catalog-furniture.html">
-                                            <span class="text-truncate">Desks and bureaus</span>
-                                        </a>
-                                    </li>
-                                    <li class="w-100">
-                                        <a class="nav-link justify-content-center min-w-0 w-100 fw-normal hover-effect-underline p-0"
-                                           href="shop-catalog-furniture.html">
-                                            <span class="text-truncate">Office chairs</span>
-                                        </a>
-                                    </li>
-                                    <li class="w-100">
-                                        <a class="nav-link justify-content-center min-w-0 w-100 fw-normal hover-effect-underline p-0"
-                                           href="shop-catalog-furniture.html">
-                                            <span class="text-truncate">Filing cabinets</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Category -->
-                    <div class="col col-md-4 col-lg-3 col-xl-2 mb-4">
-                        <div class="category-card w-100 text-center px-1 px-lg-2 px-xxl-3 mx-auto"
-                             style="min-width: 165px">
-                            <div class="category-card-body">
-                                <a class="d-block text-decoration-none" href="shop-catalog-furniture.html">
-                                    <div class="bg-body-tertiary rounded-pill mb-3 mx-auto" style="max-width: 164px">
-                                        <div class="ratio ratio-1x1">
-                                            <img src="{% static 'img/home/furniture/categories/06.png' %}"
-                                                 class="rounded-pill" alt="Image">
-                                        </div>
-                                    </div>
-                                    <h3 class="category-card-title h6 text-truncate">Kitchen</h3>
-                                </a>
-                                <ul class="category-card-list nav w-100 flex-column gap-1 pt-3">
-                                    <li class="w-100">
-                                        <a class="nav-link justify-content-center min-w-0 w-100 fw-normal hover-effect-underline p-0"
-                                           href="shop-catalog-furniture.html">
-                                            <span class="text-truncate">Cupboards</span>
-                                        </a>
-                                    </li>
-                                    <li class="w-100">
-                                        <a class="nav-link justify-content-center min-w-0 w-100 fw-normal hover-effect-underline p-0"
-                                           href="shop-catalog-furniture.html">
-                                            <span class="text-truncate">Chest of drawers</span>
-                                        </a>
-                                    </li>
-                                    <li class="w-100">
-                                        <a class="nav-link justify-content-center min-w-0 w-100 fw-normal hover-effect-underline p-0"
-                                           href="shop-catalog-furniture.html">
-                                            <span class="text-truncate">Dining tables</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- Popular products carousel -->
-        <section class="container pb-5 mt-md-n2 mb-2 mb-sm-3 mb-md-4 mb-xl-5">
-
-            <!-- Heading -->
-            <div class="d-flex align-items-center justify-content-between border-bottom pb-3 pb-md-4">
-                <h2 class="h3 mb-0">
-                    محبوب‌ ترین کفش‌ها
-                </h2>
-                <div class="nav ms-3">
-                    <a class="nav-link animate-underline px-0 py-2" href="shop-catalog-furniture.html">
-                        <span class="animate-target">View all</span>
-                        <i class="ci-chevron-right fs-base ms-1"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Product carousel -->
-            <div class="position-relative pb-xxl-3">
-
-                <!-- External slider prev/next buttons visible on screens > 500px wide (sm breakpoint) -->
-                <button type="button"
-                        class="popular-prev btn btn-icon btn-outline-secondary bg-body rounded-circle animate-slide-start position-absolute top-50 start-0 z-2 translate-middle mt-n5 d-none d-sm-inline-flex"
-                        aria-label="Prev">
-                    <i class="ci-chevron-left fs-lg animate-target"></i>
-                </button>
-                <button type="button"
-                        class="popular-next btn btn-icon btn-outline-secondary bg-body rounded-circle animate-slide-end position-absolute top-50 start-100 z-2 translate-middle mt-n5 d-none d-sm-inline-flex"
-                        aria-label="Next">
-                    <i class="ci-chevron-right fs-lg animate-target"></i>
-                </button>
-
-                <!-- Slider -->
-                <div class="swiper pt-3 pt-sm-4" data-swiper="{
-            &quot;slidesPerView&quot;: 2,
-            &quot;spaceBetween&quot;: 24,
-            &quot;loop&quot;: true,
-            &quot;navigation&quot;: {
-              &quot;prevEl&quot;: &quot;.popular-prev&quot;,
-              &quot;nextEl&quot;: &quot;.popular-next&quot;
-            },
-            &quot;breakpoints&quot;: {
-              &quot;768&quot;: {
-                &quot;slidesPerView&quot;: 3
-              },
-              &quot;992&quot;: {
-                &quot;slidesPerView&quot;: 4
-              }
-            }
-          }">
-                    <div class="swiper-wrapper">
-                        {% for shoe in shoes %}
-                            <!-- Item -->
-                            <div class="swiper-slide">
-                                <div class="animate-underline">
-                                    <a class="hover-effect-opacity ratio ratio-1x1 d-block mb-3"
-                                       href="/products/{{ shoe.id }}">
-                                        {% if shoe.images.all|length >= 1 %}
-                                            <img src="{{ shoe.images.all.0.image.url }}" alt="Image of {{ shoe.name }}"
-                                                 class="hover-effect-target opacity-100">
-                                        {% endif %}
-                                        {% if shoe.images.all|length >= 2 %}
-                                            <img src="{{ shoe.images.all.1.image.url }}" alt="Image of {{ shoe.name }}"
-                                                 class="position-absolute top-0 start-0 hover-effect-target opacity-0 rounded-4">
-                                        {% endif %}
-                                    </a>
-                                    <div class="d-flex gap-2 mb-3">
-                                        <input type="radio" class="btn-check" name="colors-4" id="color-4-1" checked="">
-                                        <label for="color-4-1" class="btn btn-color fs-base" style="color: #384043">
-                                            <span class="visually-hidden">Dark gray</span>
-                                        </label>
-                                        <input type="radio" class="btn-check" name="colors-4" id="color-4-2">
-                                        <label for="color-4-2" class="btn btn-color fs-base" style="color: #bdc5da">
-                                            <span class="visually-hidden">Light gray</span>
-                                        </label>
-                                        <input type="radio" class="btn-check" name="colors-4" id="color-4-3">
-                                        <label for="color-4-3" class="btn btn-color fs-base" style="color: #526f99">
-                                            <span class="visually-hidden">Bluish gray</span>
-                                        </label>
-                                    </div>
-                                    <h3 class="mb-2">
-                                        <a class="d-block fs-sm fw-medium text-truncate"
-                                           href="/products/{{ shoe.id }}">
-									<span class="animate-target">
-                                        {{ shoe.name }}
-                                    </span>
-                                        </a>
-                                    </h3>
-                                    <div class="h6">
-                                        {{ shoe.price }}
-                                        تومان
-                                    </div>
-                                    <div class="d-flex gap-2">
-                                        <button type="button" class="btn btn-dark w-100 rounded-pill px-3">
-                                            افزودن به سبد خرید
-                                        </button>
-                                        <button type="button"
-                                                class="btn btn-icon btn-secondary rounded-circle animate-pulse"
-                                                aria-label="Add to wishlist">
-                                            <i class="ci-heart fs-base animate-target"></i>
-                                        </button>
-                                    </div>
+                            <div class="position-relative">
+                                <div class="hover-effect-target fs-xs text-body-secondary opacity-100">+1 color</div>
+                                <div class="hover-effect-target d-flex gap-2 position-absolute top-0 start-0 opacity-0">
+                                    <input type="radio" class="btn-check" name="colors-1" id="color-1-1" checked="">
+                                    <label for="color-1-1" class="btn btn-color fs-base" style="color: #284971">
+                                        <span class="visually-hidden">Dark denim</span>
+                                    </label>
+                                    <input type="radio" class="btn-check" name="colors-1" id="color-1-2">
+                                    <label for="color-1-2" class="btn btn-color fs-base" style="color: #8b9bc4">
+                                        <span class="visually-hidden">Light denim</span>
+                                    </label>
                                 </div>
                             </div>
-                        {% endfor %}
+                        </div>
                     </div>
-                </div>
-            </div>
-
-            <!-- External slider prev/next buttons visible on screens < 500px wide (sm breakpoint) -->
-            <div class="d-flex justify-content-center gap-2 mt-1 pt-4 d-sm-none">
-                <button type="button"
-                        class="popular-prev btn btn-icon btn-outline-secondary bg-body rounded-circle animate-slide-start me-1"
-                        aria-label="Prev">
-                    <i class="ci-chevron-left fs-lg animate-target"></i>
-                </button>
-                <button type="button"
-                        class="popular-next btn btn-icon btn-outline-secondary bg-body rounded-circle animate-slide-end"
-                        aria-label="Next">
-                    <i class="ci-chevron-right fs-lg animate-target"></i>
-                </button>
+                {% endfor %}
             </div>
         </section>
 
         <!-- Features -->
-        <section class="container pb-5 mb-sm-2 mb-md-3 mb-lg-4 mb-xl-5">
+        <section class="container pt-5 pb-5 mb-sm-2 mb-md-3 mb-lg-4 mb-xl-5">
             <div class="row row-cols-1 row-cols-md-3 gy-3 gy-sm-4 gx-2 gx-lg-4 mb-xxl-3">
                 <div class="col text-center">
                     <i class="ci-heart fs-lg"></i>

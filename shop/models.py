@@ -19,8 +19,17 @@ class Shoe(models.Model):
         ('women', 'زنانه'),
         ('men', 'مردانه'),
     ]
+    SHOE_CATEGORY = [
+        ('loafer', 'راحتی'),
+        ('sport', 'ورزشی'),
+        ('boot', 'بوت'),
+        ('sandal', 'صندل و تابستانی'),
+        ('leather', 'چرمی'),
+        ('classic', 'کلاسیک'),
+    ]
     name = models.CharField(max_length=255)
     type = models.CharField(max_length=10, choices=SHOE_TYPES)
+    category = models.CharField(max_length=10, choices=SHOE_CATEGORY, default='loafer')
     details = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     created_date = models.DateField(null=True)

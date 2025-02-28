@@ -26,6 +26,20 @@ def products(request):
     return HttpResponse(template.render(context, request))
 
 
+def products_by_type(request, shoe_type):
+    SHOE_TYPES_DICT = {
+        'kids': 'بچگانه',
+        'women': 'زنانه',
+        'men': 'مردانه',
+    }
+
+    if shoe_type not in SHOE_TYPES_DICT:
+        return render(request, '404.html', status=404)  # Show a 404 page if type is invalid
+
+    shoes = Shoe.objects.filter(type=shoe_type)
+    return render(request, 'products.html', {'shoes': shoes, 'shoe_type': SHOE_TYPES_DICT[shoe_type]})
+
+
 def product(request, id):
     shoe = get_object_or_404(Shoe.objects.prefetch_related('images', 'comments'), id=id)
     template = loader.get_template('product.html')

@@ -14,12 +14,12 @@
             <!-- Breadcrumb -->
             <nav class="position-relative pt-3 mt-3 mt-md-4 mb-4" aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="home-furniture.html">Home</a></li>
-                    <li class="breadcrumb-item"><a href="shop-catalog-furniture.html">Shop</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Product page</li>
+                    <li class="breadcrumb-item"><a href="/">کفش نمایش</a></li>
+                    <li class="breadcrumb-item"><a href="/products">{{ shoe.get_type_display }}</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ shoe.get_category_display }}</li>
                 </ol>
             </nav>
-
 
             <!-- Product gallery and details -->
             <section class="row pb-4 pb-md-5 mb-2 mb-md-0 mb-xl-3">
@@ -77,7 +77,6 @@
                         <!-- Color options -->
 
                         <!-- Material select -->
-
 
                         <!-- افزودن به سبد خرید + Wishlist buttons -->
                         <div class="d-flex gap-3 pb-4 mb-2 mb-lg-3">
@@ -168,130 +167,8 @@
                 </div>
             </section>
 
-
-            <!-- Product description -->
-            <section class="row pb-5 mb-2 mb-sm-3 mb-lg-4 mb-xl-5">
-                <div class="col-md-7 col-xl-8 mb-xxl-3">
-                    <p>
-                        {{ shoe.details }}
-                    </p>
-                    {#                    <ul class="list-unstyled pb-md-2 pb-lg-3">#}
-                    {#                        <li class="mt-1"><span class="h6 mb-0">Backrest height:</span> 46 cm</li>#}
-                    {#                        <li class="mt-1"><span class="h6 mb-0">Width:</span> 64 cm</li>#}
-                    {#                        <li class="mt-1"><span class="h6 mb-0">Depth:</span> 78 cm</li>#}
-                    {#                        <li class="mt-1"><span class="h6 mb-0">Height under furniture:</span> 22 cm</li>#}
-                    {#                        <li class="mt-1"><span class="h6 mb-0">Seat width:</span> 56 cm</li>#}
-                    {#                        <li class="mt-1"><span class="h6 mb-0">Armrest height:</span> 63 cm</li>#}
-                    {#                    </ul>#}
-
-                    <div class="accordion accordion-alt-icon" id="productAccordion">
-                        <div class="accordion-item">
-                            <h3 class="accordion-header" id="headingProductInfo">
-                                <button type="button" class="accordion-button animate-underline fs-xl collapsed"
-                                        data-bs-toggle="collapse" data-bs-target="#productInfo" aria-expanded="false"
-                                        aria-controls="productInfo">
-                                    <span class="animate-target me-2">Product info</span>
-                                </button>
-                            </h3>
-                            <div class="accordion-collapse collapse" id="productInfo"
-                                 aria-labelledby="headingProductInfo" data-bs-parent="#productAccordion">
-                                <div class="accordion-body fs-base">Introducing our Scandinavian-inspired chair,
-                                    meticulously designed to infuse your living space with a touch of retro elegance.
-                                    Crafted with the finest materials and attention to detail, this chair embodies the
-                                    timeless charm of Scandinavian design, making it a versatile addition to any home
-                                    decor. With its classic silhouette and understated sophistication, it seamlessly
-                                    integrates into various interior styles, bringing both style and functionality to
-                                    your room.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h3 class="accordion-header" id="headingProductFeatures">
-                                <button type="button" class="accordion-button animate-underline fs-xl collapsed"
-                                        data-bs-toggle="collapse" data-bs-target="#productFeatures"
-                                        aria-expanded="false" aria-controls="productFeatures">
-                                    <span class="animate-target me-2">Features</span>
-                                </button>
-                            </h3>
-                            <div class="accordion-collapse collapse" id="productFeatures"
-                                 aria-labelledby="headingProductFeatures" data-bs-parent="#productAccordion">
-                                <div class="accordion-body fs-base">
-                                    <ul class="m-0">
-                                        <li><span class="text-body-emphasis fw-semibold">Timeless design:</span>
-                                            Inspired by Scandinavian aesthetics, this chair boasts a sleek and
-                                            retro-inspired silhouette that adds a touch of elegance to any space.
-                                        </li>
-                                        <li><span class="text-body-emphasis fw-semibold">Durable construction:</span>
-                                            Crafted with high-quality materials, the chair is built to last, providing
-                                            sturdy and reliable seating for years to come.
-                                        </li>
-                                        <li><span class="text-body-emphasis fw-semibold">Versatile placement:</span>
-                                            Whether as a focal point in your living room, a cozy reading corner in your
-                                            study, or an inviting seat around the dining table, this chair effortlessly
-                                            adapts to different settings.
-                                        </li>
-                                        <li><span class="text-body-emphasis fw-semibold">Comfortable seating:</span> The
-                                            chair features a well-padded seat and backrest, ensuring optimal comfort for
-                                            extended periods of relaxation or conversation.
-                                        </li>
-                                        <li><span class="text-body-emphasis fw-semibold">Easy maintenance:</span>
-                                            Designed for convenience, the chair's upholstery is easy to clean, allowing
-                                            for hassle-free maintenance and care.
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h3 class="accordion-header" id="headingProductWarranty">
-                                <button type="button" class="accordion-button animate-underline fs-xl collapsed"
-                                        data-bs-toggle="collapse" data-bs-target="#productWarranty"
-                                        aria-expanded="false" aria-controls="productWarranty">
-                                    <span class="animate-target me-2">Warranty information</span>
-                                </button>
-                            </h3>
-                            <div class="accordion-collapse collapse" id="productWarranty"
-                                 aria-labelledby="headingProductWarranty" data-bs-parent="#productAccordion">
-                                <div class="accordion-body fs-base">We stand behind the quality of our products. Our
-                                    chair comes with a 10-year warranty, guaranteeing against defects in materials and
-                                    workmanship under normal use. In the unlikely event that you encounter any issues
-                                    with your chair, contact our customer service team, and we will be happy to assist
-                                    you with a replacement or repair.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h3 class="accordion-header" id="headingProductDelivery">
-                                <button type="button" class="accordion-button animate-underline fs-xl collapsed"
-                                        data-bs-toggle="collapse" data-bs-target="#productDelivery"
-                                        aria-expanded="false" aria-controls="productDelivery">
-                                    <span class="animate-target me-2">Delivery and shipping</span>
-                                </button>
-                            </h3>
-                            <div class="accordion-collapse collapse" id="productDelivery"
-                                 aria-labelledby="headingProductDelivery" data-bs-parent="#productAccordion">
-                                <div class="accordion-body fs-base">We understand the importance of timely delivery and
-                                    strive to provide a seamless shipping experience for our customers. Upon placing
-                                    your order, our team will process it promptly, and you will receive a notification
-                                    once your chair is ready for shipment. We offer various shipping options to
-                                    accommodate your preferences, with estimated delivery times provided at checkout.
-                                    Rest assured, your chair will be carefully packaged to ensure it arrives safely at
-                                    your doorstep, ready to enhance your home with its timeless charm.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {% for comment in shoe.comments.all %}
-                <div>
-                    <p><strong>{{ comment.user.username }}</strong> - {{ comment.created_at|date:"Y-m-d H:i" }}</p>
-                    <p>{{ comment.text }}</p>
-                </div>
-            {% empty %}
-                <p>No comments yet. Be the first to comment!</p>
-            {% endfor %}
+        {% include "product_description.html" %}
+        
             <!-- Popular products carousel -->
 
             <!-- Blog articles -->
