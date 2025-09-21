@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.template import loader
 from django.views.decorators.csrf import csrf_protect
 from shop.models import Shoe, Member, Order, Cart, CartItem
-from shop.cart import add_to_cart, remove_from_cart, get_cart_items, get_cart_total
+from shop.cart import add_to_cart, remove_from_cart, get_cart_items, get_cart_total, get_or_create_cart
 from shop.orders import create_order
 
 
@@ -50,13 +50,9 @@ def product(request, id):
 
 
 def add_to_cart(request, shoe_id):
-    # Get the shoe object or return 404 if not found
     shoe = get_object_or_404(Shoe, id=shoe_id)
+    cart, created = get_or_create_cart(request.user, request.session)
 
-    # Implement logic to add shoe to the user's cart
-    cart, created = Cart.objects.get_or_create(user=request.user)
-
-    # Create or update CartItem for the shoe
     cart_item, item_created = CartItem.objects.get_or_create(cart=cart, shoe=shoe)
     if not item_created:
         cart_item.quantity += 1
@@ -65,19 +61,50 @@ def add_to_cart(request, shoe_id):
     return redirect('cart_detail')
 
 
-def cart_remove(request, shoe_id):
-    remove_from_cart(request, shoe_id)
-    return redirect('cart_detail')
+def remove_from_cart(request, shoe_id):
+    cart, _ = get_or_create_cart(request.user, request.session)  # ← اضافه شد session
 
+    # پیدا کردن آیتم سبد برای محصول مشخص
+    cart_item = CartItem.objects.filter(cart=cart, shoe_id=shoe_id).first()
+    if cart_item:
+        cart_item.delete()  # حذف آیتم
+
+    return redirect('cart_detail')  # بازگشت به صفحه سبد خرید
 
 def cart_detail(request):
-    cart_items = get_cart_items(request.user)
-    cart_total = get_cart_total(request.user)
-    return render(request, 'cart_detail.html',
-                  {
-                      'cart_items': cart_items,
-                      'cart_total': cart_total
-                  })
+    cart, created = get_or_create_cart(request.user, request.session)
+    cart_items = cart.items.all()
+    cart_total = sum(item.get_total_price() for item in cart_items)
+    return render(request, 'cart_detail.html', {'cart_items': cart_items, 'cart_total': cart_total})
+
+
+@login_required(login_url='/accounts/login/')
+def checkout(request):
+    cart = get_or_create_cart(request.user, request.session)
+
+    if not cart.items.exists():
+        return redirect('cart_detail')  # اگر سبد خالی بود برگرده
+
+    # ساخت سفارش
+    order = Order.objects.create(user=request.user if request.user.is_authenticated else None)
+
+    total_price = 0
+    for item in cart.items.all():
+        OrderItem.objects.create(
+            order=order,
+            shoe=item.shoe,
+            quantity=item.quantity,
+            price=item.shoe.price,
+        )
+        total_price += item.total_price()
+
+    order.total_price = total_price
+    order.save()
+
+    # پاک کردن سبد خرید
+    cart.items.all().delete()
+
+    return redirect('order_detail', order_id=order.id)
 
 
 @login_required
@@ -90,8 +117,9 @@ def order_create(request):
 
 @login_required
 def order_detail(request, order_id):
-    """Display the details of a specific order."""
     order = Order.objects.get(id=order_id, user=request.user)
+    return render(request, 'shop/order_detail.html', {'order': order})
+
 
 
 def members(request):

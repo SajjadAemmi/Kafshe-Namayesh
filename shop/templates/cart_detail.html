@@ -13,15 +13,18 @@
         <!-- Breadcrumb -->
         <nav class="container pt-3 my-3 my-md-4" aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="home-electronics.html">Home</a></li>
-                <li class="breadcrumb-item"><a href="shop-catalog-electronics.html">Shop</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Cart</li>
+                <li class="breadcrumb-item"><a href="home-electronics.html">خانه</a></li>
+                <li class="breadcrumb-item"><a href="shop-catalog-electronics.html">فروشگاه</a></li>
+                <li class="breadcrumb-item active" aria-current="page">سبد خرید</li>
             </ol>
         </nav>
 
+
         <!-- Items in the cart + Order summary -->
         <section class="container pb-5 mb-2 mb-md-3 mb-lg-4 mb-xl-5">
-            <h1 class="h3 mb-4">Shopping cart</h1>
+            <h1 class="h3 mb-4">
+                سبد خرید شما
+            </h1>
             <div class="row">
 
                 {% if cart_items %}
@@ -29,41 +32,41 @@
                     <!-- Items list -->
                     <div class="col-lg-8">
                         <div class="pe-lg-2 pe-xl-3 me-xl-3">
-                            <p class="fs-sm">Buy <span class="text-dark-emphasis fw-semibold">$183</span> more to get
-                                <span class="text-dark-emphasis fw-semibold">Free Shipping</span></p>
-                            <div class="progress w-100 overflow-visible mb-4" role="progressbar"
-                                 aria-label="Free shipping progress" aria-valuenow="75" aria-valuemin="0"
-                                 aria-valuemax="100" style="height: 4px">
-                                <div class="progress-bar bg-warning rounded-pill position-relative overflow-visible"
-                                     style="width: 75%; height: 4px">
-                                    <div class="position-absolute top-50 end-0 d-flex align-items-center justify-content-center translate-middle-y bg-body border border-warning rounded-circle me-n1"
-                                         style="width: 1.5rem; height: 1.5rem">
-                                        <i class="ci-star-filled text-warning"></i>
-                                    </div>
-                                </div>
-                            </div>
+{#                            <p class="fs-sm">Buy <span class="text-dark-emphasis fw-semibold">$183</span> more to get#}
+{#                                <span class="text-dark-emphasis fw-semibold">Free Shipping</span></p>#}
+{#                            <div class="progress w-100 overflow-visible mb-4" role="progressbar"#}
+{#                                 aria-label="Free shipping progress" aria-valuenow="75" aria-valuemin="0"#}
+{#                                 aria-valuemax="100" style="height: 4px">#}
+{#                                <div class="progress-bar bg-warning rounded-pill position-relative overflow-visible"#}
+{#                                     style="width: 75%; height: 4px">#}
+{#                                    <div class="position-absolute top-50 end-0 d-flex align-items-center justify-content-center translate-middle-y bg-body border border-warning rounded-circle me-n1"#}
+{#                                         style="width: 1.5rem; height: 1.5rem">#}
+{#                                        <i class="ci-star-filled text-warning"></i>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
 
                             <!-- Table of items -->
                             <table class="table position-relative z-2 mb-4">
                                 <thead>
                                 <tr>
                                     <th scope="col" class="fs-sm fw-normal py-3 ps-0">
-                                        <span class="text-body">Product</span>
+                                        <span class="text-body">نام کالا</span>
                                     </th>
                                     <th scope="col" class="text-body fs-sm fw-normal py-3 d-none d-xl-table-cell">
-                                        <span class="text-body">Price</span>
+                                        <span class="text-body">قیمت</span>
                                     </th>
                                     <th scope="col" class="text-body fs-sm fw-normal py-3 d-none d-md-table-cell">
-                                        <span class="text-body">Quantity</span>
+                                        <span class="text-body">تعداد</span>
                                     </th>
                                     <th scope="col" class="text-body fs-sm fw-normal py-3 d-none d-md-table-cell">
-                                        <span class="text-body">Total</span>
+                                        <span class="text-body">جمع قیمت</span>
                                     </th>
                                     <th scope="col" class="py-0 px-0">
                                         <div class="nav justify-content-end">
                                             <button type="button"
                                                     class="nav-link d-inline-block text-decoration-underline text-nowrap py-3 px-0">
-                                                Clear cart
+                                                حذف همه
                                             </button>
                                         </div>
                                     </th>
@@ -77,7 +80,7 @@
                                             <div class="d-flex align-items-center">
                                                 <a class="flex-shrink-0" href="shop-product-general-electronics.html">
                                                     <img src="{{ item.shoe.images.all.0.image.url }}" width="110"
-                                                         alt="iPhone 14">
+                                                         alt="{{ item.shoe.name }}">
                                                 </a>
                                                 <div class="w-100 min-w-0 ps-2 ps-xl-3">
                                                     <h5 class="d-flex animate-underline mb-2">
@@ -88,12 +91,20 @@
                                                     </h5>
                                                     <ul class="list-unstyled gap-1 fs-xs mb-0">
                                                         <li>
-                                                            <span class="text-body-secondary">Color:</span>
-                                                            <span class="text-dark-emphasis fw-medium">White</span>
+                                                            <span class="text-body-secondary">
+                                                                نوع:
+                                                            </span>
+                                                            <span class="text-dark-emphasis fw-medium">
+                                                                {{ item.shoe.get_type_display }}
+                                                            </span>
                                                         </li>
                                                         <li>
-                                                            <span class="text-body-secondary">Model:</span>
-                                                            <span class="text-dark-emphasis fw-medium">128GB</span>
+                                                            <span class="text-body-secondary">
+                                                                دسته:
+                                                            </span>
+                                                            <span class="text-dark-emphasis fw-medium">
+                                                                {{ item.shoe.get_category_display }}
+                                                            </span>
                                                         </li>
                                                         <li class="d-xl-none">
                                                             <span class="text-body-secondary">Price:</span>
@@ -139,10 +150,12 @@
                                             {{ item.get_total_price }}
                                         </td>
                                         <td class="text-end py-3 px-0">
-                                            <a href="{% url 'cart_remove' item.shoe.id %}">Remove</a>
-                                            <button type="button" class="btn-close fs-sm" data-bs-toggle="tooltip"
-                                                    data-bs-custom-class="tooltip-sm" data-bs-title="Remove"
-                                                    aria-label="Remove from cart"></button>
+                                            <a href="{% url 'remove_from_cart' item.shoe.id %}">
+                                                <i class="ci-trash"></i>
+                                            </a>
+{#                                            <button type="button" class="btn-close fs-sm" data-bs-toggle="tooltip"#}
+{#                                                    data-bs-custom-class="tooltip-sm" data-bs-title="Remove"#}
+{#                                                    aria-label="Remove from cart"></button>#}
                                         </td>
                                     </tr>
 
@@ -153,7 +166,9 @@
                             <div class="nav position-relative z-2 mb-4 mb-lg-0">
                                 <a class="nav-link animate-underline px-0" href="shop-catalog-electronics.html">
                                     <i class="ci-chevron-left fs-lg me-1"></i>
-                                    <span class="animate-target">Continue shopping</span>
+                                    <span class="animate-target">
+                                        ادامه خرید
+                                    </span>
                                 </a>
                             </div>
                         </div>
@@ -165,42 +180,33 @@
                         <div class="position-sticky top-0" style="padding-top: 100px">
                             <div class="bg-body-tertiary rounded-5 p-4 mb-3">
                                 <div class="p-sm-2 p-lg-0 p-xl-2">
-                                    <h5 class="border-bottom pb-4 mb-4">Order summary</h5>
+{#                                    <h5 class="border-bottom pb-4 mb-4">Order summary</h5>#}
                                     <ul class="list-unstyled fs-sm gap-3 mb-0">
                                         <li class="d-flex justify-content-between">
-                                            Subtotal (3 items):
-                                            <span class="text-dark-emphasis fw-medium">$2,427.00</span>
+{#                                            Subtotal (3 items):#}
+                                            <span class="text-dark-emphasis fw-medium">
+{#                                                $2,427.00#}
+                                            </span>
                                         </li>
                                         <li class="d-flex justify-content-between">
-                                            Saving:
+                                            سود شما از خرید:
                                             <span class="text-danger fw-medium">-$110.00</span>
-                                        </li>
-                                        <li class="d-flex justify-content-between">
-                                            Tax collected:
-                                            <span class="text-dark-emphasis fw-medium">$73.40</span>
-                                        </li>
-                                        <li class="d-flex justify-content-between">
-                                            Shipping:
-                                            <span class="text-dark-emphasis fw-medium">Calculated at checkout</span>
                                         </li>
                                     </ul>
                                     <div class="border-top pt-4 mt-4">
                                         <div class="d-flex justify-content-between mb-3">
-                                            <span class="fs-sm">Estimated total:</span>
+                                            <span class="fs-sm">
+                                                جمع سبد خرید:
+                                            </span>
                                             <span class="h5 mb-0">
                           {{ cart_total }}
                       </span>
                                         </div>
-                                        <a class="btn btn-lg btn-primary w-100" href="checkout-v1-delivery-1.html">
-                                            Proceed to checkout
+                                        <a class="btn btn-lg btn-primary w-100" href="{% url 'checkout' %}">
+                                            تایید و تکمیل سفارش
                                             <i class="ci-chevron-right fs-lg ms-1 me-n1"></i>
                                         </a>
-                                        <div class="nav justify-content-center fs-sm mt-3">
-                                            <a class="nav-link text-decoration-underline p-0 me-1" href="#authForm"
-                                               data-bs-toggle="offcanvas" role="button">Create an account</a>
-                                            and get
-                                            <span class="text-dark-emphasis fw-medium ms-1">239 bonuses</span>
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -212,7 +218,9 @@
                                                 data-bs-toggle="collapse" data-bs-target="#promoCode"
                                                 aria-expanded="false" aria-controls="promoCode">
                                             <i class="ci-percent fs-xl me-2"></i>
-                                            <span class="animate-target me-2">Apply promo code</span>
+                                            <span class="animate-target me-2">
+                                                اعمال کد تخفیف
+                                            </span>
                                         </button>
                                     </h3>
                                     <div class="accordion-collapse collapse" id="promoCode"
@@ -236,7 +244,21 @@
                     </aside>
 
                 {% else %}
-                    <p>Your cart is empty.</p>
+                    <p>
+                        سبد خرید شما خالی است<!doctype html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport"
+                                  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+                            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                            <title>Document</title>
+                        </head>
+                        <body>
+                        
+                        </body>
+                        </html>
+                    </p>
                     {#    <a href="{% url 'shoe_list' %}">Go to Shoes</a>#}
                 {% endif %}
 
@@ -539,13 +561,13 @@
                                             <li>
                                                 <a class="dropdown-item" href="#!">
                                                     <i class="ci-heart fs-sm ms-n1 me-2"></i>
-                                                    Add to Wishlist
+                                                    افزودن به لیست علاقه مندی‌ها
                                                 </a>
                                             </li>
                                             <li>
                                                 <a class="dropdown-item" href="#!">
                                                     <i class="ci-refresh-cw fs-sm ms-n1 me-2"></i>
-                                                    Compare
+                                                    مقایسه
                                                 </a>
                                             </li>
                                         </ul>
@@ -676,78 +698,6 @@
                             aria-label="Next">
                         <i class="ci-chevron-right fs-lg animate-target"></i>
                     </button>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- Subscription form + Vlog -->
-        <section class="bg-body-tertiary py-5">
-            <div class="container pt-sm-2 pt-md-3 pt-lg-4 pt-xl-5">
-                <div class="row">
-                    <div class="col-md-6 col-lg-5 mb-5 mb-md-0">
-                        <h2 class="h4 mb-2">Sign up to our newsletter</h2>
-                        <p class="text-body pb-2 pb-ms-3">Receive our latest updates about our products &amp;
-                            promotions</p>
-                        <form class="d-flex needs-validation pb-1 pb-sm-2 pb-md-3 pb-lg-0 mb-4 mb-lg-5" novalidate="">
-                            <div class="position-relative w-100 me-2">
-                                <input type="email" class="form-control form-control-lg" placeholder="Your email"
-                                       required="">
-                            </div>
-                            <button type="submit" class="btn btn-lg btn-primary">Subscribe</button>
-                        </form>
-                        <div class="d-flex gap-3">
-                            <a class="btn btn-icon btn-secondary rounded-circle" href="#!" aria-label="Instagram">
-                                <i class="ci-instagram fs-base"></i>
-                            </a>
-                            <a class="btn btn-icon btn-secondary rounded-circle" href="#!" aria-label="Facebook">
-                                <i class="ci-facebook fs-base"></i>
-                            </a>
-                            <a class="btn btn-icon btn-secondary rounded-circle" href="#!" aria-label="YouTube">
-                                <i class="ci-youtube fs-base"></i>
-                            </a>
-                            <a class="btn btn-icon btn-secondary rounded-circle" href="#!" aria-label="Telegram">
-                                <i class="ci-telegram fs-base"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-5 col-xl-4 offset-lg-1 offset-xl-2">
-                        <ul class="list-unstyled d-flex flex-column gap-4 ps-md-4 ps-lg-0 mb-3">
-                            <li class="nav flex-nowrap align-items-center position-relative">
-                                <img src="assets/img/home/electronics/vlog/01.jpg" class="rounded" width="140"
-                                     alt="Video cover">
-                                <div class="ps-3">
-                                    <div class="fs-xs text-body-secondary lh-sm mb-2">6:16</div>
-                                    <a class="nav-link fs-sm hover-effect-underline stretched-link p-0" href="#!">5 New
-                                        Cool Gadgets You Must See on Cartzilla - Cheap Budget</a>
-                                </div>
-                            </li>
-                            <li class="nav flex-nowrap align-items-center position-relative">
-                                <img src="assets/img/home/electronics/vlog/02.jpg" class="rounded" width="140"
-                                     alt="Video cover">
-                                <div class="ps-3">
-                                    <div class="fs-xs text-body-secondary lh-sm mb-2">10:20</div>
-                                    <a class="nav-link fs-sm hover-effect-underline stretched-link p-0" href="#!">5
-                                        Super Useful Gadgets on Cartzilla You Must Have in 2023</a>
-                                </div>
-                            </li>
-                            <li class="nav flex-nowrap align-items-center position-relative">
-                                <img src="assets/img/home/electronics/vlog/03.jpg" class="rounded" width="140"
-                                     alt="Video cover">
-                                <div class="ps-3">
-                                    <div class="fs-xs text-body-secondary lh-sm mb-2">8:40</div>
-                                    <a class="nav-link fs-sm hover-effect-underline stretched-link p-0" href="#!">Top 5
-                                        New Amazing Gadgets on Cartzilla You Must See</a>
-                                </div>
-                            </li>
-                        </ul>
-                        <div class="nav ps-md-4 ps-lg-0">
-                            <a class="btn nav-link animate-underline text-decoration-none px-0" href="#!">
-                                <span class="animate-target">View all</span>
-                                <i class="ci-chevron-right fs-base ms-1"></i>
-                            </a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
