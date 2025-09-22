@@ -1,0 +1,16 @@
+{% extends "master.html" %}
+{% load static %}
+{% block title %}
+    حساب کاربری
+{% endblock %}
+
+{% block content %}
+    <div class="container my-5">
+        <h2>سلام {{ user.username }}</h2>
+        <p>ایمیل: {{ user.email }}</p>
+        <p>نام: {{ user.first_name }}</p>
+        <p>نام خانوادگی: {{ user.last_name }}</p>
+
+        <a href="{% url 'logout' %}" class="btn btn-danger">خروج</a>
+    </div>
+{% endblock %}

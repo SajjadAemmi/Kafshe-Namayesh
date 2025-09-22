@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
 from django.http import HttpResponse
 from django.template import loader
 from django.views.decorators.csrf import csrf_protect
@@ -71,6 +73,7 @@ def remove_from_cart(request, shoe_id):
 
     return redirect('cart_detail')  # بازگشت به صفحه سبد خرید
 
+
 def cart_detail(request):
     cart, created = get_or_create_cart(request.user, request.session)
     cart_items = cart.items.all()
@@ -121,7 +124,6 @@ def order_detail(request, order_id):
     return render(request, 'shop/order_detail.html', {'order': order})
 
 
-
 def members(request):
     mymembers = Member.objects.all().values()
     template = loader.get_template('all_members.html')
@@ -137,3 +139,22 @@ def about(request):
 
 def contact(request):
     return render(request, 'contact.html')
+
+
+@login_required
+def profile(request):
+    return render(request, "registration/profile.html", {"user": request.user})
+
+
+def signup(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect("/")  # بعد از ثبت نام به صفحه اصلی برو
+        else:
+            print(form.errors)  # برای دیدن خطاها در کنسول
+    else:
+        form = UserCreationForm()
+    return render(request, "registration/signup.html", {"form": form})
