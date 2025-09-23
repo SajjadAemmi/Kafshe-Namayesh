@@ -34,34 +34,41 @@
 
 
                 <!-- Form -->
-                <form class="needs-validation" novalidate="">
+                <form method="post" action="{% url 'login' %}" class="needs-validation" novalidate="">
+                    {% csrf_token %}
+
                     <div class="position-relative mb-4">
-                        <input type="email" class="form-control form-control-lg" placeholder="ایمیل" required="">
-                        <div class="invalid-tooltip bg-transparent py-0">لطفاً یک آدرس ایمیل معتبر وارد کنید!</div>
+                        <input type="text" name="username" class="form-control form-control-lg"
+                               placeholder="نام کاربری یا ایمیل" required>
+                        <div class="invalid-tooltip bg-transparent py-0">لطفاً نام کاربری معتبر وارد کنید!</div>
                     </div>
+
                     <div class="mb-4">
                         <div class="password-toggle">
-                            <input type="password" class="form-control form-control-lg" placeholder="رمز عبور"
-                                   required="">
+                            <input type="password" name="password" class="form-control form-control-lg"
+                                   placeholder="رمز عبور" required>
                             <div class="invalid-tooltip bg-transparent py-0">رمز عبور نادرست است!</div>
                             <label class="password-toggle-button fs-lg" aria-label="نمایش/مخفی کردن رمز عبور">
                                 <input type="checkbox" class="btn-check">
                             </label>
                         </div>
                     </div>
+
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <div class="form-check me-2">
                             <input type="checkbox" class="form-check-input" id="remember-30">
                             <label for="remember-30" class="form-check-label">مرا به مدت ۳۰ روز به خاطر بسپار</label>
                         </div>
                         <div class="nav">
-                            <a class="nav-link animate-underline p-0" href="account-password-recovery.html">
+                            <a class="nav-link animate-underline p-0" href="{% url 'password_reset' %}">
                                 <span class="animate-target">رمز عبور را فراموش کرده‌اید؟</span>
                             </a>
                         </div>
                     </div>
+
                     <button type="submit" class="btn btn-lg btn-primary w-100">ورود</button>
                 </form>
+
 
                 <!-- Divider -->
                 <div class="d-flex align-items-center my-4">

@@ -11,6 +11,10 @@
         <p>نام: {{ user.first_name }}</p>
         <p>نام خانوادگی: {{ user.last_name }}</p>
 
-        <a href="{% url 'logout' %}" class="btn btn-danger">خروج</a>
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">خروج</button>
+        </form>
+
     </div>
 {% endblock %}
