@@ -143,7 +143,7 @@ def contact(request):
 
 @login_required
 def profile(request):
-    return render(request, "registration/profile.html", {"user": request.user})
+    return render(request, "user/profile.html", {"user": request.user})
 
 
 def signup(request):
