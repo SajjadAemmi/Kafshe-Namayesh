@@ -1,9 +1,11 @@
 {% extends "master.html" %}
+
 {% load static %}
+{% load persian_numbers %}
+
 {% block title %}
     Details about {{ shoe.name }}
 {% endblock %}
-
 
 {% block content %}
 
@@ -18,7 +20,6 @@
                 <li class="breadcrumb-item active" aria-current="page">سبد خرید</li>
             </ol>
         </nav>
-
 
         <!-- Items in the cart + Order summary -->
         <section class="container pb-5 mb-2 mb-md-3 mb-lg-4 mb-xl-5">
@@ -129,7 +130,7 @@
                                             </div>
                                         </td>
                                         <td class="h6 py-3 d-none d-xl-table-cell">
-                                            {{ item.shoe.price }}
+                                            {{ item.shoe.price | persian_numbers }}
                                             <img class="toman" src="{% static 'svg/toman.svg' %}"/>
 
                                         </td>
@@ -147,7 +148,8 @@
                                             </div>
                                         </td>
                                         <td class="h6 py-3 d-none d-md-table-cell">
-                                            {{ item.get_total_price }}
+                                            {{ item.get_total_price | persian_numbers }}
+                                            <img class="toman" src="{% static 'svg/toman.svg' %}"/>
                                         </td>
                                         <td class="text-end py-3 px-0">
                                             <a href="{% url 'remove_from_cart' item.shoe.id %}">
@@ -181,25 +183,26 @@
                             <div class="bg-body-tertiary rounded-5 p-4 mb-3">
                                 <div class="p-sm-2 p-lg-0 p-xl-2">
 {#                                    <h5 class="border-bottom pb-4 mb-4">Order summary</h5>#}
-                                    <ul class="list-unstyled fs-sm gap-3 mb-0">
-                                        <li class="d-flex justify-content-between">
+{#                                    <ul class="list-unstyled fs-sm gap-3 mb-0">#}
+{#                                        <li class="d-flex justify-content-between">#}
 {#                                            Subtotal (3 items):#}
-                                            <span class="text-dark-emphasis fw-medium">
+{#                                            <span class="text-dark-emphasis fw-medium">#}
 {#                                                $2,427.00#}
-                                            </span>
-                                        </li>
-                                        <li class="d-flex justify-content-between">
-                                            سود شما از خرید:
-                                            <span class="text-danger fw-medium">-$110.00</span>
-                                        </li>
-                                    </ul>
+{#                                            </span>#}
+{#                                        </li>#}
+{#                                        <li class="d-flex justify-content-between">#}
+{#                                            سود شما از خرید:#}
+{#                                            <span class="text-danger fw-medium">-$110.00</span>#}
+{#                                        </li>#}
+{#                                    </ul>#}
                                     <div class="border-top pt-4 mt-4">
                                         <div class="d-flex justify-content-between mb-3">
                                             <span class="fs-sm">
                                                 جمع سبد خرید:
                                             </span>
                                             <span class="h5 mb-0">
-                          {{ cart_total }}
+                          {{ cart_total  | persian_numbers }}
+                                                <img class="toman" src="{% static 'svg/toman.svg' %}"/>
                       </span>
                                         </div>
                                         <a class="btn btn-lg btn-primary w-100" href="{% url 'checkout' %}">

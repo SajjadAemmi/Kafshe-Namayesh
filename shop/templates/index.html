@@ -1,6 +1,7 @@
 {% extends "master.html" %}
 
 {% load static %}
+{% load persian_numbers %}
 
 {% block title %}
     کفش نمایش
@@ -74,11 +75,11 @@
                                 </a>
                             </div>
                             <div class="h6 mb-2">
-                                {{ shoe.price }}
-                                تومان
+                                {{ shoe.price | persian_numbers }}
+                                <img class="toman" src="{% static 'svg/toman.svg' %}"/>
                                 <del class="fs-sm fw-normal text-body-tertiary">
-                                    {{ shoe.price }}
-                                    تومان
+                                    {{ shoe.price | persian_numbers }}
+                                    <img class="toman" src="{% static 'svg/toman.svg' %}"/>
                                 </del>
                             </div>
                             <div class="position-relative">

@@ -1,5 +1,8 @@
 {% extends "master.html" %}
+
 {% load static %}
+{% load persian_numbers %}
+
 {% block title %}
     Details about {{ shoe.name }}
 {% endblock %}
@@ -67,7 +70,7 @@
                         </div>
                         <h1 class="fs-xl fw-medium">{{ shoe.name }}</h1>
                         <div class="h4 fw-bold mb-4">
-                            {{ shoe.price }}
+                            {{ shoe.price | persian_numbers }}
                             <img class="toman" src="{% static 'svg/toman.svg' %}"/>
                             <del class="fs-sm fw-normal text-body-tertiary">
                                 416.00
@@ -97,30 +100,25 @@
                         <div class="mb-4">
                             <h6 class="d-flex align-items-center fs-sm mb-2">
                                 <i class="ci-delivery fs-lg me-2"></i>
-                                Free shipping
+                                ارسال رایگان
                             </h6>
                             <div class="fs-sm">
-                                <span class="me-1">Get it between May 24 - May 27 to</span>
-                                <div class="dropdown d-inline-block">
-                                    <a class="dropdown-toggle animate-underline fs-sm fw-semibold text-body-emphasis text-decoration-none"
-                                       href="#!" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="animate-target">Preston - 06365</span>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-end text-body p-3">
-                                        Blackpool Road, 15<br>06365, Preston, UK
-                                        <div class="h6 fs-sm pt-1 mb-0">Susan Gardner</div>
-                                    </div>
-                                </div>
+                                <span class="me-1">
+                                    ارسال از 4 روز کاری،
+                                    زمان آماده سازی و ارسال محصول
+                                </span>
                             </div>
                         </div>
 
                         <!-- Contact -->
                         <div class="d-flex align-items-center justify-content-between bg-body-tertiary rounded p-3">
                             <div class="me-3">
-                                <h6 class="fs-sm mb-1">Have a question?</h6>
-                                <p class="fs-sm mb-0">Contact us if you have questions</p>
+                                <h6 class="fs-sm mb-1">پرسشی دارید؟</h6>
+                                <p class="fs-sm mb-0">با ما در ارتباط باشید.</p>
                             </div>
-                            <a class="btn btn-sm btn-outline-dark rounded-pill" href="contact-v2.html">Contact us</a>
+                            <a class="btn btn-sm btn-outline-dark rounded-pill" href="contact-v2.html">
+                                ارتباط با ما
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -167,8 +165,8 @@
                 </div>
             </section>
 
-        {% include "product_description.html" %}
-        
+            {% include "product_description.html" %}
+
             <!-- Popular products carousel -->
 
             <!-- Blog articles -->

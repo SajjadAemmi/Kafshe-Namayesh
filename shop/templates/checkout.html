@@ -1,0 +1,595 @@
+{% extends "master.html" %}
+
+{% load static %}
+{% load persian_numbers %}
+
+{% block title %}
+    حساب کاربری
+{% endblock %}
+
+{% block content %}
+
+    <!-- Delivery options offcanvas -->
+    <div class="offcanvas offcanvas-end pb-sm-2 px-sm-2" id="deliveryOptions" tabindex="-1"
+         aria-labelledby="deliveryOptionsLabel" style="width: 500px">
+
+        <!-- Header with nav tabs -->
+        <div class="offcanvas-header flex-column align-items-start py-3 pt-lg-4">
+            <div class="d-flex align-items-center justify-content-between w-100 pb-xl-1 mb-4">
+                <h4 class="offcanvas-title" id="deliveryOptionsLabel">Delivery options</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <ul class="nav nav-pills nav-justified w-100" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button type="button" class="nav-link active" id="delivery-tab" data-bs-toggle="tab"
+                            data-bs-target="#delivery-tab-pane" role="tab" aria-controls="delivery-tab-pane"
+                            aria-selected="true">
+                        <i class="ci-shopping-bag fs-base ms-n1 me-2"></i>
+                        Delivery
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button type="button" class="nav-link" id="pickup-tab" data-bs-toggle="tab"
+                            data-bs-target="#pickup-tab-pane" role="tab" aria-controls="pickup-tab-pane"
+                            aria-selected="false">
+                        <i class="ci-box fs-base ms-n1 me-2"></i>
+                        Pickup
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+        <div class="offcanvas-body tab-content py-2 py-sm-3">
+
+            <!-- Delivery tab -->
+            <div class="tab-pane fade show active" id="delivery-tab-pane" role="tabpanel"
+                 aria-labelledby="delivery-tab">
+
+                <!-- Address options collapse -->
+                <div class="collapse delivery-address show" id="deliveryAddressOptions">
+                    <div class="mt-n3">
+                        <div class="form-check border-bottom py-4 m-0">
+                            <input type="radio" class="form-check-input" id="address-1" name="delivery-address"
+                                   checked="">
+                            <label for="address-1" class="form-check-label text-dark-emphasis fw-semibold">567 Cherry
+                                Lane Apt B12 Sacramento, 95829</label>
+                        </div>
+                        <div class="form-check border-bottom py-4 m-0">
+                            <input type="radio" class="form-check-input" id="address-2" name="delivery-address">
+                            <div class="d-flex w-100">
+                                <label for="address-2" class="form-check-label text-dark-emphasis me-3">1901 Thornridge
+                                    Cir. Shiloh, Hawaii, 81063</label>
+                                <button type="button" class="btn-close fs-sm ms-auto" data-bs-toggle="tooltip"
+                                        data-bs-custom-class="tooltip-sm" data-bs-title="Remove"
+                                        aria-label="Remove"></button>
+                            </div>
+                        </div>
+                        <div class="form-check border-bottom py-4 m-0">
+                            <input type="radio" class="form-check-input" id="address-3" name="delivery-address">
+                            <div class="d-flex w-100">
+                                <label for="address-3" class="form-check-label text-dark-emphasis me-3">3517 W. Gray St.
+                                    Utica, Pennsylvania, 57867</label>
+                                <button type="button" class="btn-close fs-sm ms-auto" data-bs-toggle="tooltip"
+                                        data-bs-custom-class="tooltip-sm" data-bs-title="Remove"
+                                        aria-label="Remove"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add new address collapse -->
+                <div class="collapse delivery-address" id="deliveryAddressAdd">
+                    <div class="nav mb-4">
+                        <a class="nav-link animate-underline p-0" href=".delivery-address" data-bs-toggle="collapse"
+                           aria-expanded="true" aria-controls="deliveryAddressOptions deliveryAddressAdd">
+                            <i class="ci-chevron-left fs-lg ms-n1 me-1"></i>
+                            <span class="animate-target">Back to my addresses</span>
+                        </a>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between mb-3 mb-lg-4">
+                        <h5 class="h6 mb-0 me-3">Add an address to start ordering</h5>
+                        <a class="btn btn-sm btn-outline-primary rounded-pill" href="#!">
+                            <i class="ci-map-pin fs-base ms-n1 me-1"></i>
+                            Find on map
+                        </a>
+                    </div>
+                    <div class="mb-3 mb-lg-4">
+                        <label class="form-label">State *</label>
+                        <select class="form-select form-select-lg rounded-pill" data-select="{
+                &quot;classNames&quot;: {
+                  &quot;containerInner&quot;: [&quot;form-select&quot;, &quot;form-select-lg&quot;, &quot;rounded-pill&quot;]
+                }
+              }" aria-label="Large pill select">
+                            <option value="">Select state</option>
+                            <option value="Arizona">Arizona</option>
+                            <option value="California">California</option>
+                            <option value="Montana">Montana</option>
+                            <option value="Nevada">Nevada</option>
+                            <option value="New Mexico">New Mexico</option>
+                            <option value="Texas">Texas</option>
+                        </select>
+                    </div>
+                    <div class="mb-3 mb-lg-4">
+                        <label for="my-postcode" class="form-label">Postcode *</label>
+                        <input type="text" class="form-control form-control-lg rounded-pill" id="my-postcode">
+                    </div>
+                    <div class="mb-3 mb-lg-4">
+                        <label class="form-label">City *</label>
+                        <select class="form-select form-select-lg rounded-pill" data-select="{
+                &quot;classNames&quot;: {
+                  &quot;containerInner&quot;: [&quot;form-select&quot;, &quot;form-select-lg&quot;, &quot;rounded-pill&quot;]
+                }
+              }" aria-label="Large pill select">
+                            <option value="">Select city</option>
+                            <option value="Austin">Austin</option>
+                            <option value="Helena">Helena</option>
+                            <option value="Sacramento">Sacramento</option>
+                            <option value="Santa Fe">Santa Fe</option>
+                            <option value="Las Vegas">Las Vegas</option>
+                            <option value="Phoenix">Phoenix</option>
+                        </select>
+                    </div>
+                    <label for="my-address" class="form-label">Street address *</label>
+                    <input type="text" class="form-control form-control-lg rounded-pill" id="my-address">
+                </div>
+
+                <!-- Add address collapse toggle -->
+                <div class="nav">
+                    <a class="nav-link hiding-collapse-toggle animate-underline collapsed px-0 mt-4"
+                       href=".delivery-address" data-bs-toggle="collapse" aria-expanded="false"
+                       aria-controls="deliveryAddressOptions deliveryAddressAdd">
+                        <span class="animate-target">Add delivery address</span>
+                        <i class="ci-plus fs-base ms-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Pickup tab -->
+            <div class="tab-pane fade" id="pickup-tab-pane" role="tabpanel" aria-labelledby="pickup-tab">
+
+                <!-- Pickup store options collapse -->
+                <div class="collapse pickup-options show" id="pickupStoreOptions">
+                    <div class="mt-n3">
+                        <div class="form-check border-bottom py-4 m-0">
+                            <input type="radio" class="form-check-input" id="store-1" name="pickup-store" checked="">
+                            <div>
+                                <div class="d-flex w-100 pb-2 mb-1">
+                                    <label for="store-1" class="form-check-label text-dark-emphasis fw-semibold me-3">Sacramento
+                                        Supercenter</label>
+                                    <button type="button" class="btn-close fs-sm ms-auto" data-bs-toggle="tooltip"
+                                            data-bs-custom-class="tooltip-sm" data-bs-title="Remove"
+                                            aria-label="Remove"></button>
+                                </div>
+                                <div class="fs-xs mb-2">8270 Delta Shores Cir S, Sacramento, CA 95832</div>
+                                <div class="fs-xs">Open: <span class="text-dark-emphasis fw-medium">07:00 - 22:00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-check border-bottom py-4 m-0">
+                            <input type="radio" class="form-check-input" id="store-2" name="pickup-store">
+                            <div>
+                                <div class="d-flex w-100 pb-2 mb-1">
+                                    <label for="store-2" class="form-check-label text-dark-emphasis fw-semibold me-3">West
+                                        Sacramento Supercenter</label>
+                                    <button type="button" class="btn-close fs-sm ms-auto" data-bs-toggle="tooltip"
+                                            data-bs-custom-class="tooltip-sm" data-bs-title="Remove"
+                                            aria-label="Remove"></button>
+                                </div>
+                                <div class="fs-xs mb-2">755 Riverpoint Ct, West Sacramento, CA 95605</div>
+                                <div class="fs-xs">Open: <span class="text-dark-emphasis fw-medium">07:00 - 21:00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-check border-bottom py-4 m-0">
+                            <input type="radio" class="form-check-input" id="store-3" name="pickup-store">
+                            <div>
+                                <div class="d-flex w-100 pb-2 mb-1">
+                                    <label for="store-3" class="form-check-label text-dark-emphasis fw-semibold me-3">Rancho
+                                        Cordova Supercenter</label>
+                                    <button type="button" class="btn-close fs-sm ms-auto" data-bs-toggle="tooltip"
+                                            data-bs-custom-class="tooltip-sm" data-bs-title="Remove"
+                                            aria-label="Remove"></button>
+                                </div>
+                                <div class="fs-xs mb-2">10655 Folsom Blvd, Rancho Cordova, CA 95670</div>
+                                <div class="fs-xs">Open: <span class="text-dark-emphasis fw-medium">08:00 - 23:00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add new pickup store collapse -->
+                <div class="collapse pickup-options" id="pickupStoreAdd">
+                    <div class="nav mb-4">
+                        <a class="nav-link animate-underline p-0" href=".pickup-options" data-bs-toggle="collapse"
+                           aria-expanded="true" aria-controls="pickupStoreOptions pickupStoreAdd">
+                            <i class="ci-chevron-left fs-lg ms-n1 me-1"></i>
+                            <span class="animate-target">Back to my stores</span>
+                        </a>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between mb-3 mb-lg-4">
+                        <h5 class="h6 mb-0 me-3">Select a suitable store</h5>
+                        <a class="btn btn-sm btn-outline-primary rounded-pill" href="#!">
+                            <i class="ci-map-pin fs-base ms-n1 me-1"></i>
+                            Find on map
+                        </a>
+                    </div>
+                    <div class="mb-3 mb-lg-4">
+                        <label class="form-label">State *</label>
+                        <select class="form-select form-select-lg rounded-pill" data-select="{
+                &quot;classNames&quot;: {
+                  &quot;containerInner&quot;: [&quot;form-select&quot;, &quot;form-select-lg&quot;, &quot;rounded-pill&quot;]
+                }
+              }" aria-label="Large pill select">
+                            <option value="">Select state</option>
+                            <option value="Arizona">Arizona</option>
+                            <option value="California" selected="">California</option>
+                            <option value="Montana">Montana</option>
+                            <option value="Nevada">Nevada</option>
+                            <option value="New Mexico">New Mexico</option>
+                            <option value="Texas">Texas</option>
+                        </select>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">City *</label>
+                        <select class="form-select form-select-lg rounded-pill" data-select="{
+                &quot;classNames&quot;: {
+                  &quot;containerInner&quot;: [&quot;form-select&quot;, &quot;form-select-lg&quot;, &quot;rounded-pill&quot;]
+                }
+              }" aria-label="Large pill select">
+                            <option value="">Select city</option>
+                            <option value="Austin">Austin</option>
+                            <option value="Helena">Helena</option>
+                            <option value="Sacramento" selected="">Sacramento</option>
+                            <option value="Santa Fe">Santa Fe</option>
+                            <option value="Las Vegas">Las Vegas</option>
+                            <option value="Phoenix">Phoenix</option>
+                        </select>
+                    </div>
+                    <div class="fs-xs fw-medium text-uppercase text-body-secondary">Found stores:</div>
+                    <div class="form-check border-bottom py-4 m-0">
+                        <input type="radio" class="form-check-input" id="store-4" name="found-store">
+                        <div>
+                            <label for="store-4" class="form-check-label text-dark-emphasis fw-semibold pb-2 mb-1">Sacramento
+                                Supercenter</label>
+                            <div class="fs-xs mb-2">8270 Delta Shores Cir S, Sacramento, CA 95832</div>
+                            <div class="fs-xs">Open: <span class="text-dark-emphasis fw-medium">07:00 - 22:00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-check border-bottom py-4 m-0">
+                        <input type="radio" class="form-check-input" id="store-5" name="found-store">
+                        <div>
+                            <label for="store-5" class="form-check-label text-dark-emphasis fw-semibold pb-2 mb-1">West
+                                Sacramento Supercenter</label>
+                            <div class="fs-xs mb-2">755 Riverpoint Ct, West Sacramento, CA 95605</div>
+                            <div class="fs-xs">Open: <span class="text-dark-emphasis fw-medium">07:00 - 21:00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-check border-bottom py-4 m-0">
+                        <input type="radio" class="form-check-input" id="store-6" name="found-store">
+                        <div>
+                            <label for="store-6" class="form-check-label text-dark-emphasis fw-semibold pb-2 mb-1">Rancho
+                                Cordova Supercenter</label>
+                            <div class="fs-xs mb-2">10655 Folsom Blvd, Rancho Cordova, CA 95670</div>
+                            <div class="fs-xs">Open: <span class="text-dark-emphasis fw-medium">08:00 - 23:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add address collapse toggle -->
+                <div class="nav">
+                    <a class="nav-link hiding-collapse-toggle animate-underline collapsed px-0 mt-4"
+                       href=".pickup-options" data-bs-toggle="collapse" aria-expanded="false"
+                       aria-controls="pickupStoreOptions pickupStoreAdd">
+                        <span class="animate-target">Add store address</span>
+                        <i class="ci-plus fs-base ms-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="offcanvas-header">
+            <button type="button" class="btn btn-lg btn-primary w-100 rounded-pill">Confirm address</button>
+        </div>
+    </div>
+
+    <!-- Delivery date and time offcanvas -->
+    <div class="offcanvas offcanvas-end pb-sm-2 px-sm-2" id="deliveryDateTime" tabindex="-1"
+         aria-labelledby="deliveryDateTimeLabel" style="width: 500px">
+
+        <!-- Header with nav tabs -->
+        <div class="offcanvas-header py-3 pt-lg-4">
+            <h4 class="offcanvas-title" id="deliveryDateTimeLabel">Schedule date and time</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+
+        <!-- Body -->
+        <div class="offcanvas-body py-3">
+
+            <!-- Day -->
+            <div class="d-flex justify-content-between gap-3 overflow-auto pb-3">
+                <div class="text-center">
+                    <div class="fs-sm pb-1 mb-2">Mon</div>
+                    <input type="radio" class="btn-check" name="day" id="mon">
+                    <label class="btn btn-icon btn-lg btn-outline-secondary fs-sm rounded-circle" for="mon">24</label>
+                </div>
+                <div class="text-center">
+                    <div class="fs-sm pb-1 mb-2">Tue</div>
+                    <input type="radio" class="btn-check" name="day" id="tue">
+                    <label class="btn btn-icon btn-lg btn-outline-secondary fs-sm rounded-circle" for="tue">25</label>
+                </div>
+                <div class="text-center">
+                    <div class="fs-sm pb-1 mb-2">Wed</div>
+                    <input type="radio" class="btn-check" name="day" id="wed" checked="">
+                    <label class="btn btn-icon btn-lg btn-outline-secondary fs-sm rounded-circle" for="wed">26</label>
+                </div>
+                <div class="text-center">
+                    <div class="fs-sm pb-1 mb-2">Thu</div>
+                    <input type="radio" class="btn-check" name="day" id="thu">
+                    <label class="btn btn-icon btn-lg btn-outline-secondary fs-sm rounded-circle" for="thu">27</label>
+                </div>
+                <div class="text-center">
+                    <div class="fs-sm pb-1 mb-2">Fri</div>
+                    <input type="radio" class="btn-check" name="day" id="fri">
+                    <label class="btn btn-icon btn-lg btn-outline-secondary fs-sm rounded-circle" for="fri">28</label>
+                </div>
+                <div class="text-center">
+                    <div class="fs-sm pb-1 mb-2">Sat</div>
+                    <input type="radio" class="btn-check" name="day" id="sat">
+                    <label class="btn btn-icon btn-lg btn-outline-secondary fs-sm rounded-circle" for="sat">29</label>
+                </div>
+                <div class="text-center">
+                    <div class="fs-sm pb-1 mb-2">Sun</div>
+                    <input type="radio" class="btn-check" name="day" id="sun">
+                    <label class="btn btn-icon btn-lg btn-outline-secondary fs-sm rounded-circle" for="sun">30</label>
+                </div>
+            </div>
+
+            <!-- Time -->
+            <div class="form-check border-bottom py-4 m-0">
+                <input type="radio" class="form-check-input" id="delivery-time-1" name="delivery-time">
+                <div class="d-flex w-100">
+                    <label for="delivery-time-1" class="form-check-label text-dark-emphasis fw-semibold me-3">08:00 -
+                        10:00</label>
+                    <span class="fs-sm ms-auto">Free</span>
+                </div>
+            </div>
+            <div class="form-check border-bottom py-4 m-0">
+                <input type="radio" class="form-check-input" id="delivery-time-2" name="delivery-time" checked="">
+                <div class="d-flex w-100">
+                    <label for="delivery-time-2" class="form-check-label text-dark-emphasis fw-semibold me-3">10:00 -
+                        12:00</label>
+                    <span class="fs-sm ms-auto">Free</span>
+                </div>
+            </div>
+            <div class="form-check border-bottom py-4 m-0">
+                <input type="radio" class="form-check-input" id="delivery-time-3" name="delivery-time">
+                <div class="d-flex w-100">
+                    <label for="delivery-time-3" class="form-check-label text-dark-emphasis fw-semibold me-3">12:00 -
+                        14:00</label>
+                    <span class="fs-sm ms-auto">Free</span>
+                </div>
+            </div>
+            <div class="form-check border-bottom py-4 m-0">
+                <input type="radio" class="form-check-input" id="delivery-time-4" name="delivery-time">
+                <div class="d-flex w-100">
+                    <label for="delivery-time-4" class="form-check-label text-dark-emphasis fw-semibold me-3">14:00 -
+                        16:00</label>
+                    <span class="fs-sm ms-auto">Free</span>
+                </div>
+            </div>
+            <div class="form-check border-bottom py-4 m-0">
+                <input type="radio" class="form-check-input" id="delivery-time-5" name="delivery-time">
+                <div class="d-flex w-100">
+                    <label for="delivery-time-5" class="form-check-label text-dark-emphasis fw-semibold me-3">16:00 -
+                        18:00</label>
+                    <span class="fs-sm ms-auto">Free</span>
+                </div>
+            </div>
+            <div class="form-check border-bottom py-4 m-0">
+                <input type="radio" class="form-check-input" id="delivery-time-6" name="delivery-time">
+                <div class="d-flex w-100">
+                    <label for="delivery-time-6" class="form-check-label text-dark-emphasis fw-semibold me-3">18:00 -
+                        20:00</label>
+                    <span class="fs-sm ms-auto">Free</span>
+                </div>
+            </div>
+            <div class="form-check border-bottom py-4 m-0">
+                <input type="radio" class="form-check-input" id="delivery-time-7" name="delivery-time">
+                <div class="d-flex w-100">
+                    <label for="delivery-time-7" class="form-check-label text-dark-emphasis fw-semibold me-3">20:00 -
+                        22:00</label>
+                    <span class="fs-sm ms-auto">Free</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="offcanvas-header">
+            <button type="button" class="btn btn-lg btn-primary w-100 rounded-pill">Confirm date and time</button>
+        </div>
+    </div>
+
+    <!-- Page content -->
+    <main class="content-wrapper">
+
+        <!-- Breadcrumb -->
+        <nav class="container pt-1 pt-md-0 my-3 my-md-4" aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="home-grocery.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="shop-catalog-grocery.html">Shop</a></li>
+                <li class="breadcrumb-item"><a href="checkout-v2-cart.html">Cart</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+            </ol>
+        </nav>
+
+        <!-- Checkout form + Order summary -->
+        <section class="container pb-5 mb-2 mb-md-3 mb-lg-4 mb-xl-5">
+            <h1 class="h3 mb-4">
+                تکمیل سفارش
+            </h1>
+            <div class="row">
+
+                <!-- Checkout form -->
+                <div class="col-lg-8 col-xl-8 mb-5 mb-lg-0">
+                    <form method="post" class="needs-validation" id="myform" novalidate>
+                        {% csrf_token %}
+
+                        <div class="row row-cols-1 row-cols-sm-2 g-3 g-ms-4 mb-3 mb-sm-4">
+                            <div class="col">
+                                <label for="province" class="form-label">استان *</label>
+                                <input type="text" class="form-control form-control-lg rounded-pill" id="province"
+                                       name="province" required>
+                                <div class="invalid-feedback">لطفاً استان را وارد کنید.</div>
+                            </div>
+                            <div class="col">
+                                <label for="city" class="form-label">شهر *</label>
+                                <input type="text" class="form-control form-control-lg rounded-pill" id="city"
+                                       name="city" required>
+                                <div class="invalid-feedback">لطفاً شهر را وارد کنید.</div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="address" class="form-label">خیابان، پلاک، واحد و ... *</label>
+                            <textarea class="form-control form-control-lg rounded-4" id="address" name="address"
+                                      rows="3" required></textarea>
+                            <div class="invalid-feedback">لطفاً آدرس کامل خود را وارد کنید.</div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label d-block mb-2">روش پرداخت *</label>
+                            <div class="btn-group w-100" role="group" aria-label="Payment methods">
+                                <input type="radio" class="btn-check" name="payment" id="zarinpal" value="zarinpal"
+                                       required>
+                                <label class="btn btn-outline-primary w-100" for="zarinpal">پرداخت امن زرین پال</label>
+
+                                <input type="radio" class="btn-check" name="payment" id="mellat" value="mellat">
+                                <label class="btn btn-outline-primary w-100" for="mellat">به پرداخت بانک ملت</label>
+
+                                <input type="radio" class="btn-check" name="payment" id="sepal" value="sepal">
+                                <label class="btn btn-outline-primary w-100" for="sepal">درگاه پرداخت سپال</label>
+                            </div>
+                            <div class="invalid-feedback d-block">لطفاً یک روش پرداخت انتخاب کنید.</div>
+                        </div>
+                    </form>
+
+                    <!-- Delivery date and time section -->
+                    {#            <h2 class="h5 mt-5 mb-4">Delivery date and time</h2>#}
+                    {#            <div class="d-flex flex-wrap gap-3">#}
+                    {#              <div>#}
+                    {#                <input type="radio" class="btn-check" name="date" id="today" checked="">#}
+                    {#                <label class="btn btn-outline-secondary rounded-pill" for="today">Today</label>#}
+                    {#              </div>#}
+                    {#              <div>#}
+                    {#                <input type="radio" class="btn-check" name="date" id="tomorrow">#}
+                    {#                <label class="btn btn-outline-secondary rounded-pill" for="tomorrow">Tomorrow</label>#}
+                    {#              </div>#}
+                    {#              <div>#}
+                    {#                <input type="radio" class="btn-check" name="date" id="other-date">#}
+                    {#                <label class="btn btn-outline-secondary rounded-pill" for="other-date" data-bs-toggle="offcanvas" data-bs-target="#deliveryDateTime" aria-controls="deliveryDateTime">Other date</label>#}
+                    {#              </div>#}
+                    {#            </div>#}
+                    {#            <div class="fs-sm mt-4">The cost of delivery: <span class="fw-semibold text-dark-emphasis">Free</span></div>#}
+                    {#            <div class="d-flex flex-wrap gap-3 mt-3">#}
+                    {#              <div>#}
+                    {#                <input type="radio" class="btn-check" name="time" id="time-1" checked="">#}
+                    {#                <label class="btn btn-outline-secondary rounded-pill" for="time-1">10:00 - 12:00</label>#}
+                    {#              </div>#}
+                    {#              <div>#}
+                    {#                <input type="radio" class="btn-check" name="time" id="time-2">#}
+                    {#                <label class="btn btn-outline-secondary rounded-pill" for="time-2">12:00 - 14:00</label>#}
+                    {#              </div>#}
+                    {#              <div>#}
+                    {#                <input type="radio" class="btn-check" name="time" id="time-3">#}
+                    {#                <label class="btn btn-outline-secondary rounded-pill" for="time-3">14:00 - 16:00</label>#}
+                    {#              </div>#}
+                    {#              <div>#}
+                    {#                <input type="radio" class="btn-check" name="time" id="time-4">#}
+                    {#                <label class="btn btn-outline-secondary rounded-pill" for="time-4">16:00 - 18:00</label>#}
+                    {#              </div>#}
+                    {#              <div>#}
+                    {#                <input type="radio" class="btn-check" name="time" id="time-5">#}
+                    {#                <label class="btn btn-outline-secondary rounded-pill" for="time-5">18:00 - 20:00</label>#}
+                    {#              </div>#}
+                    {#            </div>#}
+
+                </div>
+
+                <!-- Order summary (sticky sidebar) -->
+                <aside class="col-lg-4" style="margin-top: -100px">
+                    <div class="position-sticky top-0" style="padding-top: 100px">
+                        <div class="bg-body-tertiary rounded-5 p-4 mb-3">
+                            <div class="p-sm-2 p-lg-0 p-xl-2">
+                                {#                                    <h5 class="border-bottom pb-4 mb-4">Order summary</h5>#}
+                                {#                                    <ul class="list-unstyled fs-sm gap-3 mb-0">#}
+                                {#                                        <li class="d-flex justify-content-between">#}
+                                {#                                            Subtotal (3 items):#}
+                                {#                                            <span class="text-dark-emphasis fw-medium">#}
+                                {#                                                $2,427.00#}
+                                {#                                            </span>#}
+                                {#                                        </li>#}
+                                {#                                        <li class="d-flex justify-content-between">#}
+                                {#                                            سود شما از خرید:#}
+                                {#                                            <span class="text-danger fw-medium">-$110.00</span>#}
+                                {#                                        </li>#}
+                                {#                                    </ul>#}
+                                <div class="border-top pt-4 mt-4">
+                                    <div class="d-flex justify-content-between mb-3">
+                                            <span class="fs-sm">
+                                                جمع سبد خرید:
+                                            </span>
+                                        <span class="h5 mb-0">
+                                            {{ cart_total | persian_numbers }}
+                                            <img class="toman" src="{% static 'svg/toman.svg' %}"/>
+                      </span>
+                                    </div>
+                                    <button type="submit" class="btn btn-lg btn-primary w-100" form="myform">
+                                         پرداخت و ثبت سفارش
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion bg-body-tertiary rounded-5 p-4">
+                            <div class="accordion-item border-0">
+                                <h3 class="accordion-header" id="promoCodeHeading">
+                                    <button type="button"
+                                            class="accordion-button animate-underline collapsed py-0 ps-sm-2 ps-lg-0 ps-xl-2"
+                                            data-bs-toggle="collapse" data-bs-target="#promoCode"
+                                            aria-expanded="false" aria-controls="promoCode">
+                                        <i class="ci-percent fs-xl me-2"></i>
+                                        <span class="animate-target me-2">
+                                                اعمال کد تخفیف
+                                            </span>
+                                    </button>
+                                </h3>
+                                <div class="accordion-collapse collapse" id="promoCode"
+                                     aria-labelledby="promoCodeHeading">
+                                    <div class="accordion-body pt-3 pb-2 ps-sm-2 px-lg-0 px-xl-2">
+                                        <form class="needs-validation d-flex gap-2" novalidate="">
+                                            <div class="position-relative w-100">
+                                                <input type="text" class="form-control"
+                                                       placeholder="Enter promo code" required="">
+                                                <div class="invalid-tooltip bg-transparent py-0">Enter a valid promo
+                                                    code!
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="btn btn-dark">Apply</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+            </div>
+        </section>
+    </main>
+
+{% endblock %}

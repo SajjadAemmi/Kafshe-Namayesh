@@ -5,7 +5,7 @@ from django.contrib.auth import login
 from django.http import HttpResponse
 from django.template import loader
 from django.views.decorators.csrf import csrf_protect
-from shop.models import Shoe, Member, Order, Cart, CartItem
+from shop.models import Shoe, Member, Order, OrderItem, Cart, CartItem
 from shop.cart import add_to_cart, remove_from_cart, get_cart_items, get_cart_total, get_or_create_cart
 from shop.orders import create_order
 
@@ -60,7 +60,7 @@ def add_to_cart(request, shoe_id):
         cart_item.quantity += 1
         cart_item.save()
 
-    return redirect('cart_detail')
+    return redirect('cart')
 
 
 def remove_from_cart(request, shoe_id):
@@ -71,22 +71,22 @@ def remove_from_cart(request, shoe_id):
     if cart_item:
         cart_item.delete()  # حذف آیتم
 
-    return redirect('cart_detail')  # بازگشت به صفحه سبد خرید
+    return redirect('cart')  # بازگشت به صفحه سبد خرید
 
 
-def cart_detail(request):
+def cart(request):
     cart, created = get_or_create_cart(request.user, request.session)
     cart_items = cart.items.all()
     cart_total = sum(item.get_total_price() for item in cart_items)
-    return render(request, 'cart_detail.html', {'cart_items': cart_items, 'cart_total': cart_total})
+    return render(request, 'cart.html', {'cart_items': cart_items, 'cart_total': cart_total})
 
 
 @login_required(login_url='/accounts/login/')
 def checkout(request):
-    cart = get_or_create_cart(request.user, request.session)
+    cart, created = get_or_create_cart(request.user, request.session)
 
     if not cart.items.exists():
-        return redirect('cart_detail')  # اگر سبد خالی بود برگرده
+        return redirect('cart')  # اگر سبد خالی بود برگرده
 
     # ساخت سفارش
     order = Order.objects.create(user=request.user if request.user.is_authenticated else None)
@@ -96,19 +96,20 @@ def checkout(request):
         OrderItem.objects.create(
             order=order,
             shoe=item.shoe,
-            quantity=item.quantity,
-            price=item.shoe.price,
+            quantity=item.quantity
         )
-        total_price += item.total_price()
+        total_price += item.get_total_price()
 
     order.total_price = total_price
     order.save()
 
+    cart_items = cart.items.all()
+    cart_total = sum(item.get_total_price() for item in cart_items)
+
     # پاک کردن سبد خرید
-    cart.items.all().delete()
+    # cart.items.all().delete()
 
-    return redirect('order_detail', order_id=order.id)
-
+    return render(request, 'checkout.html', {'order': order, 'cart_total': cart_total})
 
 @login_required
 def order_create(request):
@@ -121,7 +122,7 @@ def order_create(request):
 @login_required
 def order_detail(request, order_id):
     order = Order.objects.get(id=order_id, user=request.user)
-    return render(request, 'shop/order_detail.html', {'order': order})
+    return render(request, 'checkout.html', {'order': order})
 
 
 def members(request):
@@ -158,3 +159,9 @@ def signup(request):
     else:
         form = UserCreationForm()
     return render(request, "registration/signup.html", {"form": form})
+
+
+@login_required
+def order_list(request):
+    orders = request.user.orders.prefetch_related("items__shoe").all().order_by("-created_at")
+    return render(request, "user/orders.html", {"orders": orders})
