@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load persian_numbers %}
+
+{% block content %}
+<div class="container text-center py-5">
+    <div class="card mx-auto shadow-sm" style="max-width: 500px;">
+        <div class="card-body">
+            <img src="{% static 'img/success-icon.svg' %}" alt="Success" width="80" class="mb-3">
+            <h2 class="text-success mb-3">خرید شما با موفقیت انجام شد 🎉</h2>
+            <p class="mb-4">از خرید شما سپاسگزاریم. سفارش شما به‌زودی پردازش خواهد شد.</p>
+            <a href="{% url 'index' %}" class="btn btn-primary rounded-pill px-4">بازگشت به فروشگاه</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

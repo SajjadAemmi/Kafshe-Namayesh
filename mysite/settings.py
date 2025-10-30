@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'shop',
-    'storages'
+    'storages',
+    'azbankgateways'
 ]
 
 MIDDLEWARE = [
@@ -160,3 +161,22 @@ STORAGES = {
 }
 
 LOGOUT_REDIRECT_URL = '/'
+
+# اتصال به درگاه بانک
+AZ_IRANIAN_BANK_GATEWAYS = {
+   'GATEWAYS': {
+       'MELLAT': {
+           'TERMINAL_CODE': '1234',
+           'USERNAME': '<YOUR USERNAME>',
+           'PASSWORD': '<YOUR PASSWORD>',
+       },
+   },
+   'DEFAULT': 'MELLAT',
+   'CURRENCY': 'IRR', # اختیاری
+   'TRACKING_CODE_QUERY_PARAM': 'tc', # اختیاری
+   'TRACKING_CODE_LENGTH': 16, # اختیاری
+   'SETTING_VALUE_READER_CLASS': 'azbankgateways.readers.DefaultReader', # اختیاری
+   'BANK_PRIORITIES': [
+   ], # اختیاری
+    "IS_SAFE_GET_GATEWAY_PAYMENT": True,  # اختیاری، بهتر است True بزارید.
+}

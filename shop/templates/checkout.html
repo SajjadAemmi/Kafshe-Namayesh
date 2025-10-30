@@ -1,4 +1,4 @@
-{% extends "master.html" %}
+{% extends "base.html" %}
 
 {% load static %}
 {% load persian_numbers %}
@@ -451,6 +451,21 @@
                                 <input type="text" class="form-control form-control-lg rounded-pill" id="city"
                                        name="city" required>
                                 <div class="invalid-feedback">لطفاً شهر را وارد کنید.</div>
+                            </div>
+                        </div>
+
+                        <div class="row row-cols-1 row-cols-sm-2 g-3 g-ms-4 mb-3 mb-sm-4">
+                            <div class="col">
+                                <label for="zipcode" class="form-label">کد پستی *</label>
+                                <input type="text" class="form-control form-control-lg rounded-pill" id="zipcode"
+                                       name="zipcode" required>
+                                <div class="invalid-feedback">لطفاً کد پستی را وارد کنید.</div>
+                            </div>
+                            <div class="col">
+                                <label for="phone_number" class="form-label">شماره تماس *</label>
+                                <input type="text" class="form-control form-control-lg rounded-pill" id="phone_number"
+                                       name="phone_number" required>
+                                <div class="invalid-feedback">لطفاً شماره تماس را وارد کنید.</div>
                             </div>
                         </div>
 
