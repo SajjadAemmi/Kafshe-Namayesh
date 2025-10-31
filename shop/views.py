@@ -23,13 +23,48 @@ def index(request):
     })
 
 
-def products(request):
-    shoes = Shoe.objects.prefetch_related('images', 'comments').all()
-    template = loader.get_template('products.html')
+def products(request, shoe_type=None, shoe_category=None):
+    shoes = Shoe.objects.all()
+    page_title = "همه محصولات"
+
+    SHOE_TYPES_DICT = {
+        'kids': 'بچگانه',
+        'women': 'زنانه',
+        'men': 'مردانه',
+    }
+
+    SHOE_CATEGORY_DICT = {
+        'loafer': 'راحتی',
+        'sport': 'ورزشی',
+        'boot': 'بوت',
+        'sandal': 'صندل و تابستانی',
+        'leather': 'چرمی',
+        'classic': 'کلاسیک',
+    }
+
+    # فیلتر نوع کفش
+    if shoe_type:
+        if shoe_type not in SHOE_TYPES_DICT:
+            return render(request, '404.html', status=404)
+        shoes = shoes.filter(type=shoe_type)
+        page_title = f"کفش‌های {SHOE_TYPES_DICT[shoe_type]}"
+
+    # فیلتر دسته‌بندی کفش
+    if shoe_category:
+        if shoe_category not in SHOE_CATEGORY_DICT:
+            return render(request, '404.html', status=404)
+        shoes = shoes.filter(category=shoe_category)
+        # اگر قبلاً نوع مشخص شده، هر دو را در عنوان بیاور
+        if shoe_type:
+            page_title = f"کفش‌های {SHOE_CATEGORY_DICT[shoe_category]} {SHOE_TYPES_DICT[shoe_type]}"
+        else:
+            page_title = f"کفش‌های {SHOE_CATEGORY_DICT[shoe_category]}"
+
     context = {
         'shoes': shoes,
+        'page_title': page_title,
     }
-    return HttpResponse(template.render(context, request))
+    return render(request, 'products.html', context)
 
 
 def products_by_type(request, shoe_type):

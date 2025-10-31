@@ -18,165 +18,118 @@
             }
           }
         }">
-        <div class="swiper-wrapper">
+<div class="swiper-wrapper">
 
-            <!-- Category -->
-            <div class="swiper-slide">
-                <div class="hover-effect-opacity position-relative">
-                    <div class="d-flex justify-content-between position-relative z-2 ps-2 ps-xl-3">
-                        <div class="d-flex flex-column min-w-0 p-3">
-                            <h2 class="h5 text-nowrap pt-2 pt-xl-3">برای مردها</h2>
-                            <ul class="nav flex-column gap-2 mt-n1">
-                                <li class="d-flex w-100 pt-1">
-                                    <a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                                       href="shop-catalog-fashion.html">
-                                        کفش چرم
-                                    </a>
-                                </li>
-                                <li class="d-flex w-100 pt-1">
-                                    <a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                                       href="shop-catalog-fashion.html">
-                                        صندل و کفش تابستانی
-                                    </a>
-                                </li>
-                                <li class="d-flex w-100 pt-1">
-                                    <a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                                       href="shop-catalog-fashion.html">
-                                        کفش کلاسیک
-                                    </a>
-                                </li>
-                                <li class="d-flex w-100 pt-1">
-                                    <a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                                       href="shop-catalog-fashion.html">
-                                        کفش راحتی
-                                    </a>
-                                </li>
-                            </ul>
-                            <div class="nav hover-effect-target opacity-0 pb-2 pb-xl-3 mt-auto">
-                                <a class="nav-link animate-underline text-body-emphasis text-nowrap p-0"
-                                   href="/products/men">
-                                    <span class="animate-target">خرید</span>
-                                    <i class="ci-arrow-up-right fs-base ms-1"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="ratio w-100 align-self-end"
-                             style="max-width: 220px; --cz-aspect-ratio: calc(305 / 220 * 100%)">
-                            <img src="{% static 'img/home/categories/01.png' %}" alt="Image">
-                        </div>
+    <!-- Category: Men -->
+    <div class="swiper-slide">
+        <div class="hover-effect-opacity position-relative">
+            <div class="d-flex justify-content-between position-relative z-2 ps-2 ps-xl-3">
+                <div class="d-flex flex-column min-w-0 p-3">
+                    <h2 class="h5 text-nowrap pt-2 pt-xl-3">برای مردها</h2>
+                    <ul class="nav flex-column gap-2 mt-n1">
+                        <li><a class="nav-link animate-underline animate-target fw-normal p-0"
+                               href="{% url 'products_by_type_and_category' shoe_type='men' shoe_category='leather' %}">کفش چرم</a></li>
+                        <li><a class="nav-link animate-underline animate-target fw-normal p-0"
+                               href="{% url 'products_by_type_and_category' shoe_type='men' shoe_category='sandal' %}">صندل و کفش تابستانی</a></li>
+                        <li><a class="nav-link animate-underline animate-target fw-normal p-0"
+                               href="{% url 'products_by_type_and_category' shoe_type='men' shoe_category='classic' %}">کفش کلاسیک</a></li>
+                        <li><a class="nav-link animate-underline animate-target fw-normal p-0"
+                               href="{% url 'products_by_type_and_category' shoe_type='men' shoe_category='loafer' %}">کفش راحتی</a></li>
+                    </ul>
+                    <div class="nav hover-effect-target opacity-0 pb-2 pb-xl-3 mt-auto">
+                        <a class="nav-link animate-underline text-body-emphasis text-nowrap p-0"
+                           href="{% url 'products_by_type' shoe_type='men' %}">
+                            <span class="animate-target">خرید</span>
+                            <i class="ci-arrow-up-right fs-base ms-1"></i>
+                        </a>
                     </div>
-                    <span class="position-absolute top-0 start-0 w-100 h-100 rounded-5 d-none-dark"
-                          style="background: linear-gradient(119deg, #e9e0eb 0%, #f8eff1 52.24%)"></span>
-                    <span class="position-absolute top-0 start-0 w-100 h-100 rounded-5 d-none d-block-dark"
-                          style="background: linear-gradient(119deg, #2f2c3a 0%, #372e2f 52.24%)"></span>
+                </div>
+                <div class="ratio w-100 align-self-end"
+                     style="max-width: 220px; --cz-aspect-ratio: calc(305 / 220 * 100%)">
+                    <img src="{% static 'img/home/categories/01.png' %}" alt="Men Category">
                 </div>
             </div>
-
-            <!-- Category -->
-            <div class="swiper-slide">
-                <div class="hover-effect-opacity position-relative">
-                    <div class="d-flex justify-content-between position-relative z-2 ps-2 ps-xl-3">
-                        <div class="d-flex flex-column min-w-0 p-3">
-                            <h2 class="h5 text-nowrap pt-2 pt-xl-3">برای زن‌ها</h2>
-                            <ul class="nav flex-column gap-2 mt-n1">
-                                <li class="d-flex w-100 pt-1">
-                                    <a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                                       href="shop-catalog-fashion.html">
-                                        کفش چرم
-                                    </a>
-                                </li>
-                                <li class="d-flex w-100 pt-1">
-                                    <a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                                       href="shop-catalog-fashion.html">
-                                        صندل و کفش تابستانی
-                                    </a>
-                                </li>
-                                <li class="d-flex w-100 pt-1">
-                                    <a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                                       href="shop-catalog-fashion.html">
-                                        کفش کلاسیک
-                                    </a>
-                                </li>
-                                <li class="d-flex w-100 pt-1">
-                                    <a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                                       href="shop-catalog-fashion.html">
-                                        کفش راحتی
-                                    </a>
-                                </li>
-                            </ul>
-                            <div class="nav hover-effect-target opacity-0 pb-2 pb-xl-3 mt-auto">
-                                <a class="nav-link animate-underline text-body-emphasis text-nowrap p-0"
-                                   href="/products/women">
-                                    <span class="animate-target">خرید</span>
-                                    <i class="ci-arrow-up-right fs-base ms-1"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="ratio w-100 align-self-end rtl-flip"
-                             style="max-width: 220px; --cz-aspect-ratio: calc(305 / 220 * 100%)">
-                            <img src="{% static 'img/home/categories/02.png' %}" alt="Image">
-                        </div>
-                    </div>
-
-                    <span class="position-absolute top-0 start-0 w-100 h-100 rounded-5 d-none-dark"
-                          style="background: linear-gradient(124deg, #e2daec -29.7%, #e4eefd 65.5%)"></span>
-                    <span class="position-absolute top-0 start-0 w-100 h-100 rounded-5 d-none d-block-dark"
-                          style="background: linear-gradient(124deg, #37343b -29.7%, #222a36 65.5%)"></span>
-                </div>
-            </div>
-
-            <!-- Category -->
-            <div class="swiper-slide">
-                <div class="hover-effect-opacity position-relative">
-                    <div class="d-flex justify-content-between position-relative z-2 ps-2 ps-xl-3">
-                        <div class="d-flex flex-column min-w-0 p-3">
-                            <h2 class="h5 text-nowrap pt-2 pt-xl-3">برای بچه‌ها</h2>
-                            <ul class="nav flex-column gap-2 mt-n1">
-                                <li class="d-flex w-100 pt-1">
-                                    <a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                                       href="shop-catalog-fashion.html">
-                                        کفش چرم
-                                    </a>
-                                </li>
-                                <li class="d-flex w-100 pt-1">
-                                    <a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                                       href="shop-catalog-fashion.html">
-                                        صندل و کفش تابستانی
-                                    </a>
-                                </li>
-                                <li class="d-flex w-100 pt-1">
-                                    <a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                                       href="shop-catalog-fashion.html">
-                                        کفش کلاسیک
-                                    </a>
-                                </li>
-                                <li class="d-flex w-100 pt-1">
-                                    <a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                                       href="shop-catalog-fashion.html">
-                                        کفش راحتی
-                                    </a>
-                                </li>
-                            </ul>
-                            <div class="nav hover-effect-target opacity-0 pb-2 pb-xl-3 mt-auto">
-                                <a class="nav-link animate-underline text-body-emphasis text-nowrap p-0"
-                                   href="/products/kids">
-                                    <span class="animate-target">خرید</span>
-                                    <i class="ci-arrow-up-right fs-base ms-1"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="ratio w-100 align-self-end rtl-flip"
-                             style="max-width: 220px; --cz-aspect-ratio: calc(305 / 220 * 100%)">
-                            <img src="{% static 'img/home/categories/03.png' %}" alt="Image">
-                        </div>
-                    </div>
-                    <span class="position-absolute top-0 start-0 w-100 h-100 rounded-5 d-none-dark"
-                          style="background: linear-gradient(118deg, #e9e8e8 0%, #e2ecea 51.13%)"></span>
-                    <span class="position-absolute top-0 start-0 w-100 h-100 rounded-5 d-none d-block-dark"
-                          style="background: linear-gradient(118deg, #323232 0%, #252928 51.13%)"></span>
-                </div>
-            </div>
+            <span class="position-absolute top-0 start-0 w-100 h-100 rounded-5 d-none-dark"
+                  style="background: linear-gradient(119deg, #e9e0eb 0%, #f8eff1 52.24%)"></span>
+            <span class="position-absolute top-0 start-0 w-100 h-100 rounded-5 d-none d-block-dark"
+                  style="background: linear-gradient(119deg, #2f2c3a 0%, #372e2f 52.24%)"></span>
         </div>
+    </div>
+
+    <!-- Category: Women -->
+    <div class="swiper-slide">
+        <div class="hover-effect-opacity position-relative">
+            <div class="d-flex justify-content-between position-relative z-2 ps-2 ps-xl-3">
+                <div class="d-flex flex-column min-w-0 p-3">
+                    <h2 class="h5 text-nowrap pt-2 pt-xl-3">برای زن‌ها</h2>
+                    <ul class="nav flex-column gap-2 mt-n1">
+                        <li><a class="nav-link animate-underline animate-target fw-normal p-0"
+                               href="{% url 'products_by_type_and_category' shoe_type='women' shoe_category='leather' %}">کفش چرم</a></li>
+                        <li><a class="nav-link animate-underline animate-target fw-normal p-0"
+                               href="{% url 'products_by_type_and_category' shoe_type='women' shoe_category='sandal' %}">صندل و کفش تابستانی</a></li>
+                        <li><a class="nav-link animate-underline animate-target fw-normal p-0"
+                               href="{% url 'products_by_type_and_category' shoe_type='women' shoe_category='classic' %}">کفش کلاسیک</a></li>
+                        <li><a class="nav-link animate-underline animate-target fw-normal p-0"
+                               href="{% url 'products_by_type_and_category' shoe_type='women' shoe_category='loafer' %}">کفش راحتی</a></li>
+                    </ul>
+                    <div class="nav hover-effect-target opacity-0 pb-2 pb-xl-3 mt-auto">
+                        <a class="nav-link animate-underline text-body-emphasis text-nowrap p-0"
+                           href="{% url 'products_by_type' shoe_type='women' %}">
+                            <span class="animate-target">خرید</span>
+                            <i class="ci-arrow-up-right fs-base ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ratio w-100 align-self-end rtl-flip"
+                     style="max-width: 220px; --cz-aspect-ratio: calc(305 / 220 * 100%)">
+                    <img src="{% static 'img/home/categories/02.png' %}" alt="Women Category">
+                </div>
+            </div>
+            <span class="position-absolute top-0 start-0 w-100 h-100 rounded-5 d-none-dark"
+                  style="background: linear-gradient(124deg, #e2daec -29.7%, #e4eefd 65.5%)"></span>
+            <span class="position-absolute top-0 start-0 w-100 h-100 rounded-5 d-none d-block-dark"
+                  style="background: linear-gradient(124deg, #37343b -29.7%, #222a36 65.5%)"></span>
+        </div>
+    </div>
+
+    <!-- Category: Kids -->
+    <div class="swiper-slide">
+        <div class="hover-effect-opacity position-relative">
+            <div class="d-flex justify-content-between position-relative z-2 ps-2 ps-xl-3">
+                <div class="d-flex flex-column min-w-0 p-3">
+                    <h2 class="h5 text-nowrap pt-2 pt-xl-3">برای بچه‌ها</h2>
+                    <ul class="nav flex-column gap-2 mt-n1">
+                        <li><a class="nav-link animate-underline animate-target fw-normal p-0"
+                               href="{% url 'products_by_type_and_category' shoe_type='kids' shoe_category='leather' %}">کفش چرم</a></li>
+                        <li><a class="nav-link animate-underline animate-target fw-normal p-0"
+                               href="{% url 'products_by_type_and_category' shoe_type='kids' shoe_category='sandal' %}">صندل و کفش تابستانی</a></li>
+                        <li><a class="nav-link animate-underline animate-target fw-normal p-0"
+                               href="{% url 'products_by_type_and_category' shoe_type='kids' shoe_category='classic' %}">کفش کلاسیک</a></li>
+                        <li><a class="nav-link animate-underline animate-target fw-normal p-0"
+                               href="{% url 'products_by_type_and_category' shoe_type='kids' shoe_category='loafer' %}">کفش راحتی</a></li>
+                    </ul>
+                    <div class="nav hover-effect-target opacity-0 pb-2 pb-xl-3 mt-auto">
+                        <a class="nav-link animate-underline text-body-emphasis text-nowrap p-0"
+                           href="{% url 'products_by_type' shoe_type='kids' %}">
+                            <span class="animate-target">خرید</span>
+                            <i class="ci-arrow-up-right fs-base ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ratio w-100 align-self-end rtl-flip"
+                     style="max-width: 220px; --cz-aspect-ratio: calc(305 / 220 * 100%)">
+                    <img src="{% static 'img/home/categories/03.png' %}" alt="Kids Category">
+                </div>
+            </div>
+            <span class="position-absolute top-0 start-0 w-100 h-100 rounded-5 d-none-dark"
+                  style="background: linear-gradient(118deg, #e9e8e8 0%, #e2ecea 51.13%)"></span>
+            <span class="position-absolute top-0 start-0 w-100 h-100 rounded-5 d-none d-block-dark"
+                  style="background: linear-gradient(118deg, #323232 0%, #252928 51.13%)"></span>
+        </div>
+    </div>
+
+</div>
+
 
         <!-- Pagination (Bullets) -->
         <div class="swiper-pagination position-static mt-3 mt-sm-4"></div>
