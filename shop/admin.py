@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.html import format_html, format_html_join
-from .models import Shoe, ShoeImage, Comment, Cart, CartItem, Order, OrderItem
+from .models import Shoe, ShoeImage, Comment, Cart, CartItem, Order, OrderItem, FAQ
 
 
 # Register your models here.
@@ -89,3 +89,4 @@ admin.site.register(Cart, CartAdmin)
 admin.site.register(CartItem, CartItemAdmin)
 admin.site.register(Shoe, ShoeAdmin)
 admin.site.register(Comment)
+admin.site.register(FAQ)

@@ -52,6 +52,7 @@ class Comment(models.Model):
     shoe = models.ForeignKey(Shoe, related_name='comments', on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)  # Reference to the user model
     text = models.TextField()
+    rating = models.PositiveSmallIntegerField(default=5)  # ⭐
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -110,3 +111,12 @@ class OrderItem(models.Model):
 
     def get_total_price(self):
         return self.shoe.price * self.quantity
+
+
+class FAQ(models.Model):
+    question = models.CharField(max_length=255)
+    answer = models.TextField()
+    is_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.question

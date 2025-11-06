@@ -35,40 +35,7 @@
                 <div class="col-lg-6 fs-sm">
                     {{ shoe.details }}
                 </div>
-                <div class="col-lg-6 col-xl-5 offset-xl-1">
-                    <div class="row row-cols-2 g-4 my-0 my-lg-n2">
-                        <div class="col">
-                            <div class="py-md-1 py-lg-2 pe-sm-2">
-                                <i class="ci-feather fs-3 text-body-emphasis mb-2 mb-md-3"></i>
-                                <h6 class="fs-sm mb-2">Lightweight</h6>
-                                <p class="fs-sm mb-0">Designed with lightweight European fabrics, perfect for life on
-                                    the go.</p>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="py-md-1 py-lg-2 ps-sm-2">
-                                <i class="ci-hanger fs-3 text-body-emphasis mb-2 mb-md-3"></i>
-                                <h6 class="fs-sm mb-2">Perfect fit</h6>
-                                <p class="fs-sm mb-0">Our clothing is designed to fit any body type, find your perfect
-                                    look!</p>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="py-md-1 py-lg-2 pe-sm-2">
-                                <i class="ci-delivery-2 fs-3 text-body-emphasis mb-2 mb-md-3"></i>
-                                <h6 class="fs-sm mb-2">Free delivery</h6>
-                                <p class="fs-sm mb-0">Get free door-to-door delivery for all orders over $250.</p>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="py-md-1 py-lg-2 ps-sm-2">
-                                <i class="ci-leaf fs-3 text-body-emphasis mb-2 mb-md-3"></i>
-                                <h6 class="fs-sm mb-2">Sustainability</h6>
-                                <p class="fs-sm mb-0">We are proud to offer a Lifetime Guarantee on all products.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
 
@@ -123,10 +90,10 @@
         <!-- Reviews tab -->
         <div class="tab-pane fade" id="reviews-tab-pane" role="tabpanel" aria-labelledby="reviews-tab">
 
-            <!-- Heading + Add review button -->
+            <!-- Heading -->
             <div class="d-sm-flex align-items-center justify-content-between border-bottom pb-2 pb-sm-3">
                 <div class="mb-3 me-sm-3">
-                    <h2 class="h5 pb-2 mb-1">Customer reviews</h2>
+                    <h2 class="h5 pb-2 mb-1">نظرات کاربران</h2>
                     <div class="d-flex align-items-center text-body-secondary fs-sm">
                         <div class="d-flex gap-1 me-2">
                             <i class="ci-star-filled text-warning"></i>
@@ -135,87 +102,104 @@
                             <i class="ci-star-filled text-warning"></i>
                             <i class="ci-star text-body-tertiary opacity-75"></i>
                         </div>
-                        Based on 23 reviews
+                        بر اساس {{ shoe.comments.count }} نظر
                     </div>
                 </div>
-                <button type="button" class="btn btn-outline-dark mb-3" data-bs-toggle="modal"
-                        data-bs-target="#reviewForm">Leave a review
-                </button>
+
+                {% if user.is_authenticated %}
+                    <button type="button" class="btn btn-outline-dark mb-3" data-bs-toggle="modal"
+                            data-bs-target="#reviewForm">
+                        ثبت نظر
+                    </button>
+                {% endif %}
             </div>
 
-            {% for comment in shoe.comments.all %}
-                <!-- Review -->
+            <!-- Reviews List -->
+            {% for comment in page_obj %}
                 <div class="border-bottom py-4">
                     <div class="row py-sm-2">
                         <div class="col-md-4 col-lg-3 mb-3 mb-md-0">
                             <div class="d-flex h6 mb-2">
                                 {{ comment.user.username }}
                                 <i class="ci-check-circle text-success mt-1 ms-2" data-bs-toggle="tooltip"
-                                   data-bs-custom-class="tooltip-sm" title="Verified customer"></i>
+                                   title="خریدار تأیید شده"></i>
                             </div>
                             <div class="fs-sm mb-2 mb-md-3">{{ comment.created_at|date:"Y-m-d H:i" }}</div>
                             <div class="d-flex gap-1 fs-sm">
-                                <i class="ci-star-filled text-warning"></i>
-                                <i class="ci-star-filled text-warning"></i>
-                                <i class="ci-star-filled text-warning"></i>
-                                <i class="ci-star-filled text-warning"></i>
-                                <i class="ci-star-filled text-warning"></i>
+                                {% for i in "12345" %}
+                                    <i class="ci-star{% if forloop.counter <= comment.rating %}-filled text-warning{% else %} text-body-tertiary{% endif %}"></i>
+                                {% endfor %}
                             </div>
                         </div>
                         <div class="col-md-8 col-lg-9">
-                            <p class="mb-md-4">
-                                {{ comment.text }}
-                            </p>
-                            <div class="d-sm-flex justify-content-between">
-                                <div class="d-flex align-items-center fs-sm fw-medium text-dark-emphasis pb-2 pb-sm-0 mb-1 mb-sm-0">
-                                    <i class="ci-check fs-base me-1" style="margin-top: .125rem"></i>
-                                    Yes, I recommend this product
-                                </div>
-                                <div class="d-flex align-items-center gap-2">
-                                    <div class="fs-sm fw-medium text-dark-emphasis me-1">Helpful?</div>
-                                    <button type="button" class="btn btn-sm btn-secondary">
-                                        <i class="ci-thumbs-up fs-sm ms-n1 me-1"></i>
-                                        0
-                                    </button>
-                                </div>
-                            </div>
+                            <p class="mb-md-4">{{ comment.text }}</p>
                         </div>
                     </div>
                 </div>
-                  
             {% empty %}
-                <p>
-                    می‌توانید در مورد این کالا نظر دهید.
-                </p>
+                <p class="mt-3">هنوز نظری ثبت نشده است. اولین نفر باشید!</p>
             {% endfor %}
 
             <!-- Pagination -->
-            <nav class="mt-3 pt-2 pt-md-3" aria-label="Reviews pagination">
-                <ul class="pagination">
-                    <li class="page-item active" aria-current="page">
-                  <span class="page-link">
-                    1
-                    <span class="visually-hidden">(current)</span>
-                  </span>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#!">2</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#!">3</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#!">4</a>
-                    </li>
-                    <li class="page-item">
-                        <span class="page-link pe-none">...</span>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#!">6</a>
-                    </li>
-                </ul>
-            </nav>
+            {% if page_obj.has_other_pages %}
+                <nav class="mt-3 pt-2 pt-md-3" aria-label="Reviews pagination">
+                    <ul class="pagination justify-content-center">
+                        {% if page_obj.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">قبلی</a>
+                            </li>
+                        {% endif %}
+
+                        {% for num in page_obj.paginator.page_range %}
+                            {% if page_obj.number == num %}
+                                <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+                            {% else %}
+                                <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if page_obj.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.next_page_number }}">بعدی</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            {% endif %}
+
+            <!-- Review Modal -->
+            {% if user.is_authenticated %}
+                <div class="modal fade" id="reviewForm" tabindex="-1" aria-labelledby="reviewFormLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <form method="post">
+                                {% csrf_token %}
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="reviewFormLabel">ثبت نظر جدید</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label for="id_rating" class="form-label">امتیاز (۱ تا ۵)</label>
+                                        {{ form.rating }}
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="id_text" class="form-label">نظر شما</label>
+                                        {{ form.text }}
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-dark">ارسال نظر</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
         </div>
+
     </div>
 </section>
 

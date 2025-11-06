@@ -7,17 +7,20 @@
             <div class="col-md-auto col-xl-2 text-center order-md-1 pt-4 pt-md-0">
                 <ul class="nav d-inline-flex flex-md-column justify-content-center align-items-center gap-md-2">
                     <li class="animate-underline my-1 mx-2 m-md-0">
-                        <a class="nav-link d-inline-flex fw-normal p-0 animate-target" href="/categoty/men">
+                        <a class="nav-link d-inline-flex fw-normal p-0 animate-target"
+                           href="{% url 'products_by_type' shoe_type='women' %}">
                             کفش زنانه
                         </a>
                     </li>
                     <li class="animate-underline my-1 mx-2 m-md-0">
-                        <a class="nav-link d-inline-flex fw-normal p-0 animate-target" href="/categoty/men">
+                        <a class="nav-link d-inline-flex fw-normal p-0 animate-target"
+                           href="{% url 'products_by_type' shoe_type='men' %}">
                             کفش مردانه
                         </a>
                     </li>
                     <li class="animate-underline my-1 mx-2 m-md-0">
-                        <a class="nav-link d-inline-flex fw-normal p-0 animate-target" href="#!">
+                        <a class="nav-link d-inline-flex fw-normal p-0 animate-target"
+                           href="{% url 'products_by_type' shoe_type='kids' %}">
                             کفش بچگانه
                         </a>
                     </li>

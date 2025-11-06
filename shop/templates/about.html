@@ -11,141 +11,247 @@
 
     <main class="content-wrapper">
 
-  <!-- Hero -->
+        <!-- Hero -->
 
-  <section class="container pt-5 mt-1 mt-sm-2 mt-md-4 mt-lg-5">
-    <div class="text-center pb-2 pb-sm-3 pb-lg-0 pb-xxl-2 mx-auto mb-4 mb-lg-5" style="max-width: 650px">
-      <h1 class="text-body fs-xs fw-medium text-uppercase mb-sm-4">به فروشگاه کفش ما خوش آمدید</h1>
-      <h2 class="h1 mb-0">ما باور داریم راحتی و کیفیت باید برای همه در دسترس باشد</h2>
-    </div>
-    <div class="position-relative">
-      <div class="ratio" style="--cz-aspect-ratio: calc(672 / 1296 * 100%)">
-        <img src="{% static 'img/about/v2/hero.jpg' %}" class="rounded-5" alt="کفش باکیفیت">
-      </div>
-      <a class="btn btn-lg btn-light rounded-pill position-absolute top-50 start-50 translate-middle z-2"
-         href="https://www.youtube.com/watch?v=kkiJftHG3Wo" data-glightbox="" data-gallery="video">
-        <i class="ci-play fs-lg ms-n1 me-2"></i>
-        مشاهده ویدیو
-      </a>
-    </div>
-  </section>
-
-  <!-- Features -->
-
-  <section class="container pt-5 mt-1 mt-sm-3 mt-md-4 mt-lg-5">
-    <div class="row row-cols-1 row-cols-md-3 gy-3 gy-sm-4 gx-2 gx-lg-4">
-      <div class="col text-center">
-        <svg class="d-block text-dark-emphasis mx-auto mb-3 mb-lg-4" width="64" height="64" fill="currentColor">
-          <use xlink:href="#ci-leaf"></use>
-        </svg>
-        <h3 class="h5">دوست‌دار محیط زیست</h3>
-        <p class="fs-sm px-5 mb-md-0">کفش‌های ما با بهره‌گیری از چرم و مواد طبیعی، نه‌تنها بادوام بلکه سازگار با محیط زیست هستند.</p>
-      </div>
-      <div class="col text-center">
-        <svg class="d-block text-dark-emphasis mx-auto mb-3 mb-lg-4" width="64" height="64" fill="currentColor">
-          <use xlink:href="#ci-quality"></use>
-        </svg>
-        <h3 class="h5">کیفیت بی‌رقیب</h3>
-        <p class="fs-sm px-5 mb-md-0">هر جفت کفش با دقت و ظرافت توسط استادکاران ایرانی ساخته می‌شود تا تجربه‌ای راحت و ماندگار فراهم شود.</p>
-      </div>
-      <div class="col text-center">
-        <svg class="d-block text-dark-emphasis mx-auto mb-3 mb-lg-4" width="64" height="64" fill="currentColor">
-          <use xlink:href="#ci-delivery"></use>
-        </svg>
-        <h3 class="h5">ارسال به سراسر کشور</h3>
-        <p class="fs-sm px-5 mb-md-0">در هر نقطه از ایران باشید، سفارش شما در کوتاه‌ترین زمان درب منزل تحویل داده می‌شود.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Image + Text -->
-
-  <section class="container pt-5 pb-5 mt-md-4 mt-xl-5 mb-xxl-3">
-    <h2 class="h1 text-center pt-xxl-3 mx-auto mb-2" style="max-width: 620px">
-      طراحی الهام‌بخش برای گامی مطمئن‌تر
-    </h2>
-    <div class="row py-4 py-lg-5">
-      <div class="col-md-6 col-lg-7">
-        <div class="position-relative h-100">
-          <div class="ratio ratio-16x9"></div>
-          <img src="{% static 'img/blog/grid/v2/01.jpg' %}" class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover rounded-5" alt="کفش چرمی مردانه">
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-5">
-        <div class="pt-4 py-md-5 my-lg-3 my-xl-4 my-xxl-5 ps-md-3 ps-lg-4 ps-xxl-5">
-          <h3 class="mb-4">طراحی طبیعی و سازگار با محیط</h3>
-          <p>در طراحی کفش‌ها، ما از مواد طبیعی مانند چرم گیاهی، پارچه‌های قابل بازیافت و زیره‌های سبک استفاده می‌کنیم تا راحتی و سلامت پاهایتان تضمین شود.</p>
-          <hr class="my-lg-5">
-          <div class="d-flex gap-3">
-            <span class="display-5 text-success-emphasis">75%</span>
-            <span class="h6 pt-1 mb-0">از محصولات ما با مواد طبیعی و دوست‌دار محیط زیست ساخته می‌شوند</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-```
-<div class="row py-4 py-lg-5">
-  <div class="col-md-6 col-lg-7 order-md-2">
-    <div class="position-relative h-100">
-      <div class="ratio ratio-16x9"></div>
-      <img src="{% static 'img/about/v2/shoe_1.jpg' %}" class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover rounded-5" alt="کفش اسپرت زنانه">
-    </div>
-  </div>
-  <div class="col-md-6 col-lg-5 order-md-1">
-    <div class="pt-4 py-md-5 my-lg-3 my-xl-4 my-xxl-5 pe-md-3 pe-lg-4 pe-xxl-5">
-      <h3 class="mb-4">کیفیت در هر دوخت</h3>
-      <p>تمامی مراحل تولید از انتخاب مواد اولیه تا دوخت نهایی با دقت کنترل می‌شود تا کفشی با دوام، سبک و زیبا به دست شما برسد.</p>
-      <hr class="my-lg-5">
-      <figure class="mb-0">
-        <blockquote class="blockquote">
-          <p class="fs-base">«هر کفش یک اثر هنری است؛ حاصل ترکیب تجربه، عشق و دقت در جزئیات.»</p>
-        </blockquote>
-        <figcaption class="blockquote-footer mb-0">رضا، طراح کفش</figcaption>
-      </figure>
-    </div>
-  </div>
-</div>
-```
-
-  </section>
-
-  <!-- Features -->
-
-  <section class="bg-dark py-5 mt-n2 mt-sm-0" data-bs-theme="dark">
-    <div class="container pt-1 pt-sm-2 pt-md-3 pb-md-2 pt-lg-4 pb-lg-3 pb-xl-4 pt-xl-5 pb-xxl-5 mt-xxl-3">
-      <div class="row">
-        <div class="col-lg-3 d-flex flex-column flex-sm-row flex-lg-column align-items-center align-items-lg-start pb-3 mb-3 mb-md-4">
-          <h2 class="h1 text-center text-sm-start mb-sm-0 mb-lg-5 me-sm-4 me-lg-0">سه ویژگی متمایز</h2>
-          <a class="btn btn-lg btn-outline-light rounded-pill ms-sm-auto ms-lg-0" href="{% url 'products' %}">
-              مشاهده محصولات
-          </a>
-        </div>
-        <div class="col-lg-9">
-          <div class="overflow-auto" data-simplebar="">
-            <div class="d-flex gap-4">
-              <div class="w-100" style="min-width: 230px">
-                <img src="{% static 'img/about/v2/feature01.jpg' %}" class="d-block rounded-4 mb-4" alt="توجه به مشتری">
-                <h3 class="h5 pb-1 mb-2">توجه به مشتری</h3>
-                <p class="text-body fs-sm mb-4">ما به نیاز و سلیقه هر مشتری گوش می‌دهیم تا کفشی دقیقاً مطابق انتظارش ارائه دهیم.</p>
-              </div>
-              <div class="w-100" style="min-width: 230px">
-                <img src="{% static 'img/about/v2/feature02.jpg' %}" class="d-block rounded-4 mb-4" alt="جزئیات">
-                <h3 class="h5 pb-1 mb-2">توجه به جزئیات</h3>
-                <p class="text-body fs-sm mb-4">از طراحی قالب تا دوخت نهایی، هر مرحله با دقت بررسی می‌شود تا بهترین نتیجه حاصل شود.</p>
-              </div>
-              <div class="w-100" style="min-width: 230px">
-                <img src="{% static 'img/about/v2/feature03.jpg' %}" class="d-block rounded-4 mb-4" alt="اعتبار">
-                <h3 class="h5 pb-1 mb-2">تعهد به اعتبار</h3>
-                <p class="text-body fs-sm mb-4">پایبندی به کیفیت، صداقت و زمان‌بندی تولید، پایه‌گذار اعتبار برند ماست.</p>
-              </div>
+        <section class="container pt-5 mt-1 mt-sm-2 mt-md-4 mt-lg-5">
+            <div class="text-center pb-2 pb-sm-3 pb-lg-0 pb-xxl-2 mx-auto mb-4 mb-lg-5" style="max-width: 650px">
+                <h1 class="text-body fs-xs fw-medium text-uppercase mb-sm-4">به فروشگاه کفش ما خوش آمدید</h1>
+                <h2 class="h1 mb-0">ما باور داریم راحتی و کیفیت باید برای همه در دسترس باشد</h2>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+            <div class="position-relative">
+                <div class="row row-cols-2 g-4 my-0 my-lg-n2">
+                    <div class="col">
+                        <div class="py-md-1 py-lg-2 pe-sm-2 text-center text-sm-start">
+                            <i class="ci-feather fs-3 text-body-emphasis mb-2 mb-md-3"></i>
+                            <h6 class="fs-sm mb-2">سبک و راحت</h6>
+                            <p class="fs-sm mb-0">
+                                کفش‌های ما با استفاده از متریال سبک و باکیفیت طراحی شده‌اند تا در هر موقعیتی احساس
+                                راحتی کنید.
+                            </p>
+                        </div>
+                    </div>
 
-</main>
+                    <div class="col">
+                        <div class="py-md-1 py-lg-2 ps-sm-2 text-center text-sm-start">
+                            <i class="ci-hanger fs-3 text-body-emphasis mb-2 mb-md-3"></i>
+                            <h6 class="fs-sm mb-2">اندازه و فرم ایده‌آل</h6>
+                            <p class="fs-sm mb-0">
+                                طراحی دقیق و قالب‌بندی استاندارد، باعث می‌شود کفش‌ها کاملاً با فرم پای شما هماهنگ
+                                باشند.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="py-md-1 py-lg-2 pe-sm-2 text-center text-sm-start">
+                            <i class="ci-delivery-2 fs-3 text-body-emphasis mb-2 mb-md-3"></i>
+                            <h6 class="fs-sm mb-2">ارسال رایگان</h6>
+                            <p class="fs-sm mb-0">
+                                برای سفارش‌های بالای ۱٬۰۰۰٬۰۰۰ تومان، ارسال رایگان به سراسر کشور انجام می‌شود.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="py-md-1 py-lg-2 ps-sm-2 text-center text-sm-start">
+                            <i class="ci-leaf fs-3 text-body-emphasis mb-2 mb-md-3"></i>
+                            <h6 class="fs-sm mb-2">کیفیت و ماندگاری بالا</h6>
+                            <p class="fs-sm mb-0">
+                                تمامی محصولات فروشگاه ما دارای تضمین کیفیت هستند و با رعایت اصول استاندارد تولید
+                                می‌شوند.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+
+        <section class="container pt-5 mt-1 mt-sm-3 mt-md-4 mt-lg-5">
+            <div class="row row-cols-1 row-cols-md-3 gy-3 gy-sm-4 gx-2 gx-lg-4">
+                <div class="col text-center">
+                    <svg class="d-block text-dark-emphasis mx-auto mb-3 mb-lg-4" width="64" height="64"
+                         fill="currentColor">
+                        <use xlink:href="#ci-leaf"></use>
+                    </svg>
+                    <h3 class="h5">دوست‌دار محیط زیست</h3>
+                    <p class="fs-sm px-5 mb-md-0">کفش‌های ما با بهره‌گیری از چرم و مواد طبیعی، نه‌تنها بادوام بلکه
+                        سازگار با محیط زیست هستند.</p>
+                </div>
+                <div class="col text-center">
+                    <svg class="d-block text-dark-emphasis mx-auto mb-3 mb-lg-4" width="64" height="64"
+                         fill="currentColor">
+                        <use xlink:href="#ci-quality"></use>
+                    </svg>
+                    <h3 class="h5">کیفیت بی‌رقیب</h3>
+                    <p class="fs-sm px-5 mb-md-0">هر جفت کفش با دقت و ظرافت توسط استادکاران ایرانی ساخته می‌شود تا
+                        تجربه‌ای راحت و ماندگار فراهم شود.</p>
+                </div>
+                <div class="col text-center">
+                    <svg class="d-block text-dark-emphasis mx-auto mb-3 mb-lg-4" width="64" height="64"
+                         fill="currentColor">
+                        <use xlink:href="#ci-delivery"></use>
+                    </svg>
+                    <h3 class="h5">ارسال به سراسر کشور</h3>
+                    <p class="fs-sm px-5 mb-md-0">در هر نقطه از ایران باشید، سفارش شما در کوتاه‌ترین زمان درب منزل تحویل
+                        داده می‌شود.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Image + Text -->
+
+        <section class="container pt-5 pb-5 mt-md-4 mt-xl-5 mb-xxl-3">
+            <h2 class="h1 text-center pt-xxl-3 mx-auto mb-2" style="max-width: 620px">
+                طراحی الهام‌بخش برای گامی مطمئن‌تر
+            </h2>
+            <div class="row py-4 py-lg-5">
+                <div class="col-md-6 col-lg-7">
+                    <div class="position-relative h-100">
+                        <div class="ratio ratio-16x9"></div>
+                        <img src="{% static 'img/blog/grid/v2/01.jpg' %}"
+                             class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover rounded-5"
+                             alt="کفش چرمی مردانه">
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-5">
+                    <div class="pt-4 py-md-5 my-lg-3 my-xl-4 my-xxl-5 ps-md-3 ps-lg-4 ps-xxl-5">
+                        <h3 class="mb-4">طراحی طبیعی و سازگار با محیط</h3>
+                        <p>در طراحی کفش‌ها، ما از مواد طبیعی مانند چرم گیاهی، پارچه‌های قابل بازیافت و زیره‌های سبک
+                            استفاده می‌کنیم تا راحتی و سلامت پاهایتان تضمین شود.</p>
+                        <hr class="my-lg-5">
+                        <div class="d-flex gap-3">
+                            <span class="display-5 text-success-emphasis">75%</span>
+                            <span class="h6 pt-1 mb-0">از محصولات ما با مواد طبیعی و دوست‌دار محیط زیست ساخته می‌شوند</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            ```
+            <div class="row py-4 py-lg-5">
+                <div class="col-md-6 col-lg-7 order-md-2">
+                    <div class="position-relative h-100">
+                        <div class="ratio ratio-16x9"></div>
+                        <img src="{% static 'img/about/v2/shoe_1.jpg' %}"
+                             class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover rounded-5"
+                             alt="کفش اسپرت زنانه">
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-5 order-md-1">
+                    <div class="pt-4 py-md-5 my-lg-3 my-xl-4 my-xxl-5 pe-md-3 pe-lg-4 pe-xxl-5">
+                        <h3 class="mb-4">کیفیت در هر دوخت</h3>
+                        <p>تمامی مراحل تولید از انتخاب مواد اولیه تا دوخت نهایی با دقت کنترل می‌شود تا کفشی با دوام، سبک
+                            و زیبا به دست شما برسد.</p>
+                        <hr class="my-lg-5">
+                        <figure class="mb-0">
+                            <blockquote class="blockquote">
+                                <p class="fs-base">«هر کفش یک اثر هنری است؛ حاصل ترکیب تجربه، عشق و دقت در جزئیات.»</p>
+                            </blockquote>
+                            <figcaption class="blockquote-footer mb-0">رضا، طراح کفش</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+            ```
+
+        </section>
+
+        <!-- Features -->
+
+        <section class="bg-dark py-5 mt-n2 mt-sm-0" data-bs-theme="dark">
+            <div class="container pt-1 pt-sm-2 pt-md-3 pb-md-2 pt-lg-4 pb-lg-3 pb-xl-4 pt-xl-5 pb-xxl-5 mt-xxl-3">
+                <div class="row">
+                    <div class="col-lg-3 d-flex flex-column flex-sm-row flex-lg-column align-items-center align-items-lg-start pb-3 mb-3 mb-md-4">
+                        <h2 class="h1 text-center text-sm-start mb-sm-0 mb-lg-5 me-sm-4 me-lg-0">سه ویژگی متمایز</h2>
+                        <a class="btn btn-lg btn-outline-light rounded-pill ms-sm-auto ms-lg-0"
+                           href="{% url 'products' %}">
+                            مشاهده محصولات
+                        </a>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="overflow-auto" data-simplebar="">
+                            <div class="d-flex gap-4">
+                                <div class="w-100" style="min-width: 230px">
+                                    <img src="{% static 'img/about/v2/feature01.jpg' %}" class="d-block rounded-4 mb-4"
+                                         alt="توجه به مشتری">
+                                    <h3 class="h5 pb-1 mb-2">توجه به مشتری</h3>
+                                    <p class="text-body fs-sm mb-4">ما به نیاز و سلیقه هر مشتری گوش می‌دهیم تا کفشی
+                                        دقیقاً مطابق انتظارش ارائه دهیم.</p>
+                                </div>
+                                <div class="w-100" style="min-width: 230px">
+                                    <img src="{% static 'img/about/v2/feature02.jpg' %}" class="d-block rounded-4 mb-4"
+                                         alt="جزئیات">
+                                    <h3 class="h5 pb-1 mb-2">توجه به جزئیات</h3>
+                                    <p class="text-body fs-sm mb-4">از طراحی قالب تا دوخت نهایی، هر مرحله با دقت بررسی
+                                        می‌شود تا بهترین نتیجه حاصل شود.</p>
+                                </div>
+                                <div class="w-100" style="min-width: 230px">
+                                    <img src="{% static 'img/about/v2/feature03.jpg' %}" class="d-block rounded-4 mb-4"
+                                         alt="اعتبار">
+                                    <h3 class="h5 pb-1 mb-2">تعهد به اعتبار</h3>
+                                    <p class="text-body fs-sm mb-4">پایبندی به کیفیت، صداقت و زمان‌بندی تولید، پایه‌گذار
+                                        اعتبار برند ماست.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Store locations + Map in lightbox -->
+        <section class="container py-1 py-sm-2 py-md-3 py-lg-4 py-xl-5 my-xxl-3">
+            <div class="row row-cols-1 row-cols-md-2 g-0 overflow-hidden rounded-5 mt-5"> <!-- Map -->
+                <div class="col position-relative">
+                    <div class="ratio ratio-4x3"></div>
+                    <img src="{% static 'img/about/v2/store_2.jpg' %}"
+                         class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover" alt="Image">
+                    <div class="position-absolute start-0 bottom-0 d-flex align-items-end w-100 h-100 z-2 p-4"><a
+                            class="btn btn-lg btn-light rounded-pill m-md-2"
+                            href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1713.9015435067577!2d59.61224565226251!3d36.29337144050711!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f6c91e050b63a4f%3A0xfaa8d0fe56a2034a!2sArad%20tower!5e1!3m2!1sen!2s!4v1762422894160!5m2!1sen!2s"
+                            data-glightbox="width: 100vw; height: 100vh;" data-gallery="map"> <i
+                            class="ci-map fs-lg ms-n1 me-2"></i> نمایش روی نقشه </a></div>
+                </div> <!-- Contact details -->
+                <div class="col bg-body-tertiary order-md-1 py-5 px-4 px-xl-5">
+                    <div class="py-md-4 py-lg-5 px-md-4 px-lg-5"><h1 class="pb-2 pb-sm-3 pb-lg-0 mb-md-4 mb-lg-5">
+                        فروشگاه ما
+                    </h1>
+                        <ul class="list-unstyled pb-sm-2 mb-0">
+                            <li class="d-flex"><i class="ci-map-pin fs-lg mt-1"></i>
+                                <span class="ps-2 ms-1">
+                                ایران، مشهد
+                                <br>
+                                خیابان شیرازی، شیرازی ۵، برج آراد، طبقه ۱-، واحد ۴۶
+                                </span>
+                            </li>
+                            <li class="nav animate-underline">
+                                <i class="ci-phone fs-lg mt-1 pe-2 me-1"></i>
+                                <a class="nav-link animate-target fs-base fw-normal p-0" href="tel:+989158084820">
+                                    09158084820
+                                </a>
+
+                            </li>
+                            <li class="nav animate-underline">
+                                <i class="ci-phone fs-lg mt-1 pe-2 me-1"></i>
+                                <a class="nav-link animate-target fs-base fw-normal p-0" href="tel:+989384162200">
+                                    09384162200
+                                </a>
+                            </li>
+                            <li class="nav animate-underline">
+                                <i class="ci-mail fs-lg mt-1 pe-2 me-1"></i>
+                                <a class="nav-link animate-target fs-base fw-normal p-0"
+                                   href="mailto:info@kafshenamayesh.ir">
+                                    info@kafshenamayesh.ir
+                                </a>
+                            </li>
+                        </ul>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
 {% endblock %}

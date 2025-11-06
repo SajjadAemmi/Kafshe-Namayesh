@@ -6,220 +6,218 @@
 
 {% block content %}
 
-    <main class="content-wrapper">
-        <div class="container py-5 mt-n2 mt-sm-0">
-            <div class="row pt-md-2 pt-lg-3 pb-sm-2 pb-md-3 pb-lg-4 pb-xl-5">
+<main class="content-wrapper">
+    <div class="container py-5 mt-n2 mt-sm-0">
+        <div class="row pt-md-2 pt-lg-3 pb-sm-2 pb-md-3 pb-lg-4 pb-xl-5">
 
-                <!-- Sidebar navigation that turns into offcanvas on screens < 992px wide (lg breakpoint) -->
-                {% include "user/sidebar.html" %}
+            {% include "user/sidebar.html" %}
 
-                <!-- Personal info content -->
-                <div class="col-lg-9">
-                    <div class="ps-lg-3 ps-xl-0">
+            <div class="col-lg-9">
+                <div class="ps-lg-3 ps-xl-0">
 
-                        <!-- Page title -->
-                        <h1 class="h2 mb-1 mb-sm-2">
-                            اطلاعات حساب کاربری
-                        </h1>
+                    <h1 class="h2 mb-1 mb-sm-2">
+                        اطلاعات حساب کاربری
+                    </h1>
 
-                        <!-- Basic info -->
-                        <div class="border-bottom py-4">
-                            <div class="nav flex-nowrap align-items-center justify-content-between pb-1 mb-3">
-                                <h2 class="h6 mb-0">Basic info</h2>
-                                <a class="nav-link hiding-collapse-toggle text-decoration-underline p-0 collapsed"
-                                   href=".basic-info" data-bs-toggle="collapse" aria-expanded="false"
-                                   aria-controls="basicInfoPreview basicInfoEdit">Edit</a>
-                            </div>
-                            <div class="collapse basic-info show" id="basicInfoPreview">
-                                <ul class="list-unstyled fs-sm m-0">
-                                    <li>{{ user.username }}</li>
-                                    <li>May 12, 1996</li>
-                                    <li>English</li>
-                                </ul>
-                            </div>
-                            <div class="collapse basic-info" id="basicInfoEdit">
-                                <form class="row g-3 g-sm-4 needs-validation" novalidate="">
-                                    <div class="col-sm-6">
-                                        <label for="fn" class="form-label">First name</label>
-                                        <div class="position-relative">
-                                            <input type="text" class="form-control" id="fn" value="Susan" required="">
-                                            <div class="invalid-feedback">Please enter your first name!</div>
-                                        </div>
+                    <!-- Basic info -->
+                    <div class="border-bottom py-4">
+                        <div class="nav flex-nowrap align-items-center justify-content-between pb-1 mb-3">
+                            <h2 class="h6 mb-0">اطلاعات پایه</h2>
+                            <a class="nav-link hiding-collapse-toggle text-decoration-underline p-0 collapsed"
+                               href=".basic-info" data-bs-toggle="collapse" aria-expanded="false"
+                               aria-controls="basicInfoPreview basicInfoEdit">ویرایش</a>
+                        </div>
+                        <div class="collapse basic-info show" id="basicInfoPreview">
+                            <ul class="list-unstyled fs-sm m-0">
+                                <li>{{ user.username }}</li>
+                                <li>۱۲ مه ۱۹۹۶</li>
+                                <li>انگلیسی</li>
+                            </ul>
+                        </div>
+                        <div class="collapse basic-info" id="basicInfoEdit">
+                            <form class="row g-3 g-sm-4 needs-validation" novalidate="">
+                                <div class="col-sm-6">
+                                    <label for="fn" class="form-label">نام</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" id="fn" value="سوزان" required="">
+                                        <div class="invalid-feedback">لطفاً نام خود را وارد کنید!</div>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <label for="ln" class="form-label">Last name</label>
-                                        <div class="position-relative">
-                                            <input type="text" class="form-control" id="ln" value="Gardner" required="">
-                                            <div class="invalid-feedback">Please enter your last name!</div>
-                                        </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="ln" class="form-label">نام خانوادگی</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" id="ln" value="گاردنر" required="">
+                                        <div class="invalid-feedback">لطفاً نام خانوادگی خود را وارد کنید!</div>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <label for="birthdate" class="form-label">Date of birth</label>
-                                        <div class="position-relative">
-                                            <input type="text" class="form-control form-icon-end" id="birthdate"
-                                                   data-datepicker="{
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="birthdate" class="form-label">تاریخ تولد</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control form-icon-end" id="birthdate"
+                                               data-datepicker="{
                           &quot;dateFormat&quot;: &quot;F j, Y&quot;,
                           &quot;defaultDate&quot;: &quot;May 15, 1996&quot;
-                        }" placeholder="Choose date">
-                                            <i class="ci-calendar position-absolute top-50 end-0 translate-middle-y me-3"></i>
-                                        </div>
+                        }" placeholder="انتخاب تاریخ">
+                                        <i class="ci-calendar position-absolute top-50 end-0 translate-middle-y me-3"></i>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label">Language</label>
-                                        <select class="form-select" data-select="{
-                        &quot;placeholderValue&quot;: &quot;Select language&quot;,
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="form-label">زبان</label>
+                                    <select class="form-select" data-select="{
+                        &quot;placeholderValue&quot;: &quot;انتخاب زبان&quot;,
                         &quot;choices&quot;: [
                           {
                             &quot;value&quot;: &quot;&quot;,
-                            &quot;label&quot;: &quot;Select language&quot;,
+                            &quot;label&quot;: &quot;انتخاب زبان&quot;,
                             &quot;placeholder&quot;: true
                           },
                           {
                             &quot;value&quot;: &quot;English&quot;,
-                            &quot;label&quot;: &quot;<div class=\&quot;d-flex align-items-center\&quot;><img src=\&quot;assets/img/flags/en-us.png\&quot; class=\&quot;flex-shrink-0 me-2\&quot; width=\&quot;20\&quot; alt=\&quot;English\&quot;> English</div>&quot;,
+                            &quot;label&quot;: &quot;<div class=\&quot;d-flex align-items-center\&quot;><img src=\&quot;assets/img/flags/en-us.png\&quot; class=\&quot;flex-shrink-0 me-2\&quot; width=\&quot;20\&quot; alt=\&quot;English\&quot;> انگلیسی</div>&quot;,
                             &quot;selected&quot;: true
                           },
                           {
                             &quot;value&quot;: &quot;Français&quot;,
-                            &quot;label&quot;: &quot;<div class=\&quot;d-flex align-items-center\&quot;><img src=\&quot;assets/img/flags/fr.png\&quot; class=\&quot;flex-shrink-0 me-2\&quot; width=\&quot;20\&quot; alt=\&quot;Français\&quot;> Français</div>&quot;
+                            &quot;label&quot;: &quot;<div class=\&quot;d-flex align-items-center\&quot;><img src=\&quot;assets/img/flags/fr.png\&quot; class=\&quot;flex-shrink-0 me-2\&quot; width=\&quot;20\&quot; alt=\&quot;Français\&quot;> فرانسوی</div>&quot;
                           },
                           {
                             &quot;value&quot;: &quot;Deutsch&quot;,
-                            &quot;label&quot;: &quot;<div class=\&quot;d-flex align-items-center\&quot;><img src=\&quot;assets/img/flags/de.png\&quot; class=\&quot;flex-shrink-0 me-2\&quot; width=\&quot;20\&quot; alt=\&quot;Deutsch\&quot;> Deutsch</div>&quot;
+                            &quot;label&quot;: &quot;<div class=\&quot;d-flex align-items-center\&quot;><img src=\&quot;assets/img/flags/de.png\&quot; class=\&quot;flex-shrink-0 me-2\&quot; width=\&quot;20\&quot; alt=\&quot;Deutsch\&quot;> آلمانی</div>&quot;
                           },
                           {
                             &quot;value&quot;: &quot;Italiano&quot;,
-                            &quot;label&quot;: &quot;<div class=\&quot;d-flex align-items-center\&quot;><img src=\&quot;assets/img/flags/it.png\&quot; class=\&quot;flex-shrink-0 me-2\&quot; width=\&quot;20\&quot; alt=\&quot;Italiano\&quot;> Italiano</div>&quot;
+                            &quot;label&quot;: &quot;<div class=\&quot;d-flex align-items-center\&quot;><img src=\&quot;assets/img/flags/it.png\&quot; class=\&quot;flex-shrink-0 me-2\&quot; width=\&quot;20\&quot; alt=\&quot;Italiano\&quot;> ایتالیایی</div>&quot;
                           }
                         ]
                       }" data-select-template="true"></select>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="d-flex gap-3 pt-2 pt-sm-0">
-                                            <button type="submit" class="btn btn-primary">Save changes</button>
-                                            <button type="button" class="btn btn-secondary" data-bs-toggle="collapse"
-                                                    data-bs-target=".basic-info" aria-expanded="true"
-                                                    aria-controls="basicInfoPreview basicInfoEdit">Close
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-
-                        <!-- Contact -->
-                        <div class="border-bottom py-4">
-                            <div class="nav flex-nowrap align-items-center justify-content-between pb-1 mb-3">
-                                <div class="d-flex align-items-center gap-3 me-4">
-                                    <h2 class="h6 mb-0">Contact</h2>
                                 </div>
-                                <a class="nav-link hiding-collapse-toggle text-decoration-underline p-0 collapsed"
-                                   href=".contact-info" data-bs-toggle="collapse" aria-expanded="false"
-                                   aria-controls="contactInfoPreview contactInfoEdit">Edit</a>
-                            </div>
-                            <div class="collapse contact-info show" id="contactInfoPreview">
-                                <ul class="list-unstyled fs-sm m-0">
-                                    <li class="mb-1">
-                                        {{ user.email }}
-                                    </li>
-                                    <li>+1 (805) 348 95 72 <span class="text-success ms-1">Verified</span></li>
-                                </ul>
-                            </div>
-                            <div class="collapse contact-info" id="contactInfoEdit">
-                                <form class="row g-3 g-sm-4 needs-validation" novalidate="">
-                                    <div class="col-sm-6">
-                                        <label for="email" class="form-label">Email address</label>
-                                        <div class="position-relative">
-                                            <input type="email" class="form-control" id="email"
-                                                   value="susan.gardner@email.com" required="">
-                                            <div class="invalid-feedback">Please enter a valid email address!</div>
-                                        </div>
+                                <div class="col-12">
+                                    <div class="d-flex gap-3 pt-2 pt-sm-0">
+                                        <button type="submit" class="btn btn-primary">ذخیره تغییرات</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-toggle="collapse"
+                                                data-bs-target=".basic-info" aria-expanded="true"
+                                                aria-controls="basicInfoPreview basicInfoEdit">بستن
+                                        </button>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <label for="phone" class="form-label">Phone number</label>
-                                        <div class="position-relative">
-                                            <input type="text" class="form-control" id="phone"
-                                                   data-input-format="{&quot;numericOnly&quot;: true, &quot;delimiters&quot;: [&quot;+1 (&quot;, &quot;)&quot;, &quot; &quot;], &quot;blocks&quot;: [0, 3, 0, 3, 2, 2]}"
-                                                   placeholder="+1 (___) ___ __ __" value="+1 (805) 348 95 72"
-                                                   required="">
-                                            <div class="invalid-feedback">Please enter your phone number!</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="d-flex gap-3 pt-2 pt-sm-0">
-                                            <button type="submit" class="btn btn-primary">Save changes</button>
-                                            <button type="button" class="btn btn-secondary" data-bs-toggle="collapse"
-                                                    data-bs-target=".contact-info" aria-expanded="true"
-                                                    aria-controls="contactInfoPreview contactInfoEdit">Close
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-
-                        <!-- Password -->
-                        <div class="border-bottom py-4">
-                            <div class="nav flex-nowrap align-items-center justify-content-between pb-1 mb-3">
-                                <div class="d-flex align-items-center gap-3 me-4">
-                                    <h2 class="h6 mb-0">Password</h2>
                                 </div>
-                                <a class="nav-link hiding-collapse-toggle text-decoration-underline p-0 collapsed"
-                                   href=".password-change" data-bs-toggle="collapse" aria-expanded="false"
-                                   aria-controls="passChangePreview passChangeEdit">Edit</a>
-                            </div>
-                            <div class="collapse password-change show" id="passChangePreview">
-                                <ul class="list-unstyled fs-sm m-0">
-                                    <li>**************</li>
-                                </ul>
-                            </div>
-                            <div class="collapse password-change" id="passChangeEdit">
-                                <form class="row g-3 g-sm-4 needs-validation" novalidate="">
-                                    <div class="col-sm-6">
-                                        <label for="current-password" class="form-label">Current password</label>
-                                        <div class="password-toggle">
-                                            <input type="password" class="form-control" id="current-password"
-                                                   placeholder="Enter your current password" required="">
-                                            <label class="password-toggle-button" aria-label="Show/hide password">
-                                                <input type="checkbox" class="btn-check">
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label for="new-password" class="form-label">New password</label>
-                                        <div class="password-toggle">
-                                            <input type="password" class="form-control" id="new-password"
-                                                   placeholder="Create new password" required="">
-                                            <label class="password-toggle-button" aria-label="Show/hide password">
-                                                <input type="checkbox" class="btn-check">
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="d-flex gap-3 pt-2 pt-sm-0">
-                                            <button type="submit" class="btn btn-primary">Save changes</button>
-                                            <button type="button" class="btn btn-secondary" data-bs-toggle="collapse"
-                                                    data-bs-target=".password-change" aria-expanded="true"
-                                                    aria-controls="passChangePreview passChangeEdit">Close
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-
-                        <!-- Delete account -->
-                        <div class="pt-3 mt-2 mt-sm-3">
-                            <h2 class="h6">Delete account</h2>
-                            <p class="fs-sm">When you delete your account, your public profile will be deactivated
-                                immediately. If you change your mind before the 14 days are up, sign in with your email
-                                and password, and we'll send you a link to reactivate your account.</p>
-                            <a class="text-danger fs-sm fw-medium" href="#!">Delete account</a>
+                            </form>
                         </div>
                     </div>
+
+                    <!-- Contact -->
+                    <div class="border-bottom py-4">
+                        <div class="nav flex-nowrap align-items-center justify-content-between pb-1 mb-3">
+                            <div class="d-flex align-items-center gap-3 me-4">
+                                <h2 class="h6 mb-0">اطلاعات تماس</h2>
+                            </div>
+                            <a class="nav-link hiding-collapse-toggle text-decoration-underline p-0 collapsed"
+                               href=".contact-info" data-bs-toggle="collapse" aria-expanded="false"
+                               aria-controls="contactInfoPreview contactInfoEdit">ویرایش</a>
+                        </div>
+                        <div class="collapse contact-info show" id="contactInfoPreview">
+                            <ul class="list-unstyled fs-sm m-0">
+                                <li class="mb-1">
+                                    {{ user.email }}
+                                </li>
+                                <li>+1 (805) 348 95 72 <span class="text-success ms-1">تأیید شده</span></li>
+                            </ul>
+                        </div>
+                        <div class="collapse contact-info" id="contactInfoEdit">
+                            <form class="row g-3 g-sm-4 needs-validation" novalidate="">
+                                <div class="col-sm-6">
+                                    <label for="email" class="form-label">آدرس ایمیل</label>
+                                    <div class="position-relative">
+                                        <input type="email" class="form-control" id="email"
+                                               value="susan.gardner@email.com" required="">
+                                        <div class="invalid-feedback">لطفاً یک آدرس ایمیل معتبر وارد کنید!</div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="phone" class="form-label">شماره تلفن</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" id="phone"
+                                               data-input-format="{&quot;numericOnly&quot;: true, &quot;delimiters&quot;: [&quot;+1 (&quot;, &quot;)&quot;, &quot; &quot;], &quot;blocks&quot;: [0, 3, 0, 3, 2, 2]}"
+                                               placeholder="+1 (___) ___ __ __" value="+1 (805) 348 95 72"
+                                               required="">
+                                        <div class="invalid-feedback">لطفاً شماره تلفن خود را وارد کنید!</div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="d-flex gap-3 pt-2 pt-sm-0">
+                                        <button type="submit" class="btn btn-primary">ذخیره تغییرات</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-toggle="collapse"
+                                                data-bs-target=".contact-info" aria-expanded="true"
+                                                aria-controls="contactInfoPreview contactInfoEdit">بستن
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="border-bottom py-4">
+                        <div class="nav flex-nowrap align-items-center justify-content-between pb-1 mb-3">
+                            <div class="d-flex align-items-center gap-3 me-4">
+                                <h2 class="h6 mb-0">رمز عبور</h2>
+                            </div>
+                            <a class="nav-link hiding-collapse-toggle text-decoration-underline p-0 collapsed"
+                               href=".password-change" data-bs-toggle="collapse" aria-expanded="false"
+                               aria-controls="passChangePreview passChangeEdit">ویرایش</a>
+                        </div>
+                        <div class="collapse password-change show" id="passChangePreview">
+                            <ul class="list-unstyled fs-sm m-0">
+                                <li>**************</li>
+                            </ul>
+                        </div>
+                        <div class="collapse password-change" id="passChangeEdit">
+                            <form class="row g-3 g-sm-4 needs-validation" novalidate="">
+                                <div class="col-sm-6">
+                                    <label for="current-password" class="form-label">رمز عبور فعلی</label>
+                                    <div class="password-toggle">
+                                        <input type="password" class="form-control" id="current-password"
+                                               placeholder="رمز فعلی خود را وارد کنید" required="">
+                                        <label class="password-toggle-button" aria-label="Show/hide password">
+                                            <input type="checkbox" class="btn-check">
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="new-password" class="form-label">رمز عبور جدید</label>
+                                    <div class="password-toggle">
+                                        <input type="password" class="form-control" id="new-password"
+                                               placeholder="رمز عبور جدید ایجاد کنید" required="">
+                                        <label class="password-toggle-button" aria-label="Show/hide password">
+                                            <input type="checkbox" class="btn-check">
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="d-flex gap-3 pt-2 pt-sm-0">
+                                        <button type="submit" class="btn btn-primary">ذخیره تغییرات</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-toggle="collapse"
+                                                data-bs-target=".password-change" aria-expanded="true"
+                                                aria-controls="passChangePreview passChangeEdit">بستن
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Delete account -->
+                    <div class="pt-3 mt-2 mt-sm-3">
+                        <h2 class="h6">حذف حساب کاربری</h2>
+                        <p class="fs-sm">
+                            با حذف حساب کاربری، پروفایل عمومی شما بلافاصله غیرفعال خواهد شد. اگر قبل از گذشت ۱۴ روز نظر خود را تغییر دادید، با ایمیل و رمز عبور خود وارد شوید و ما لینک فعال‌سازی مجدد را برای شما ارسال خواهیم کرد.
+                        </p>
+                        <a class="text-danger fs-sm fw-medium" href="#!">حذف حساب</a>
+                    </div>
+
                 </div>
             </div>
         </div>
-    </main>
+    </div>
+</main>
 
 {% endblock %}

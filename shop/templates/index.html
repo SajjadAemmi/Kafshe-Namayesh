@@ -41,17 +41,22 @@
                                 {#                                    <img src="assets/img/shop/fashion/01.png" alt="Image">#}
                                 {#                                  </div>#}
                                 {#                                </a>#}
-                                <a class="hover-effect-opacity ratio ratio-1x1 d-block rounded mb-3"
-                                   href="/products/{{ shoe.id }}">
-                                    {% if shoe.images.all|length >= 1 %}
-                                        <img src="{{ shoe.images.all.0.image.url }}" alt="Image of {{ shoe.name }}"
-                                             class="hover-effect-target opacity-100 rounded">
-                                    {% endif %}
-                                    {% if shoe.images.all|length >= 2 %}
-                                        <img src="{{ shoe.images.all.1.image.url }}" alt="Image of {{ shoe.name }}"
-                                             class="position-absolute top-0 start-0 hover-effect-target opacity-0 rounded">
-                                    {% endif %}
-                                </a>
+                              <a class="hover-effect-opacity ratio ratio-1x1 d-block rounded mb-3 position-relative overflow-hidden"
+   href="/products/{{ shoe.id }}">
+
+    {% if shoe.images.all|length >= 1 %}
+        <img src="{{ shoe.images.all.0.image.url }}"
+             alt="Image of {{ shoe.name }}"
+             class="hover-effect-target opacity-100 rounded w-100 h-100 object-fit-cover">
+    {% endif %}
+
+    {% if shoe.images.all|length >= 2 %}
+        <img src="{{ shoe.images.all.1.image.url }}"
+             alt="Image of {{ shoe.name }}"
+             class="position-absolute top-0 start-0 hover-effect-target opacity-0 rounded w-100 h-100 object-fit-cover">
+    {% endif %}
+</a>
+
                                 {#                                <div class="hover-effect-target position-absolute start-0 bottom-0 w-100 z-2 opacity-0 pb-2 pb-sm-3 px-2 px-sm-3">#}
                                 {#                                    <div class="d-flex align-items-center justify-content-center gap-2 gap-xl-3 bg-body rounded-2 p-2">#}
                                 {#                                        <span class="fs-xs fw-medium text-secondary-emphasis py-1 px-sm-2">XS</span>#}

@@ -28,40 +28,40 @@
                                 <div class="row row-cols-1 row-cols-sm-2 g-3 g-xxl-4">
                                     <div class="col">
                                         <select class="form-select" data-select="{
-                        &quot;placeholderValue&quot;: &quot;Select status&quot;,
+                        &quot;placeholderValue&quot;: &quot;انتخاب وضعیت&quot;,
                         &quot;choices&quot;: [
                           {
                             &quot;value&quot;: &quot;&quot;,
-                            &quot;label&quot;: &quot;Select status&quot;,
+                            &quot;label&quot;: &quot;انتخاب وضعیت&quot;,
                             &quot;placeholder&quot;: true
                           },
                           {
                             &quot;value&quot;: &quot;inprogress&quot;,
-                            &quot;label&quot;: &quot;<div class=\&quot;d-flex align-items-center text-nowrap\&quot;><span class=\&quot;bg-info rounded-circle p-1 me-2\&quot;></span>In progress</div>&quot;
+                            &quot;label&quot;: &quot;<div class=\&quot;d-flex align-items-center text-nowrap\&quot;><span class=\&quot;bg-info rounded-circle p-1 me-2\&quot;></span>در حال انجام</div>&quot;
                           },
                           {
                             &quot;value&quot;: &quot;delivered&quot;,
-                            &quot;label&quot;: &quot;<div class=\&quot;d-flex align-items-center text-nowrap\&quot;><span class=\&quot;bg-success rounded-circle p-1 me-2\&quot;></span>Delivered</div>&quot;
+                            &quot;label&quot;: &quot;<div class=\&quot;d-flex align-items-center text-nowrap\&quot;><span class=\&quot;bg-success rounded-circle p-1 me-2\&quot;></span>تحویل داده شده</div>&quot;
                           },
                           {
                             &quot;value&quot;: &quot;canceled&quot;,
-                            &quot;label&quot;: &quot;<div class=\&quot;d-flex align-items-center text-nowrap\&quot;><span class=\&quot;bg-danger rounded-circle p-1 me-2\&quot;></span>Canceled</div>&quot;
+                            &quot;label&quot;: &quot;<div class=\&quot;d-flex align-items-center text-nowrap\&quot;><span class=\&quot;bg-danger rounded-circle p-1 me-2\&quot;></span>لغو شده</div>&quot;
                           },
                           {
                             &quot;value&quot;: &quot;delayed&quot;,
-                            &quot;label&quot;: &quot;<div class=\&quot;d-flex align-items-center text-nowrap\&quot;><span class=\&quot;bg-warning rounded-circle p-1 me-2\&quot;></span>Delayed</div>&quot;
+                            &quot;label&quot;: &quot;<div class=\&quot;d-flex align-items-center text-nowrap\&quot;><span class=\&quot;bg-warning rounded-circle p-1 me-2\&quot;></span>تاخیر دارد</div>&quot;
                           }
                         ]
-                      }" data-select-template="true" aria-label="Status sorting"></select>
+                      }" data-select-template="true" aria-label="فیلتر وضعیت"></select>
                                     </div>
                                     <div class="col">
                                         <select class="form-select" data-select="{&quot;removeItemButton&quot;: false}"
-                                                aria-label="Timeframe sorting">
-                                            <option value="all-time">For all time</option>
-                                            <option value="last-year">For last year</option>
-                                            <option value="last-3-months">For last 3 months</option>
-                                            <option value="last-30-days">For last 30 days</option>
-                                            <option value="last-week">For last week</option>
+                                                aria-label="مرتب‌سازی بر اساس زمان">
+                                            <option value="all-time">کل زمان</option>
+                                            <option value="last-year">سال گذشته</option>
+                                            <option value="last-3-months">۳ ماه گذشته</option>
+                                            <option value="last-30-days">۳۰ روز گذشته</option>
+                                            <option value="last-week">هفته گذشته</option>
                                         </select>
                                     </div>
                                 </div>
@@ -75,20 +75,19 @@
                                 <thead>
                                 <tr>
                                     <th scope="col" class="py-3 ps-0">
-                                        <span class="text-body fw-normal">Order <span
-                                                class="d-none d-md-inline">#</span></span>
+                                        <span class="text-body fw-normal">شماره سفارش</span>
                                     </th>
                                     <th scope="col" class="py-3 d-none d-md-table-cell">
                                         <button type="button" class="btn orders-sort fw-normal text-body p-0"
-                                                data-sort="date">Order date
+                                                data-sort="date">تاریخ سفارش
                                         </button>
                                     </th>
                                     <th scope="col" class="py-3 d-none d-md-table-cell">
-                                        <span class="text-body fw-normal">Status</span>
+                                        <span class="text-body fw-normal">وضعیت</span>
                                     </th>
                                     <th scope="col" class="py-3 d-none d-md-table-cell">
                                         <button type="button" class="btn orders-sort fw-normal text-body p-0"
-                                                data-sort="total">Total
+                                                data-sort="total">مجموع
                                         </button>
                                     </th>
                                     <th scope="col" class="py-3">&nbsp;</th>
@@ -96,37 +95,43 @@
                                 </thead>
                                 <tbody class="text-body-emphasis orders-list">
 
-                                {% for order in orders %}
+                                {% for order in page_obj %}
                                     <!-- Item -->
                                     <tr>
                                         <td class="fw-medium pt-2 pb-3 py-md-2 ps-0">
                                             <a class="d-inline-block animate-underline text-body-emphasis text-decoration-none py-2"
                                                href="#orderDetails" data-bs-toggle="offcanvas"
                                                aria-controls="orderDetails"
-                                               aria-label="Show order details">
-                                                <span class="animate-target">78A6431D409</span>
+                                               aria-label="نمایش جزئیات سفارش">
+                                                <span class="animate-target">
+                                                    {{ order.id }}
+                                                </span>
                                             </a>
                                             <ul class="list-unstyled fw-normal text-body m-0 d-md-none">
-                                                <li>Feb 6, 2025</li>
+                                                <li>
+                                                    {{ order.created_at }}
+                                                </li>
                                                 <li class="d-flex align-items-center">
                                                     <span class="bg-info rounded-circle p-1 me-2"></span>
-                                                    In progress
+                                                    در حال انجام
                                                 </li>
-                                                <li class="fw-medium text-body-emphasis">$2,105.90</li>
+                                                <li class="fw-medium text-body-emphasis">
+                                                    {{ order.get_total_price }}
+                                                </li>
                                             </ul>
                                         </td>
                                         <td class="fw-medium py-3 d-none d-md-table-cell">
-                                            Feb 6, 2025
+                                            {{ order.created_at }}
                                             <span class="date d-none">25-02-06</span>
                                         </td>
                                         <td class="fw-medium py-3 d-none d-md-table-cell">
                         <span class="d-flex align-items-center">
                           <span class="bg-info rounded-circle p-1 me-2"></span>
-                          In progress
+                          در حال انجام
                         </span>
                                         </td>
                                         <td class="fw-medium py-3 d-none d-md-table-cell">
-                                            $2,105.90
+                                            {{ order.get_total_price }}
                                             <span class="total d-none">210590</span>
                                         </td>
                                         <td class="py-3 pe-0">
@@ -135,7 +140,7 @@
                           <span><img src="assets/img/shop/electronics/thumbs/16.png" width="64" alt="Thumbnail"></span>
                           <span><img src="assets/img/shop/electronics/thumbs/15.png" width="64" alt="Thumbnail"></span>
                           <a class="btn btn-icon btn-ghost btn-secondary stretched-link border-0" href="#orderDetails"
-                             data-bs-toggle="offcanvas" aria-controls="orderDetails" aria-label="Show order details">
+                             data-bs-toggle="offcanvas" aria-controls="orderDetails" aria-label="نمایش جزئیات سفارش">
                             <i class="ci-chevron-right fs-lg"></i>
                           </a>
                         </span>
@@ -149,25 +154,44 @@
 
 
                         <!-- Pagination -->
-                        <nav class="pt-3 pb-2 pb-sm-0 mt-2 mt-md-3" aria-label="Page navigation example">
-                            <ul class="pagination">
-                                <li class="page-item active" aria-current="page">
-                    <span class="page-link">
-                      1
-                      <span class="visually-hidden">(current)</span>
-                    </span>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">2</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">3</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">4</a>
-                                </li>
-                            </ul>
-                        </nav>
+                        {% if page_obj.has_other_pages %}
+                            <nav class="pt-3 pb-2 pb-sm-0 mt-2 mt-md-3" aria-label="Page navigation">
+                                <ul class="pagination justify-content-center">
+
+                                    <!-- Previous -->
+                                    {% if page_obj.has_previous %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}"
+                                               aria-label="قبلی">&laquo;</a>
+                                        </li>
+                                    {% else %}
+                                        <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+                                    {% endif %}
+
+                                    <!-- Page Numbers -->
+                                    {% for page_num in page_obj.paginator.page_range %}
+                                        {% if page_num == page_obj.number %}
+                                            <li class="page-item active"><span class="page-link">{{ page_num }}</span>
+                                            </li>
+                                        {% else %}
+                                            <li class="page-item"><a class="page-link"
+                                                                     href="?page={{ page_num }}">{{ page_num }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    <!-- Next -->
+                                    {% if page_obj.has_next %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page={{ page_obj.next_page_number }}"
+                                               aria-label="بعدی">&raquo;</a>
+                                        </li>
+                                    {% else %}
+                                        <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+                                    {% endif %}
+                                </ul>
+                            </nav>
+                        {% endif %}
+
                     </div>
                 </div>
             </div>

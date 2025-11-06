@@ -26,121 +26,72 @@
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body pt-3 pb-4 py-lg-0 mx-lg-auto">
-                <ul class="navbar-nav position-relative">
-                    <li class="nav-item dropdown me-lg-n1 me-xl-0">
-                        <a class="nav-link fs-sm active" aria-current="page" href="/">
-                            خانه
-                        </a>
-                    </li>
-                    <li class="nav-item dropdown position-static me-lg-n1 me-xl-0">
-                        <a class="nav-link dropdown-toggle fs-sm" href="/products/women" role="button" data-bs-toggle="dropdown"
-                           data-bs-trigger="hover" data-bs-auto-close="outside" aria-expanded="false">
-                            زنانه
-                        </a>
-                        <ul class="dropdown-menu" style="--cz-dropdown-spacer: 1rem">
-                            <li>
-                                <a class="dropdown-item"
-                                   href="shop-categories-electronics.html">
-                                    کفش چرم زنانه
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="account-orders.html">
-                                    صندل و کفش تابستانی زنانه
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="account-wishlist.html">
-                                    کفش کلاسیک زنانه
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="account-payment.html">
-                                    کفش راحتی زنانه
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="account-reviews.html">
-                                    بوت و نیم بوت زنانه
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown me-lg-n1 me-xl-0">
-                        <a class="nav-link dropdown-toggle fs-sm" href="/products/men" role="button" data-bs-toggle="dropdown"
-                           data-bs-trigger="hover" data-bs-auto-close="outside" aria-expanded="false">
-                            مردانه
-                        </a>
-                        <ul class="dropdown-menu" style="--cz-dropdown-spacer: 1rem">
-                            <li>
-                                <a class="dropdown-item"
-                                   href="shop-categories-electronics.html">
-                                    کفش چرم مردانه
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="account-orders.html">
-                                    صندل و کفش تابستانی مردانه
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="account-wishlist.html">
-                                    کفش کلاسیک مردانه
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="account-payment.html">
-                                    کفش راحتی مردانه
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="account-reviews.html">
-                                    بوت و نیم بوت مردانه
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown me-lg-n1 me-xl-0">
-                        <a class="nav-link dropdown-toggle fs-sm" href="/products/kids" role="button" data-bs-toggle="dropdown"
-                           data-bs-trigger="hover" data-bs-auto-close="outside" aria-expanded="false">
-                            بچگانه
-                        </a>
-                        <ul class="dropdown-menu" style="--cz-dropdown-spacer: 1rem">
-                            <li>
-                                <a class="dropdown-item"
-                                   href="shop-categories-electronics.html">
-                                    کفش چرم بچگانه
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="account-orders.html">
-                                    صندل و کفش تابستانی بچگانه
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="account-wishlist.html">
-                                    کفش کلاسیک بچگانه
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="account-payment.html">
-                                    کفش راحتی بچگانه
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item me-lg-n2 me-xl-0">
-                        <a class="nav-link fs-sm" href="/about">
-                            درباره ما
-                        </a>
-                    </li>
-                    <li class="nav-item me-lg-n2 me-xl-0">
-                        <a class="nav-link fs-sm" href="/contact">
-                            تماس با ما
-                        </a>
-                    </li>
-                </ul>
-            </div>
+  <ul class="navbar-nav position-relative">
+
+    <li class="nav-item dropdown me-lg-n1 me-xl-0">
+      <a class="nav-link fs-sm active" aria-current="page" href="{% url 'index' %}">
+        خانه
+      </a>
+    </li>
+
+    <!-- زنانه -->
+    <li class="nav-item dropdown position-static me-lg-n1 me-xl-0">
+      <a class="nav-link dropdown-toggle fs-sm" href="{% url 'products_by_type' 'women' %}" role="button"
+         data-bs-toggle="dropdown" data-bs-trigger="hover" data-bs-auto-close="outside" aria-expanded="false">
+        زنانه
+      </a>
+      <ul class="dropdown-menu" style="--cz-dropdown-spacer: 1rem">
+        <li><a class="dropdown-item" href="{% url 'products_by_type_and_category' 'women' 'leather' %}">کفش چرم زنانه</a></li>
+        <li><a class="dropdown-item" href="{% url 'products_by_type_and_category' 'women' 'sandal' %}">صندل و کفش تابستانی زنانه</a></li>
+        <li><a class="dropdown-item" href="{% url 'products_by_type_and_category' 'women' 'classic' %}">کفش کلاسیک زنانه</a></li>
+        <li><a class="dropdown-item" href="{% url 'products_by_type_and_category' 'women' 'loafer' %}">کفش راحتی زنانه</a></li>
+        <li><a class="dropdown-item" href="{% url 'products_by_type_and_category' 'women' 'boot' %}">بوت و نیم بوت زنانه</a></li>
+      </ul>
+    </li>
+
+    <!-- مردانه -->
+    <li class="nav-item dropdown me-lg-n1 me-xl-0">
+      <a class="nav-link dropdown-toggle fs-sm" href="{% url 'products_by_type' 'men' %}" role="button"
+         data-bs-toggle="dropdown" data-bs-trigger="hover" data-bs-auto-close="outside" aria-expanded="false">
+        مردانه
+      </a>
+      <ul class="dropdown-menu" style="--cz-dropdown-spacer: 1rem">
+        <li><a class="dropdown-item" href="{% url 'products_by_type_and_category' 'men' 'leather' %}">کفش چرم مردانه</a></li>
+        <li><a class="dropdown-item" href="{% url 'products_by_type_and_category' 'men' 'sandal' %}">صندل و کفش تابستانی مردانه</a></li>
+        <li><a class="dropdown-item" href="{% url 'products_by_type_and_category' 'men' 'classic' %}">کفش کلاسیک مردانه</a></li>
+        <li><a class="dropdown-item" href="{% url 'products_by_type_and_category' 'men' 'loafer' %}">کفش راحتی مردانه</a></li>
+        <li><a class="dropdown-item" href="{% url 'products_by_type_and_category' 'men' 'boot' %}">بوت و نیم بوت مردانه</a></li>
+      </ul>
+    </li>
+
+    <!-- بچگانه -->
+    <li class="nav-item dropdown me-lg-n1 me-xl-0">
+      <a class="nav-link dropdown-toggle fs-sm" href="{% url 'products_by_type' 'kids' %}" role="button"
+         data-bs-toggle="dropdown" data-bs-trigger="hover" data-bs-auto-close="outside" aria-expanded="false">
+        بچگانه
+      </a>
+      <ul class="dropdown-menu" style="--cz-dropdown-spacer: 1rem">
+        <li><a class="dropdown-item" href="{% url 'products_by_type_and_category' 'kids' 'leather' %}">کفش چرم بچگانه</a></li>
+        <li><a class="dropdown-item" href="{% url 'products_by_type_and_category' 'kids' 'sandal' %}">صندل و کفش تابستانی بچگانه</a></li>
+        <li><a class="dropdown-item" href="{% url 'products_by_type_and_category' 'kids' 'classic' %}">کفش کلاسیک بچگانه</a></li>
+        <li><a class="dropdown-item" href="{% url 'products_by_type_and_category' 'kids' 'loafer' %}">کفش راحتی بچگانه</a></li>
+      </ul>
+    </li>
+
+    <li class="nav-item me-lg-n2 me-xl-0">
+      <a class="nav-link fs-sm" href="{% url 'about' %}">
+        درباره ما
+      </a>
+    </li>
+
+    <li class="nav-item me-lg-n2 me-xl-0">
+      <a class="nav-link fs-sm" href="{% url 'contact' %}">
+        تماس با ما
+      </a>
+    </li>
+  </ul>
+</div>
+
         </nav>
 
         <!-- Button group -->

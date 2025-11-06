@@ -10,213 +10,140 @@
 {% block content %}
 
     <!-- Page content -->
-   <main class="content-wrapper">
+    <main class="content-wrapper">
 
-  <!-- عنوان صفحه -->
-  <section class="position-relative bg-body-tertiary py-4">
-  <img src="{% static 'img/contact/title-bg.png' %}" class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover rtl-flip" alt="Background image">
-    <div class="container position-relative z-2 py-4 py-md-5 my-lg-3 my-xl-4 my-xxl-5">
-      <div class="row pt-lg-2 pb-2 pb-sm-3 pb-lg-4">
-        <div class="col-12 col-md-8 col-lg-6">
-          <h1 class="display-4 mb-lg-4">تماس با ما</h1>
-          <p class="mb-0">از دریافت پیام و پیشنهاد شما خوشحال می‌شویم. با ما در ارتباط باشید.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+        <!-- عنوان صفحه -->
+        <section class="position-relative pt-5">
+            <h2 class="text-center">تماس با ما</h2>
+            <p class="text-center">از دریافت پیام و پیشنهاد شما خوشحال می‌شویم. با ما در ارتباط باشید.</p>
+        </section>
 
-  <!-- اطلاعات تماس -->
-  <section class="container pt-5 mt-2 mt-sm-3 mt-lg-4 mt-xl-5 mb-n3">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4 pt-lg-2 pt-xl-0">
+        <!-- اطلاعات تماس -->
+        <section class="py-5 mt-2 mt-sm-3 mt-lg-4 mt-xl-5 bg-body-tertiary position-relative">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4 pt-lg-2 pt-xl-0">
 
-      <div class="col">
-        <div class="d-flex align-items-center">
-          <i class="ci-map-pin fs-lg text-dark-emphasis me-2"></i>
-          <h3 class="h6 mb-0">آدرس</h3>
-        </div>
-        <hr class="text-dark-emphasis opacity-50 my-3 my-md-4">
-        <ul class="list-unstyled">
-          <li>ایران، مشهد</li>
-          <li>خیابان شیرازی، شیرازی ۵، برج آراد، طبقه ۱-، واحد ۴۶</li>
-        </ul>
-      </div>
+                    <div class="col">
+                        <div class="d-flex align-items-center">
+                            <i class="ci-map-pin fs-lg text-dark-emphasis me-2"></i>
+                            <h3 class="h6 mb-0">آدرس</h3>
+                        </div>
+                        <hr class="text-dark-emphasis opacity-50 my-3 my-md-4">
+                        <ul class="list-unstyled">
+                            <li>ایران، مشهد، خیابان شیرازی</li>
+                            <li>شیرازی ۵، برج آراد، طبقه ۱-، واحد ۴۶</li>
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <div class="d-flex align-items-center">
+                            <i class="ci-clock fs-lg text-dark-emphasis me-2"></i>
+                            <h3 class="h6 mb-0">ساعات کاری</h3>
+                        </div>
+                        <hr class="text-dark-emphasis opacity-50 my-3 my-md-4">
+                        <ul class="list-unstyled">
+                            <li>شنبه تا چهارشنبه: ۸ صبح تا ۶ عصر</li>
+                            <li>پنج‌شنبه: ۸ صبح تا ۲ ظهر</li>
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <div class="d-flex align-items-center">
+                            <i class="ci-phone-outgoing fs-lg text-dark-emphasis me-2"></i>
+                            <h3 class="h6 mb-0">شماره تماس</h3>
+                        </div>
+                        <hr class="text-dark-emphasis opacity-50 my-3 my-md-4">
+                        <ul class="list-unstyled">
+                            <li>پشتیبانی مشتریان: ۰۹۱۵۸۰۸۴۸۲۰</li>
+                            <li>همکاری‌ها: ۰۹۳۸۴۱۶۲۲۰۰</li>
+                        </ul>
+                    </div>
 
-      <div class="col">
-        <div class="d-flex align-items-center">
-          <i class="ci-phone-outgoing fs-lg text-dark-emphasis me-2"></i>
-          <h3 class="h6 mb-0">شماره تماس</h3>
-        </div>
-        <hr class="text-dark-emphasis opacity-50 my-3 my-md-4">
-        <ul class="list-unstyled">
-          <li>پشتیبانی مشتریان: ۰۹۱۵۸۰۸۴۸۲۰</li>
-          <li>همکاری‌ها: ۰۹۳۸۴۱۶۲۲۰۰</li>
-        </ul>
-      </div>
+                    <div class="col">
+                        <div class="d-flex align-items-center">
+                            <i class="ci-mail fs-lg text-dark-emphasis me-2"></i>
+                            <h3 class="h6 mb-0">ایمیل</h3>
+                        </div>
+                        <hr class="text-dark-emphasis opacity-50 my-3 my-md-4">
+                        <ul class="list-unstyled">
+                            <li>پشتیبانی: support@kafshenamayesh.ir</li>
+                            <li>نمایندگی‌ها: agency@kafshenamayesh.ir</li>
+                        </ul>
+                    </div>
 
-      <div class="col">
-        <div class="d-flex align-items-center">
-          <i class="ci-mail fs-lg text-dark-emphasis me-2"></i>
-          <h3 class="h6 mb-0">ایمیل</h3>
-        </div>
-        <hr class="text-dark-emphasis opacity-50 my-3 my-md-4">
-        <ul class="list-unstyled">
-          <li>پشتیبانی: support@kafshenamayesh.ir</li>
-          <li>نمایندگی‌ها: agency@kafshenamayesh.ir</li>
-        </ul>
-      </div>
-
-      <div class="col">
-        <div class="d-flex align-items-center">
-          <i class="ci-clock fs-lg text-dark-emphasis me-2"></i>
-          <h3 class="h6 mb-0">ساعات کاری</h3>
-        </div>
-        <hr class="text-dark-emphasis opacity-50 my-3 my-md-4">
-        <ul class="list-unstyled">
-          <li>شنبه تا چهارشنبه: ۸ صبح تا ۶ عصر</li>
-          <li>پنج‌شنبه: ۸ صبح تا ۲ ظهر</li>
-        </ul>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- فرم تماس -->
-  <section class="container py-5 my-3">
-    <div class="row justify-content-center">
-      <div class="col-md-10 col-lg-8">
-        <h2 class="text-center mb-4">ارسال پیام</h2>
-        <form>
-          {% csrf_token %}
-          <div class="row g-3">
-            <div class="col-md-6">
-              <label class="form-label">نام و نام خانوادگی</label>
-              <input type="text" class="form-control form-control-lg rounded-pill" required>
+                </div>
             </div>
-            <div class="col-md-6">
-              <label class="form-label">ایمیل</label>
-              <input type="email" class="form-control form-control-lg rounded-pill" required>
-            </div>
-            <div class="col-12">
-              <label class="form-label">موضوع</label>
-              <input type="text" class="form-control form-control-lg rounded-pill" required>
-            </div>
-            <div class="col-12">
-              <label class="form-label">متن پیام</label>
-              <textarea class="form-control form-control-lg" rows="5" required></textarea>
-            </div>
-            <div class="col-12 text-center mt-3">
-              <button type="submit" class="btn btn-lg btn-primary rounded-pill px-5">ارسال پیام</button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </section>
+        </section>
 
-  <!-- نقشه -->
-  <section class="position-relative bg-body-tertiary">
-    <iframe class="w-100" height="450" style="border:0"
-      loading="lazy" allowfullscreen
-      src="https://www.google.com/maps?q=Tehran,Iran&output=embed">
-    </iframe>
-  </section>
+        <section class="container py-5">
+            <h2 class="text-center pt-xxl-3 pb-lg-2 pb-xl-3">سوالات متداول</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-9 col-xl-8">
+                    <div class="accordion accordion-alt-icon" id="faq">
 
-  <!-- سوالات متداول -->
-  <section class="container pt-5 mt-2 mt-sm-3 mt-lg-4 mt-xl-5">
-    <h2 class="text-center pt-xxl-3 pb-lg-2 pb-xl-3">سوالات متداول</h2>
-    <div class="row justify-content-center">
-      <div class="col-md-10 col-lg-9 col-xl-8">
-        <div class="accordion accordion-alt-icon" id="faq">
+                        {% for faq in faqs %}
+                            <div class="accordion-item">
+                                <h3 class="accordion-header" id="faqHeading{{ forloop.counter }}">
+                                    <button type="button"
+                                            class="accordion-button {% if not forloop.first %}collapsed{% endif %}"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#faqCollapse{{ forloop.counter }}">
+                                        {{ faq.question }}
+                                    </button>
+                                </h3>
+                                <div id="faqCollapse{{ forloop.counter }}"
+                                     class="accordion-collapse collapse {% if forloop.first %}show{% endif %}"
+                                     data-bs-parent="#faq">
+                                    <div class="accordion-body">
+                                        {{ faq.answer }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
 
-          <!-- زمان ارسال -->
-          <div class="accordion-item">
-            <h3 class="accordion-header" id="faqHeading1">
-              <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1">
-                ارسال سفارش چقدر زمان می‌برد؟
-              </button>
-            </h3>
-            <div id="faqCollapse1" class="accordion-collapse collapse show" data-bs-parent="#faq">
-              <div class="accordion-body">
-                سفارش‌های تهران معمولاً ظرف ۱ تا ۲ روز کاری تحویل داده می‌شوند. سایر شهرها ممکن است تا ۴ روز کاری طول بکشد.
-              </div>
+                    </div>
+                </div>
             </div>
-          </div>
+        </section>
 
-          <!-- روش پرداخت -->
-          <div class="accordion-item">
-            <h3 class="accordion-header" id="faqHeading2">
-              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faqCollapse2">
-                چه روش‌هایی برای پرداخت وجود دارد؟
-              </button>
-            </h3>
-            <div id="faqCollapse2" class="accordion-collapse collapse" data-bs-parent="#faq">
-              <div class="accordion-body">
-                پرداخت از طریق کارت بانکی، درگاه زرین‌پال، درگاه بانک ملت و سایر روش‌های پرداخت امن امکان‌پذیر است.
-              </div>
+        <!-- نقشه -->
+        <section class="position-relative bg-body-tertiary">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1713.9015435067577!2d59.61224565226251!3d36.29337144050711!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f6c91e050b63a4f%3A0xfaa8d0fe56a2034a!2sArad%20tower!5e1!3m2!1sen!2s!4v1762422894160!5m2!1sen!2s"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </section>
+        <!-- فرم تماس -->
+        <section class="container py-5 my-3">
+            <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-8">
+                    <h2 class="text-center mb-4">ارسال پیام</h2>
+                    <form>
+                        {% csrf_token %}
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">نام و نام خانوادگی</label>
+                                <input type="text" class="form-control form-control-lg rounded-pill" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">ایمیل</label>
+                                <input type="email" class="form-control form-control-lg rounded-pill" required>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">موضوع</label>
+                                <input type="text" class="form-control form-control-lg rounded-pill" required>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">متن پیام</label>
+                                <textarea class="form-control form-control-lg" rows="5" required></textarea>
+                            </div>
+                            <div class="col-12 text-center mt-3">
+                                <button type="submit" class="btn btn-lg btn-primary rounded-pill px-5">ارسال پیام
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-          </div>
+        </section>
 
-          <!-- مرجوعی -->
-          <div class="accordion-item">
-            <h3 class="accordion-header" id="faqHeading3">
-              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faqCollapse3">
-                آیا می‌توانم محصول را مرجوع یا تعویض کنم؟
-              </button>
-            </h3>
-            <div id="faqCollapse3" class="accordion-collapse collapse" data-bs-parent="#faq">
-              <div class="accordion-body">
-                بله، تا ۷ روز پس از خرید در صورت استفاده‌نشدن و حفظ بسته‌بندی اولیه می‌توانید محصول را بازگردانید یا تعویض کنید.
-              </div>
-            </div>
-          </div>
-
-          <!-- سایز -->
-          <div class="accordion-item">
-            <h3 class="accordion-header" id="faqHeading4">
-              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faqCollapse4">
-                چگونه سایز مناسب خود را پیدا کنم؟
-              </button>
-            </h3>
-            <div id="faqCollapse4" class="accordion-collapse collapse" data-bs-parent="#faq">
-              <div class="accordion-body">
-                در صفحه راهنمای سایز، نحوه اندازه‌گیری طول پا و انتخاب سایز مناسب توضیح داده شده است.
-              </div>
-            </div>
-          </div>
-
-          <!-- پیگیری سفارش -->
-          <div class="accordion-item">
-            <h3 class="accordion-header" id="faqHeading5">
-              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faqCollapse5">
-                چگونه می‌توانم وضعیت سفارش خود را پیگیری کنم؟
-              </button>
-            </h3>
-            <div id="faqCollapse5" class="accordion-collapse collapse" data-bs-parent="#faq">
-              <div class="accordion-body">
-                پس از ارسال سفارش، ایمیلی شامل کد رهگیری و لینک پیگیری برای شما ارسال می‌شود.
-              </div>
-            </div>
-          </div>
-
-          <!-- پشتیبانی -->
-          <div class="accordion-item">
-            <h3 class="accordion-header" id="faqHeading6">
-              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faqCollapse6">
-                چگونه با پشتیبانی تماس بگیرم؟
-              </button>
-            </h3>
-            <div id="faqCollapse6" class="accordion-collapse collapse" data-bs-parent="#faq">
-              <div class="accordion-body">
-                از طریق فرم بالا، تماس تلفنی با شماره ۰۲۱-۱۲۳۴۵۶۷۸ یا ایمیل support@shoestore.ir می‌توانید با پشتیبانی در ارتباط باشید.
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </section>
-
-</main>
+    </main>
 
 {% endblock %}

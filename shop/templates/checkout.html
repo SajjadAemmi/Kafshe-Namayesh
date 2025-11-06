@@ -420,12 +420,21 @@
         <!-- Breadcrumb -->
         <nav class="container pt-1 pt-md-0 my-3 my-md-4" aria-label="breadcrumb">
             <ol class="breadcrumb mb-0">
-                <li class="breadcrumb-item"><a href="home-grocery.html">Home</a></li>
-                <li class="breadcrumb-item"><a href="shop-catalog-grocery.html">Shop</a></li>
-                <li class="breadcrumb-item"><a href="checkout-v2-cart.html">Cart</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+                <li class="breadcrumb-item">
+                    <a href="{% url 'index' %}">خانه</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="{% url 'products' %}">فروشگاه</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="{% url 'cart' %}">سبد خرید</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    تکمیل سفارش
+                </li>
             </ol>
         </nav>
+
 
         <!-- Checkout form + Order summary -->
         <section class="container pb-5 mb-2 mb-md-3 mb-lg-4 mb-xl-5">
@@ -442,17 +451,22 @@
                         <div class="row row-cols-1 row-cols-sm-2 g-3 g-ms-4 mb-3 mb-sm-4">
                             <div class="col">
                                 <label for="province" class="form-label">استان *</label>
-                                <input type="text" class="form-control form-control-lg rounded-pill" id="province"
-                                       name="province" required>
-                                <div class="invalid-feedback">لطفاً استان را وارد کنید.</div>
+                                <select id="province" name="province" class="form-select form-select-lg rounded-pill"
+                                        required>
+                                    <option value="">انتخاب استان</option>
+                                </select>
+                                <div class="invalid-feedback">لطفاً استان را انتخاب کنید.</div>
                             </div>
+
                             <div class="col">
                                 <label for="city" class="form-label">شهر *</label>
-                                <input type="text" class="form-control form-control-lg rounded-pill" id="city"
-                                       name="city" required>
-                                <div class="invalid-feedback">لطفاً شهر را وارد کنید.</div>
+                                <select id="city" name="city" class="form-select form-select-lg rounded-pill" required>
+                                    <option value="">ابتدا استان را انتخاب کنید</option>
+                                </select>
+                                <div class="invalid-feedback">لطفاً شهر را انتخاب کنید.</div>
                             </div>
                         </div>
+
 
                         <div class="row row-cols-1 row-cols-sm-2 g-3 g-ms-4 mb-3 mb-sm-4">
                             <div class="col">
@@ -485,9 +499,6 @@
 
                                 <input type="radio" class="btn-check" name="payment" id="mellat" value="mellat">
                                 <label class="btn btn-outline-primary w-100" for="mellat">به پرداخت بانک ملت</label>
-
-                                <input type="radio" class="btn-check" name="payment" id="sepal" value="sepal">
-                                <label class="btn btn-outline-primary w-100" for="sepal">درگاه پرداخت سپال</label>
                             </div>
                             <div class="invalid-feedback d-block">لطفاً یک روش پرداخت انتخاب کنید.</div>
                         </div>
@@ -564,7 +575,7 @@
                       </span>
                                     </div>
                                     <button type="submit" class="btn btn-lg btn-primary w-100" form="myform">
-                                         پرداخت و ثبت سفارش
+                                        پرداخت و ثبت سفارش
                                     </button>
 
                                 </div>
@@ -606,5 +617,6 @@
             </div>
         </section>
     </main>
+    <script src="{% static 'js/iran-locations.js' %}"></script>
 
 {% endblock %}

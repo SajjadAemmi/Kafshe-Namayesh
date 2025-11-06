@@ -3,16 +3,17 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
+from django.core.paginator import Paginator
 from django.http import HttpResponse
 from django.template import loader
 from django.views.decorators.csrf import csrf_protect
-from shop.models import Shoe, Member, Order, OrderItem, Cart, CartItem
+from shop.models import Shoe, Member, Order, OrderItem, Cart, CartItem, FAQ
 from shop.cart import add_to_cart, remove_from_cart, get_cart_items, get_cart_total, get_or_create_cart
 from shop.orders import create_order
 from django.urls import reverse
 from django.http import HttpResponse, Http404
 from azbankgateways import bankfactories, models as bank_models, default_settings as settings
-
+from .forms import ReviewForm
 
 # Create your views here.
 
@@ -63,6 +64,10 @@ def products(request, shoe_type=None, shoe_category=None):
     context = {
         'shoes': shoes,
         'page_title': page_title,
+        'type': shoe_type,
+        'shoe_category': shoe_category,
+        'SHOE_TYPES_DICT': SHOE_TYPES_DICT,
+        'SHOE_CATEGORY_DICT': SHOE_CATEGORY_DICT,
     }
     return render(request, 'products.html', context)
 
@@ -83,11 +88,30 @@ def products_by_type(request, shoe_type):
 
 def product(request, id):
     shoe = get_object_or_404(Shoe.objects.prefetch_related('images', 'comments'), id=id)
-    template = loader.get_template('product.html')
-    context = {
+    comments = shoe.comments.all().order_by('-created_at')
+
+    paginator = Paginator(comments, 5)  # 5 reviews per page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    if request.method == 'POST':
+        if not request.user.is_authenticated:
+            return redirect('login')
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.user = request.user
+            comment.shoe = shoe
+            comment.save()
+            return redirect('product', id=shoe.id)
+    else:
+        form = ReviewForm()
+
+    return render(request, 'product.html', {
         'shoe': shoe,
-    }
-    return HttpResponse(template.render(context, request))
+        'page_obj': page_obj,
+        'form': form,
+    })
 
 
 def add_to_cart(request, shoe_id):
@@ -188,7 +212,8 @@ def about(request):
 
 
 def contact(request):
-    return render(request, 'contact.html')
+    faqs = FAQ.objects.filter(is_active=True)
+    return render(request, "contact.html", {"faqs": faqs})
 
 
 @login_required
@@ -212,9 +237,23 @@ def signup(request):
 
 @login_required
 def order_list(request):
-    orders = request.user.orders.prefetch_related("items__shoe").all().order_by("-created_at")
-    return render(request, "user/orders.html", {"orders": orders})
+    # Get all orders for the logged-in user
+    orders = (
+        request.user.orders
+        .prefetch_related("items__shoe")
+        .all()
+        .order_by("-created_at")
+    )
 
+    # Pagination setup: e.g., 5 orders per page
+    paginator = Paginator(orders, 5)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
+    context = {
+        "page_obj": page_obj,
+    }
+    return render(request, "user/orders.html", context)
 
 def go_to_gateway_view(request):
     # خواندن مبلغ از هر جایی که مد نظر است
