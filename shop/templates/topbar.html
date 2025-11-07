@@ -15,23 +15,4 @@
     <a class="text-secondary-emphasis fs-sm text-decoration-none d-none d-md-inline" href="#!">
         🔥 بزرگترین فروش با ۵۰٪ تخفیف
     </a>
-    <ul class="nav gap-4">
-        <li class="animate-underline">
-            <a class="nav-link animate-target fs-sm p-0" href="/user/wishlist">
-                لیست علاقه‌مندی‌ها
-            </a>
-        </li>
-        <li class="animate-underline">
-            {% if user.is_authenticated %}
-                <a class="nav-link animate-target fs-sm p-0" href="{% url 'profile' %}">
-                    {{ user.username }}
-                </a>
-            {% else %}
-                <a class="nav-link animate-target fs-sm p-0" href="{% url 'login' %}">
-                    حساب کاربری
-                </a>
-            {% endif %}
-
-        </li>
-    </ul>
 </div>

@@ -7,7 +7,7 @@ from django.core.paginator import Paginator
 from django.http import HttpResponse
 from django.template import loader
 from django.views.decorators.csrf import csrf_protect
-from shop.models import Shoe, Member, Order, OrderItem, Cart, CartItem, FAQ
+from shop.models import Shoe, Order, OrderItem, Cart, CartItem, FAQ
 from shop.cart import add_to_cart, remove_from_cart, get_cart_items, get_cart_total, get_or_create_cart
 from shop.orders import create_order
 from django.urls import reverse
@@ -70,20 +70,6 @@ def products(request, shoe_type=None, shoe_category=None):
         'SHOE_CATEGORY_DICT': SHOE_CATEGORY_DICT,
     }
     return render(request, 'products.html', context)
-
-
-def products_by_type(request, shoe_type):
-    SHOE_TYPES_DICT = {
-        'kids': 'بچگانه',
-        'women': 'زنانه',
-        'men': 'مردانه',
-    }
-
-    if shoe_type not in SHOE_TYPES_DICT:
-        return render(request, '404.html', status=404)  # Show a 404 page if type is invalid
-
-    shoes = Shoe.objects.filter(type=shoe_type)
-    return render(request, 'products.html', {'shoes': shoes, 'shoe_type': SHOE_TYPES_DICT[shoe_type]})
 
 
 def product(request, id):
@@ -196,16 +182,6 @@ def order_create(request):
 def order_detail(request, order_id):
     order = Order.objects.get(id=order_id, user=request.user)
     return render(request, 'checkout.html', {'order': order})
-
-
-def members(request):
-    mymembers = Member.objects.all().values()
-    template = loader.get_template('all_members.html')
-    context = {
-        'mymembers': mymembers,
-    }
-    return HttpResponse(template.render(context, request))
-
 
 def about(request):
     return render(request, 'about.html')

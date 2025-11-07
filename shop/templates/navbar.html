@@ -26,81 +26,131 @@
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body pt-3 pb-4 py-lg-0 mx-lg-auto">
-  <ul class="navbar-nav position-relative">
+                <ul class="navbar-nav position-relative">
 
-    <li class="nav-item dropdown me-lg-n1 me-xl-0">
-      <a class="nav-link fs-sm active" aria-current="page" href="{% url 'index' %}">
-        خانه
-      </a>
-    </li>
+                    <li class="nav-item dropdown me-lg-n1 me-xl-0">
+                        <a class="nav-link fs-sm active" aria-current="page" href="{% url 'index' %}">
+                            خانه
+                        </a>
+                    </li>
 
-    <!-- زنانه -->
-    <li class="nav-item dropdown position-static me-lg-n1 me-xl-0">
-      <a class="nav-link dropdown-toggle fs-sm" href="{% url 'products_by_type' 'women' %}" role="button"
-         data-bs-toggle="dropdown" data-bs-trigger="hover" data-bs-auto-close="outside" aria-expanded="false">
-        زنانه
-      </a>
-      <ul class="dropdown-menu" style="--cz-dropdown-spacer: 1rem">
-        <li><a class="dropdown-item" href="{% url 'products_by_type_and_category' 'women' 'leather' %}">کفش چرم زنانه</a></li>
-        <li><a class="dropdown-item" href="{% url 'products_by_type_and_category' 'women' 'sandal' %}">صندل و کفش تابستانی زنانه</a></li>
-        <li><a class="dropdown-item" href="{% url 'products_by_type_and_category' 'women' 'classic' %}">کفش کلاسیک زنانه</a></li>
-        <li><a class="dropdown-item" href="{% url 'products_by_type_and_category' 'women' 'loafer' %}">کفش راحتی زنانه</a></li>
-        <li><a class="dropdown-item" href="{% url 'products_by_type_and_category' 'women' 'boot' %}">بوت و نیم بوت زنانه</a></li>
-      </ul>
-    </li>
+                    <!-- زنانه -->
+                    <li class="nav-item dropdown position-static me-lg-n1 me-xl-0">
+                        <a class="nav-link dropdown-toggle fs-sm" href="{% url 'products_by_type' 'women' %}"
+                           role="button"
+                           data-bs-toggle="dropdown" data-bs-trigger="hover" data-bs-auto-close="outside"
+                           aria-expanded="false">
+                            زنانه
+                        </a>
+                        <ul class="dropdown-menu" style="--cz-dropdown-spacer: 1rem">
+                            <li><a class="dropdown-item"
+                                   href="{% url 'products_by_type_and_category' 'women' 'leather' %}">کفش چرم زنانه</a>
+                            </li>
+                            <li><a class="dropdown-item"
+                                   href="{% url 'products_by_type_and_category' 'women' 'sandal' %}">صندل و کفش تابستانی
+                                زنانه</a></li>
+                            <li><a class="dropdown-item"
+                                   href="{% url 'products_by_type_and_category' 'women' 'classic' %}">کفش کلاسیک
+                                زنانه</a></li>
+                            <li><a class="dropdown-item"
+                                   href="{% url 'products_by_type_and_category' 'women' 'loafer' %}">کفش راحتی زنانه</a>
+                            </li>
+                            <li><a class="dropdown-item"
+                                   href="{% url 'products_by_type_and_category' 'women' 'boot' %}">بوت و نیم بوت
+                                زنانه</a></li>
+                        </ul>
+                    </li>
 
-    <!-- مردانه -->
-    <li class="nav-item dropdown me-lg-n1 me-xl-0">
-      <a class="nav-link dropdown-toggle fs-sm" href="{% url 'products_by_type' 'men' %}" role="button"
-         data-bs-toggle="dropdown" data-bs-trigger="hover" data-bs-auto-close="outside" aria-expanded="false">
-        مردانه
-      </a>
-      <ul class="dropdown-menu" style="--cz-dropdown-spacer: 1rem">
-        <li><a class="dropdown-item" href="{% url 'products_by_type_and_category' 'men' 'leather' %}">کفش چرم مردانه</a></li>
-        <li><a class="dropdown-item" href="{% url 'products_by_type_and_category' 'men' 'sandal' %}">صندل و کفش تابستانی مردانه</a></li>
-        <li><a class="dropdown-item" href="{% url 'products_by_type_and_category' 'men' 'classic' %}">کفش کلاسیک مردانه</a></li>
-        <li><a class="dropdown-item" href="{% url 'products_by_type_and_category' 'men' 'loafer' %}">کفش راحتی مردانه</a></li>
-        <li><a class="dropdown-item" href="{% url 'products_by_type_and_category' 'men' 'boot' %}">بوت و نیم بوت مردانه</a></li>
-      </ul>
-    </li>
+                    <!-- مردانه -->
+                    <li class="nav-item dropdown me-lg-n1 me-xl-0">
+                        <a class="nav-link dropdown-toggle fs-sm" href="{% url 'products_by_type' 'men' %}"
+                           role="button"
+                           data-bs-toggle="dropdown" data-bs-trigger="hover" data-bs-auto-close="outside"
+                           aria-expanded="false">
+                            مردانه
+                        </a>
+                        <ul class="dropdown-menu" style="--cz-dropdown-spacer: 1rem">
+                            <li><a class="dropdown-item"
+                                   href="{% url 'products_by_type_and_category' 'men' 'leather' %}">کفش چرم مردانه</a>
+                            </li>
+                            <li><a class="dropdown-item"
+                                   href="{% url 'products_by_type_and_category' 'men' 'sandal' %}">صندل و کفش تابستانی
+                                مردانه</a></li>
+                            <li><a class="dropdown-item"
+                                   href="{% url 'products_by_type_and_category' 'men' 'classic' %}">کفش کلاسیک
+                                مردانه</a></li>
+                            <li><a class="dropdown-item"
+                                   href="{% url 'products_by_type_and_category' 'men' 'loafer' %}">کفش راحتی مردانه</a>
+                            </li>
+                            <li><a class="dropdown-item" href="{% url 'products_by_type_and_category' 'men' 'boot' %}">بوت
+                                و نیم بوت مردانه</a></li>
+                        </ul>
+                    </li>
 
-    <!-- بچگانه -->
-    <li class="nav-item dropdown me-lg-n1 me-xl-0">
-      <a class="nav-link dropdown-toggle fs-sm" href="{% url 'products_by_type' 'kids' %}" role="button"
-         data-bs-toggle="dropdown" data-bs-trigger="hover" data-bs-auto-close="outside" aria-expanded="false">
-        بچگانه
-      </a>
-      <ul class="dropdown-menu" style="--cz-dropdown-spacer: 1rem">
-        <li><a class="dropdown-item" href="{% url 'products_by_type_and_category' 'kids' 'leather' %}">کفش چرم بچگانه</a></li>
-        <li><a class="dropdown-item" href="{% url 'products_by_type_and_category' 'kids' 'sandal' %}">صندل و کفش تابستانی بچگانه</a></li>
-        <li><a class="dropdown-item" href="{% url 'products_by_type_and_category' 'kids' 'classic' %}">کفش کلاسیک بچگانه</a></li>
-        <li><a class="dropdown-item" href="{% url 'products_by_type_and_category' 'kids' 'loafer' %}">کفش راحتی بچگانه</a></li>
-      </ul>
-    </li>
+                    <!-- بچگانه -->
+                    <li class="nav-item dropdown me-lg-n1 me-xl-0">
+                        <a class="nav-link dropdown-toggle fs-sm" href="{% url 'products_by_type' 'kids' %}"
+                           role="button"
+                           data-bs-toggle="dropdown" data-bs-trigger="hover" data-bs-auto-close="outside"
+                           aria-expanded="false">
+                            بچگانه
+                        </a>
+                        <ul class="dropdown-menu" style="--cz-dropdown-spacer: 1rem">
+                            <li><a class="dropdown-item"
+                                   href="{% url 'products_by_type_and_category' 'kids' 'leather' %}">کفش چرم بچگانه</a>
+                            </li>
+                            <li><a class="dropdown-item"
+                                   href="{% url 'products_by_type_and_category' 'kids' 'sandal' %}">صندل و کفش تابستانی
+                                بچگانه</a></li>
+                            <li><a class="dropdown-item"
+                                   href="{% url 'products_by_type_and_category' 'kids' 'classic' %}">کفش کلاسیک
+                                بچگانه</a></li>
+                            <li><a class="dropdown-item"
+                                   href="{% url 'products_by_type_and_category' 'kids' 'loafer' %}">کفش راحتی بچگانه</a>
+                            </li>
+                        </ul>
+                    </li>
 
-    <li class="nav-item me-lg-n2 me-xl-0">
-      <a class="nav-link fs-sm" href="{% url 'about' %}">
-        درباره ما
-      </a>
-    </li>
+                    <li class="nav-item me-lg-n2 me-xl-0">
+                        <a class="nav-link fs-sm" href="{% url 'about' %}">
+                            درباره ما
+                        </a>
+                    </li>
 
-    <li class="nav-item me-lg-n2 me-xl-0">
-      <a class="nav-link fs-sm" href="{% url 'contact' %}">
-        تماس با ما
-      </a>
-    </li>
-  </ul>
-</div>
-
+                    <li class="nav-item me-lg-n2 me-xl-0">
+                        <a class="nav-link fs-sm" href="{% url 'contact' %}">
+                            تماس با ما
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </nav>
 
         <!-- Button group -->
         <div class="d-flex gap-sm-1 position-relative z-1">
 
+            {% if user.is_authenticated %}
+                <a class="btn fs-lg animate-scale" href="{% url 'profile' %}">
+                    <i class="ci-user animate-target px-2"></i>
+                    {{ user.username }}
+                </a>
+            {% else %}
+                <a class="btn fs-lg" href="{% url 'login' %}">
+                <i class="ci-log-in animate-target px-2"></i>
+                    ورود | ثبت نام
+                </a>
+            {% endif %}
+
+            <!-- Cart button -->
+            <a href="{% url 'cart' %}"
+               class="btn btn-icon fs-lg btn-outline-secondary border-0 rounded-circle animate-scale">
+                <i class="ci-shopping-cart animate-target"></i>
+            </a>
+
             <!-- Theme switcher (light/dark/auto) -->
             <div class="dropdown">
                 <button type="button"
-                        class="theme-switcher btn btn-icon btn-outline-secondary fs-lg border-0 rounded-circle animate-scale"
+                        class="theme-switcher btn btn-icon btn-outline-secondary fs-lg border-0 rounded-circle animate-scale me-2"
                         data-bs-toggle="dropdown" data-bs-display="dynamic" aria-expanded="false"
                         aria-label="Toggle theme (light)">
 					<span class="theme-icon-active d-flex animate-target">
@@ -140,11 +190,6 @@
                 </ul>
             </div>
 
-            <!-- Cart button -->
-            <a href="{% url 'cart' %}"
-                    class="btn btn-icon fs-lg btn-outline-secondary border-0 rounded-circle animate-scale me-2">
-                <i class="ci-shopping-cart animate-target"></i>
-            </a>
 
             <!-- Search -->
             <div class="dropdown">

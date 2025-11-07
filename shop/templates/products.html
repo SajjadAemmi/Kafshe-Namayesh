@@ -27,37 +27,38 @@
                 {{ page_title }}
             </h1>
 
-        <!-- Filters Section -->
-<div class="sticky-top bg-body mb-3 mb-sm-4" style="margin-top: -4.5rem">
-  <div class="row align-items-center pt-5">
-    <div class="col-12 d-flex flex-wrap gap-3 mt-4 align-items-center">
+            <!-- Filters Section -->
+            <div class="sticky-top bg-body mb-3 mb-sm-4" style="margin-top: -4.5rem">
+                <div class="row align-items-center pt-5">
+                    <div class="col-12 d-flex flex-wrap gap-3 mt-4 align-items-center">
 
-      <!-- Shoe Type Filter -->
-      <label for="typeSelect" class="fw-medium mb-0">نوع کفش:</label>
-      <select class="form-select rounded-pill w-auto" id="typeSelect" aria-label="نوع کفش">
-        <option value="" {% if not type %}selected{% endif %}>همه</option>
-        {% for key, label in SHOE_TYPES_DICT.items %}
-          <option value="{{ key }}" {% if type == key %}selected{% endif %}>{{ label }}</option>
-        {% endfor %}
-      </select>
+                        <!-- Shoe Type Filter -->
+                        <label for="typeSelect" class="fw-medium mb-0">نوع کفش:</label>
+                        <select class="form-select rounded-pill w-auto" id="typeSelect" aria-label="نوع کفش">
+                            <option value="" {% if not type %}selected{% endif %}>همه</option>
+                            {% for key, label in SHOE_TYPES_DICT.items %}
+                                <option value="{{ key }}" {% if type == key %}selected{% endif %}>{{ label }}</option>
+                            {% endfor %}
+                        </select>
 
-      <!-- Shoe Category Filter -->
-      <label for="categorySelect" class="fw-medium mb-0">دسته‌بندی:</label>
-      <select class="form-select rounded-pill w-auto" id="categorySelect" aria-label="دسته‌بندی کفش">
-        <option value="" {% if not shoe_category %}selected{% endif %}>همه</option>
-        {% for key, label in SHOE_CATEGORY_DICT.items %}
-          <option value="{{ key }}" {% if shoe_category == key %}selected{% endif %}>{{ label }}</option>
-        {% endfor %}
-      </select>
+                        <!-- Shoe Category Filter -->
+                        <label for="categorySelect" class="fw-medium mb-0">دسته‌بندی:</label>
+                        <select class="form-select rounded-pill w-auto" id="categorySelect" aria-label="دسته‌بندی کفش">
+                            <option value="" {% if not shoe_category %}selected{% endif %}>همه</option>
+                            {% for key, label in SHOE_CATEGORY_DICT.items %}
+                                <option value="{{ key }}"
+                                        {% if shoe_category == key %}selected{% endif %}>{{ label }}</option>
+                            {% endfor %}
+                        </select>
 
-      <!-- Apply Filters Button -->
-      <button type="button" class="btn btn-primary rounded-pill px-4" id="applyFilters">
-        اعمال فیلتر
-      </button>
+                        <!-- Apply Filters Button -->
+                        <button type="button" class="btn btn-primary rounded-pill px-4" id="applyFilters">
+                            اعمال فیلتر
+                        </button>
 
-    </div>
-  </div>
-</div>
+                    </div>
+                </div>
+            </div>
 
             <!-- Product grid -->
             <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 gy-5" id="productGrid">
@@ -65,57 +66,7 @@
                 {% for shoe in shoes %}
                     <!-- Item -->
                     <div class="col">
-                        <div class="animate-underline mb-sm-2">
-                            <a class="hover-effect-opacity ratio ratio-1x1 d-block mb-3"
-                               href="/products/{{ shoe.id }}">
-
-                                {#                            <div class="position-absolute top-0 start-0 z-2 mt-2 mt-sm-3 ms-2 ms-sm-3">#}
-                                {#                                <span class="badge text-bg-info">New</span>#}
-                                {#                            </div>#}
-
-                                {% if shoe.images.all|length >= 1 %}
-                                    <img src="{{ shoe.images.all.0.image.url }}" alt="Image of {{ shoe.name }}"
-                                         class="hover-effect-target opacity-100 rounded">
-                                {% endif %}
-                                {% if shoe.images.all|length >= 2 %}
-                                    <img src="{{ shoe.images.all.1.image.url }}" alt="Image of {{ shoe.name }}"
-                                         class="position-absolute top-0 start-0 hover-effect-target opacity-0 rounded">
-                                {% endif %}
-
-                            </a>
-                            <div class="d-flex gap-2 mb-3">
-                                <input type="radio" class="btn-check" name="colors-1" id="color-1-1" checked="">
-                                <label for="color-1-1" class="btn btn-color fs-base" style="color: #32808e">
-                                    <span class="visually-hidden">Emerald</span>
-                                </label>
-                                <input type="radio" class="btn-check" name="colors-1" id="color-1-2">
-                                <label for="color-1-2" class="btn btn-color fs-base" style="color: #767e93">
-                                    <span class="visually-hidden">Bluish gray</span>
-                                </label>
-                                <input type="radio" class="btn-check" name="colors-1" id="color-1-3">
-                                <label for="color-1-3" class="btn btn-color fs-base" style="color: #cd8d01">
-                                    <span class="visually-hidden">Mustard</span>
-                                </label>
-                            </div>
-                            <h3 class="mb-2">
-                                <a class="d-block fs-sm fw-medium text-truncate" href="/products/{{ shoe.id }}">
-                                    <span class="animate-target">{{ shoe.name }}</span>
-                                </a>
-                            </h3>
-                            <div class="h6">
-                                {{ shoe.price | persian_numbers }}
-                                <img class="toman" src="{% static 'svg/toman.svg' %}"/>
-                            </div>
-                            <div class="d-flex gap-2">
-                                <button type="button" class="btn btn-dark w-100 rounded-pill px-3">
-                                    افزودن به سبد خرید
-                                </button>
-                                <button type="button" class="btn btn-icon btn-secondary rounded-circle animate-pulse"
-                                        aria-label="Add to wishlist">
-                                    <i class="ci-heart fs-base animate-target"></i>
-                                </button>
-                            </div>
-                        </div>
+                        {% include "product_card.html" %}
                     </div>
                 {% endfor %}
 

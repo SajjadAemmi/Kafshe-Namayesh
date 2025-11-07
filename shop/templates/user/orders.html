@@ -1,5 +1,8 @@
 {% extends "base.html" %}
+
 {% load static %}
+{% load jalali_tags %}
+
 {% block title %}
     سفارش‌ها
 {% endblock %}
@@ -24,50 +27,7 @@
                                     سفارش‌ها
                                 </h1>
                             </div>
-                            <div class="col-md-8 col-xl-6">
-                                <div class="row row-cols-1 row-cols-sm-2 g-3 g-xxl-4">
-                                    <div class="col">
-                                        <select class="form-select" data-select="{
-                        &quot;placeholderValue&quot;: &quot;انتخاب وضعیت&quot;,
-                        &quot;choices&quot;: [
-                          {
-                            &quot;value&quot;: &quot;&quot;,
-                            &quot;label&quot;: &quot;انتخاب وضعیت&quot;,
-                            &quot;placeholder&quot;: true
-                          },
-                          {
-                            &quot;value&quot;: &quot;inprogress&quot;,
-                            &quot;label&quot;: &quot;<div class=\&quot;d-flex align-items-center text-nowrap\&quot;><span class=\&quot;bg-info rounded-circle p-1 me-2\&quot;></span>در حال انجام</div>&quot;
-                          },
-                          {
-                            &quot;value&quot;: &quot;delivered&quot;,
-                            &quot;label&quot;: &quot;<div class=\&quot;d-flex align-items-center text-nowrap\&quot;><span class=\&quot;bg-success rounded-circle p-1 me-2\&quot;></span>تحویل داده شده</div>&quot;
-                          },
-                          {
-                            &quot;value&quot;: &quot;canceled&quot;,
-                            &quot;label&quot;: &quot;<div class=\&quot;d-flex align-items-center text-nowrap\&quot;><span class=\&quot;bg-danger rounded-circle p-1 me-2\&quot;></span>لغو شده</div>&quot;
-                          },
-                          {
-                            &quot;value&quot;: &quot;delayed&quot;,
-                            &quot;label&quot;: &quot;<div class=\&quot;d-flex align-items-center text-nowrap\&quot;><span class=\&quot;bg-warning rounded-circle p-1 me-2\&quot;></span>تاخیر دارد</div>&quot;
-                          }
-                        ]
-                      }" data-select-template="true" aria-label="فیلتر وضعیت"></select>
-                                    </div>
-                                    <div class="col">
-                                        <select class="form-select" data-select="{&quot;removeItemButton&quot;: false}"
-                                                aria-label="مرتب‌سازی بر اساس زمان">
-                                            <option value="all-time">کل زمان</option>
-                                            <option value="last-year">سال گذشته</option>
-                                            <option value="last-3-months">۳ ماه گذشته</option>
-                                            <option value="last-30-days">۳۰ روز گذشته</option>
-                                            <option value="last-week">هفته گذشته</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-
 
                         <!-- Sortable orders table -->
                         <div data-filter-list="{&quot;listClass&quot;: &quot;orders-list&quot;, &quot;sortClass&quot;: &quot;orders-sort&quot;, &quot;valueNames&quot;: [&quot;date&quot;, &quot;total&quot;]}">
@@ -96,7 +56,6 @@
                                 <tbody class="text-body-emphasis orders-list">
 
                                 {% for order in page_obj %}
-                                    <!-- Item -->
                                     <tr>
                                         <td class="fw-medium pt-2 pb-3 py-md-2 ps-0">
                                             <a class="d-inline-block animate-underline text-body-emphasis text-decoration-none py-2"
@@ -108,46 +67,58 @@
                                                 </span>
                                             </a>
                                             <ul class="list-unstyled fw-normal text-body m-0 d-md-none">
-                                                <li>
-                                                    {{ order.created_at }}
-                                                </li>
+                                                <li>{{ order.created_at }}</li>
                                                 <li class="d-flex align-items-center">
                                                     <span class="bg-info rounded-circle p-1 me-2"></span>
-                                                    در حال انجام
+                                                    {{ order.get_status_display }}
                                                 </li>
-                                                <li class="fw-medium text-body-emphasis">
-                                                    {{ order.get_total_price }}
-                                                </li>
+                                                <li class="fw-medium text-body-emphasis">{{ order.get_total_price }}</li>
                                             </ul>
                                         </td>
+
                                         <td class="fw-medium py-3 d-none d-md-table-cell">
-                                            {{ order.created_at }}
-                                            <span class="date d-none">25-02-06</span>
+                                            {{ order.created_at | to_jalali:"%Y/%m/%d" }}
                                         </td>
+
                                         <td class="fw-medium py-3 d-none d-md-table-cell">
-                        <span class="d-flex align-items-center">
-                          <span class="bg-info rounded-circle p-1 me-2"></span>
-                          در حال انجام
-                        </span>
+                                            <span class="d-flex align-items-center">
+                                                <span class="bg-info rounded-circle p-1 me-2"></span>
+                                                {{ order.get_status_display }}
+                                            </span>
                                         </td>
+
                                         <td class="fw-medium py-3 d-none d-md-table-cell">
                                             {{ order.get_total_price }}
-                                            <span class="total d-none">210590</span>
                                         </td>
+
                                         <td class="py-3 pe-0">
-                        <span class="d-flex align-items-center justify-content-end position-relative gap-1 gap-sm-2 ms-n2 ms-sm-0">
-                          <span><img src="assets/img/shop/electronics/thumbs/20.png" width="64" alt="Thumbnail"></span>
-                          <span><img src="assets/img/shop/electronics/thumbs/16.png" width="64" alt="Thumbnail"></span>
-                          <span><img src="assets/img/shop/electronics/thumbs/15.png" width="64" alt="Thumbnail"></span>
-                          <a class="btn btn-icon btn-ghost btn-secondary stretched-link border-0" href="#orderDetails"
-                             data-bs-toggle="offcanvas" aria-controls="orderDetails" aria-label="نمایش جزئیات سفارش">
-                            <i class="ci-chevron-right fs-lg"></i>
-                          </a>
-                        </span>
+        <span class="d-flex align-items-center justify-content-end position-relative gap-1 gap-sm-2 ms-n2 ms-sm-0">
+            {% comment %}
+            Loop through up to 3 shoes' first images for each order
+            {% endcomment %}
+            {% for item in order.items.all|slice:":3" %}
+                {% with shoe=item.shoe %}
+                    {% if shoe.images.all|length > 0 %}
+                        <img src="{{ shoe.images.first.image.url }}"
+                             width="64" alt="{{ shoe.name }}"
+                             class="rounded">
+                    {% else %}
+                        <img src="{% static 'img/no-image.png' %}"
+                             width="64" alt="No image"
+                             class="rounded">
+                    {% endif %}
+                {% endwith %}
+            {% endfor %}
+            <a class="btn btn-icon btn-ghost btn-secondary stretched-link border-0"
+               href="#orderDetails" data-bs-toggle="offcanvas"
+               aria-controls="orderDetails" aria-label="نمایش جزئیات سفارش">
+                <i class="ci-chevron-right fs-lg"></i>
+            </a>
+        </span>
                                         </td>
                                     </tr>
-
                                 {% endfor %}
+
                                 </tbody>
                             </table>
                         </div>

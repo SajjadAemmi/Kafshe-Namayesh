@@ -6,7 +6,6 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('members/', views.members, name='members'),
     path('products/', views.products, name='products'),
     path('products/type/<str:shoe_type>/', views.products, name='products_by_type'),
     path('products/category/<str:shoe_category>/', views.products, name='products_by_category'),
@@ -22,7 +21,6 @@ urlpatterns = [
     path('order/<int:order_id>/', views.order_detail, name='order_detail'),
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
-
     path('accounts/', include('django.contrib.auth.urls')),
     path("accounts/signup/", views.signup, name="signup"),
     path("accounts/profile/", views.profile, name="profile"),

@@ -1,0 +1,50 @@
+{% load static %}
+{% load persian_numbers %}
+
+<div class="animate-underline mb-sm-2">
+
+    <a class="hover-effect-opacity ratio ratio-1x1 d-block rounded mb-3 position-relative overflow-hidden"
+       href="/products/{{ shoe.id }}">
+
+        {% if shoe.is_new %}
+            <div class="position-absolute top-0 start-0 z-2 mt-2 mt-sm-3 ms-2 ms-sm-3">
+                <span class="badge text-bg-info">New</span>
+            </div>
+        {% endif %}
+
+        {% if shoe.images.all|length >= 1 %}
+            <img src="{{ shoe.images.all.0.image.url }}"
+                 alt="Image of {{ shoe.name }}"
+                 class="hover-effect-target opacity-100 rounded w-100 h-100 object-fit-cover">
+        {% endif %}
+
+        {% if shoe.images.all|length >= 2 %}
+            <img src="{{ shoe.images.all.1.image.url }}"
+                 alt="Image of {{ shoe.name }}"
+                 class="position-absolute top-0 start-0 hover-effect-target opacity-0 rounded w-100 h-100 object-fit-cover">
+        {% endif %}
+    </a>
+    <div class="d-flex gap-2 mb-3">
+        <input type="radio" class="btn-check" name="colors-1" id="color-1-1" checked="">
+        <label for="color-1-1" class="btn btn-color fs-base" style="color: #32808e">
+            <span class="visually-hidden">Emerald</span>
+        </label>
+        <input type="radio" class="btn-check" name="colors-1" id="color-1-2">
+        <label for="color-1-2" class="btn btn-color fs-base" style="color: #767e93">
+            <span class="visually-hidden">Bluish gray</span>
+        </label>
+        <input type="radio" class="btn-check" name="colors-1" id="color-1-3">
+        <label for="color-1-3" class="btn btn-color fs-base" style="color: #cd8d01">
+            <span class="visually-hidden">Mustard</span>
+        </label>
+    </div>
+    <h3 class="mb-2">
+        <a class="d-block fs-sm fw-medium text-truncate" href="/products/{{ shoe.id }}">
+            <span class="animate-target">{{ shoe.name }}</span>
+        </a>
+    </h3>
+    <div class="h6">
+        {{ shoe.price | persian_numbers }}
+        <img class="toman" src="{% static 'svg/toman.svg' %}"/>
+    </div>
+</div>

@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'shop',
     'storages',
-    'azbankgateways'
+    'azbankgateways',
+    'jalali_date',
 ]
 
 MIDDLEWARE = [

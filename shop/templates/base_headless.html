@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="utf-8">
+
+    <!-- Viewport -->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
+
+    <!-- SEO Meta Tags -->
+    <title>
+        کفش نمایش
+        |
+        {% block title %}{% endblock %}
+    </title>
+    <meta name="enamad" content="60281656">
+    <meta name="description"
+          content="کفش نمایش عرضه کننده معتبرترین برندهای کفش (طبی، ایمنی، پرسنلی) در مشهد است. عقد قرارداد با اداره‌ها، هتل‌ها، مراکز درمانی و کارخانه‌ها">
+    <meta name="keywords"
+          content="online shop, e-commerce, online store, market,مشهد, کفش, کفش طبی, کفش ایمنی, کفش پرسنلی">
+    <meta name="author" content="Sajjad Aemmi">
+    <!-- Webmanifest + Favicon / App icons -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="manifest" href="{% static 'js/manifest.json' %}">
+    <link rel="icon" type="image/png" href="{% static 'app-icons/namayesh_logo_v3.png' %}" sizes="32x32">
+    <link rel="apple-touch-icon" href="{% static 'app-icons/namayesh_logo_v3.png' %}">
+
+    <!-- Theme switcher (color modes) -->
+    <script src="{% static 'js/theme-switcher.js' %}"></script>
+
+    <!-- Preloaded local web font (Inter) -->
+    {#	<link rel="preload" href="{% static 'fonts/inter-variable-latin.woff2' %}" as="font" type="font/woff2" crossorigin="">#}
+
+    <!-- Font icons -->
+    <link rel="preload" href="{% static 'icons/cartzilla-icons.woff2' %}" as="font" type="font/woff2" crossorigin="">
+    <link rel="stylesheet" href="{% static 'icons/cartzilla-icons.min.css' %}">
+
+    <!-- Vendor styles -->
+    <link rel="stylesheet" href="{% static 'vendor/swiper/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/simplebar/simplebar.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/glightbox/glightbox.min.css' %}">
+
+    <!-- Bootstrap + Theme styles -->
+    <link rel="preload" href="{% static 'css/theme.rtl.min.css' %}" as="style">
+    <link rel="stylesheet" href="{% static 'css/theme.rtl.min.css' %}" id="theme-styles">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Customizer -->
+    <script src="{% static 'js/customizer.min.js' %}"></script>
+</head>
+
+<body>
+{% include "customizer.html" %}
+
+{% block content %}
+{% endblock %}
+
+<!-- Vendor scripts -->
+<script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'vendor/simplebar/simplebar.min.js' %}"></script>
+<script src="{% static 'vendor/glightbox/glightbox.min.js' %}"></script>
+
+<!-- Bootstrap + Theme scripts -->
+<script src="{% static 'js/theme.min.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+</body>
+
+</html>

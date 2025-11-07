@@ -1,18 +1,10 @@
+from datetime import date, timedelta
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
 
 
 # Create your models here.
-class Member(models.Model):
-    firstname = models.CharField(max_length=255)
-    lastname = models.CharField(max_length=255)
-    phone = models.IntegerField(null=True)
-    joined_date = models.DateField(null=True)
-
-    def __str__(self):
-        return f"{self.firstname} {self.lastname}"
-
 
 class Shoe(models.Model):
     SHOE_TYPES = [
@@ -38,6 +30,13 @@ class Shoe(models.Model):
 
     def __str__(self):
         return self.name
+
+    @property
+    def is_new(self):
+        """Return True if shoe was added within the last 30 days"""
+        if not self.created_date:
+            return False
+        return (date.today() - self.created_date) <= timedelta(days=30)
 
 
 class ShoeImage(models.Model):
@@ -84,11 +83,11 @@ class CartItem(models.Model):
 
 class Order(models.Model):
     STATUS_CHOICES = [
-        ('pending', 'Pending'),
-        ('paid', 'Paid'),
-        ('shipped', 'Shipped'),
-        ('completed', 'Completed'),
-        ('canceled', 'Canceled'),
+        ('pending', 'در انتظار پرداخت'),
+        ('paid', 'پرداخت شده، در حال پردازش'),
+        ('shipped', 'در حال ارسال'),
+        ('completed', 'انجام شده'),
+        ('canceled', 'لغو شده'),
     ]
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="orders")
     created_at = models.DateTimeField(auto_now_add=True)
