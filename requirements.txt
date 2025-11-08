@@ -10,5 +10,5 @@ pillow
 boto3
 django-storages
 az-iranian-bank-gateways
-distutils
+setuptools
 django-jalali-date
