@@ -4,7 +4,7 @@
 <div class="animate-underline mb-sm-2">
 
     <a class="hover-effect-opacity ratio ratio-1x1 d-block rounded mb-3 position-relative overflow-hidden"
-       href="/products/{{ shoe.id }}">
+       href="{% url 'product_detail' id=shoe.id %}">
 
         {% if shoe.is_new %}
             <div class="position-absolute top-0 start-0 z-2 mt-2 mt-sm-3 ms-2 ms-sm-3">

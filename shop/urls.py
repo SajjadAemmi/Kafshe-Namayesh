@@ -1,8 +1,15 @@
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.sitemaps.views import sitemap
 from azbankgateways.urls import az_bank_gateways_urls
 from . import views
+from shop.sitemaps import StaticViewSitemap, ShoeSitemap
+
+sitemaps = {
+    'static': StaticViewSitemap,
+    'shoes': ShoeSitemap,
+}
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -10,7 +17,7 @@ urlpatterns = [
     path('products/type/<str:shoe_type>/', views.products, name='products_by_type'),
     path('products/category/<str:shoe_category>/', views.products, name='products_by_category'),
     path('products/type/<str:shoe_type>/category/<str:shoe_category>/', views.products, name='products_by_type_and_category'),
-    path('products/<int:id>', views.product, name='product'),
+    path('products/<int:id>', views.product_detail, name='product_detail'),
     path('cart/add/<int:shoe_id>/', views.add_to_cart, name='add_to_cart'),
     path('cart/remove/<int:shoe_id>/', views.remove_from_cart, name='remove_from_cart'),
     path('cart/', views.cart, name='cart'),
@@ -28,6 +35,9 @@ urlpatterns = [
     path('bankgateways/', az_bank_gateways_urls()),
     path("go-to-bank-gateway/", views.go_to_gateway_view, name="go-to-bank-gateway"),
     path("callback-gateway/", views.callback_gateway_view, name="callback-gateway"),
+    path('shoe-size-guide/', views.shoe_size_guide, name='shoe_size_guide'),
+    path('leather-care-guide/', views.leather_care_guide, name='leather_care_guide'),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 ]
 
 if settings.DEBUG:

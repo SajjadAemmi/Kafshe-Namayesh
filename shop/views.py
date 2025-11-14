@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from django.core.paginator import Paginator
+from django.db.models import Sum
 from django.http import HttpResponse
 from django.template import loader
 from django.views.decorators.csrf import csrf_protect
@@ -18,7 +19,12 @@ from .forms import ReviewForm
 # Create your views here.
 
 def index(request):
-    shoes = Shoe.objects.prefetch_related('images').all()
+    shoes = (
+        Shoe.objects
+        .prefetch_related('images')
+        .annotate(total_sold=Sum('orderitem__quantity'))
+        .order_by('-total_sold')[:8]
+    )
     return render(request, 'index.html', {
         "shoes": shoes
     })
@@ -72,7 +78,7 @@ def products(request, shoe_type=None, shoe_category=None):
     return render(request, 'products.html', context)
 
 
-def product(request, id):
+def product_detail(request, id):
     shoe = get_object_or_404(Shoe.objects.prefetch_related('images', 'comments'), id=id)
     comments = shoe.comments.all().order_by('-created_at')
 
@@ -270,3 +276,16 @@ def callback_gateway_view(request):
 
     # پرداخت موفق نبوده است. اگر پول کم شده است ظرف مدت ۴۸ ساعت پول به حساب شما بازخواهد گشت.
     return HttpResponse("پرداخت با شکست مواجه شده است. اگر پول کم شده است ظرف مدت ۴۸ ساعت پول به حساب شما بازخواهد گشت.")
+
+def shoe_size_guide(request):
+    """
+    صفحه آموزش نحوه اندازه‌گیری پا برای خرید کفش
+    """
+    return render(request, 'shoe_size_guide.html')
+
+
+def leather_care_guide(request):
+    """
+    صفحه آموزش مراقبت از محصولات چرمی
+    """
+    return render(request, 'leather_care_guide.html')

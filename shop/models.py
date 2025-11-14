@@ -25,7 +25,7 @@ class Shoe(models.Model):
     category = models.CharField(max_length=10, choices=SHOE_CATEGORY, default='loafer')
     details = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=0)
-    created_date = models.DateField(null=True)
+    created_at = models.DateField(null=True)
     stock = models.PositiveIntegerField(default=0)
 
     def __str__(self):
@@ -34,9 +34,9 @@ class Shoe(models.Model):
     @property
     def is_new(self):
         """Return True if shoe was added within the last 30 days"""
-        if not self.created_date:
+        if not self.created_at:
             return False
-        return (date.today() - self.created_date) <= timedelta(days=30)
+        return (date.today() - self.created_at) <= timedelta(days=30)
 
 
 class ShoeImage(models.Model):

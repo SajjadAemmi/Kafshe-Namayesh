@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'storages',
     'azbankgateways',
     'jalali_date',
+    'django.contrib.sitemaps',
 ]
 
 MIDDLEWARE = [

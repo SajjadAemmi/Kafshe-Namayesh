@@ -12,7 +12,7 @@ class ShoeImageInline(admin.TabularInline):
 
 class ShoeAdmin(admin.ModelAdmin):
     inlines = [ShoeImageInline]  # Add other inlines as necessary
-    list_display = ('name', 'price', 'type')
+    list_display = ('id', 'name', 'price', 'type')
     list_filter = ('type',)
 
     # Add custom field to display comments
